@@ -39,9 +39,10 @@
             <button name="login">login</button>
         </form>
         <?php
-            include('../config.php');  
-            $email = $_POST['email'];  
-            $password = $_POST['password'];  
+            include('../config.php');
+            if (isset($_POST['login'])) {
+                $email = $_POST['email'];  
+                $password = $_POST['password'];  
               
                 //to prevent from mysqli injection  
                 $username = stripcslashes($email);  
@@ -61,7 +62,8 @@
                 }  
                 else{  
                     echo "<h1> Login failed. Invalid username or password.</h1>";  
-                }     
+                } 
+            }     
         ?>
 <!-- Footer -->
 <footer class="py-5" id="footer-main">
