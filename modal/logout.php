@@ -12,7 +12,10 @@ session_unset();
 
 // destroy the session
 session_destroy();
+
 ?>
+
+<a href="../login.php">home</a>
 
 </body>
 </html> 
