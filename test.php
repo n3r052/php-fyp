@@ -3,6 +3,7 @@
     $database = "fyp";
     $user= "root";
     $pass = "";
+    session_start();
 
   // // Create connection
   $connect = new mysqli($host, $user, $pass, $database);
@@ -10,6 +11,7 @@
    if ($connect->connect_error) {
     die("Connection failed: " . $connect->connect_error);
    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -131,8 +133,14 @@
                 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
                 $count = mysqli_num_rows($result);  
                   
-                if($count == 1){  
-                    header("location: index.php");  
+                if($count == 1){
+                    $_SESSION["username"] = $row['first_name']; 
+                    $_SESSION["position"] = $row['position'];
+                    $username = $_SESSION["username"];
+                    $position = $row['position']; 
+                    echo $username."</br>";
+                    echo $position;
+                    header("location: session_test/home.php");  
                 }  
                 else{  
                     echo "<h1> Login failed. Invalid username or password.</h1>";  
