@@ -21,7 +21,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
   <meta name="author" content="Creative Tim">
-  <title>Device List</title>
+  <title>Documents</title>
   <!-- Favicon -->
   <link rel="icon" href="assets/img/brand/favicon.png" type="image/png">
   <!-- Fonts -->
@@ -30,6 +30,8 @@
   <link rel="stylesheet" href="assets/vendor/nucleo/css/nucleo.css" type="text/css">
   <link rel="stylesheet" href="assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
   <!-- Page plugins -->
+  <link rel="stylesheet" href="node_modules/mdbootstrap/css/addons/datatables.min.css">
+  <link rel="stylesheet" href="node_modules/mdbootstrap/css/style.css">
   <!-- Argon CSS -->
   <link rel="stylesheet" href="assets/css/argon.css?v=1.2.0" type="text/css">
 </head>
@@ -65,14 +67,14 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="documents.html">
+              <a class="nav-link active" href="documents.html">
                 <i class="ni ni-bullet-list-67 text-default"></i>
                 <span class="nav-link-text">Documents</span>
               </a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link active" href="examples/map.html">
+              <a class="nav-link" href="examples/map.html">
                 <i class="ni ni-pin-3 text-primary"></i>
                 <span class="nav-link-text">Google</span>
               </a>
@@ -166,7 +168,7 @@
         <div class="header-body">
           <div class="row align-items-center py-4">
             <div class="col-lg-6 col-7">
-            <h6 class="h2 text-white d-inline-block mb-0">Device</h6>
+            <h6 class="h2 text-white d-inline-block mb-0">Dashboard</h6>
             <!-- <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                 <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
@@ -189,17 +191,15 @@
             <div class="card-header border-0">
               <h3 class="mb-0">Documents</h3>
             </div>
-            <!-- Light table -->
+            <!-- table -->
             <div class="table-responsive">
-              <table class="table align-items-center table-flush">
+              <table id="dtBasicExample" class="table align-items-center table-flush">
                 <thead class="thead-light">
                   <tr>
                     <th scope="col" class="sort" data-sort="name">Name</th>
-                    <th scope="col" class="sort" data-sort="ssid">SSID</th>
-                    <th scope="col" class="sort" data-sort="protocol">Protocol</th>
-                    <th scope="col" class="sort" data-sort="location">Location</th>
-                    <th scope="col" class="sort" data-sort="activity">Activity</th>
-
+                    <th scope="col" class="sort" data-sort="budget">Date</th>
+                    <th scope="col" class="sort" data-sort="status">Status</th>
+                    <th scope="col">Users</th>
                     <th scope="col"></th>
                   </tr>
                 </thead>
@@ -213,32 +213,82 @@
                           <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
                         </a> -->
                         <div class="media-body">
-                            <span class="name mb-0 text-sm">Creative Title 1</span>
+                            <span class="name mb-0 text-sm"><li>Creative Title 1</li></span>
                         </div>
                       </div>
                     </th>
 
                     <!-- Second Column --------------------------------------------------------->
                     <td class="budget">
-                      f8:g8:d7:d5:56
+                      Date
                     </td>
 
                     <!-- Third Column --------------------------------------------------------->
                     <td>
-                      something
+                      <span class="badge badge-dot mr-4">
+                        <i class="bg-warning"></i>
+                        <span class="status">pending</span>
+                      </span>
                     </td>
 
                     <!-- Fourth Column --------------------------------------------------------->
                     <td>
-                      Tutong
+                      <div class="avatar-group">
+                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="John">
+                          <img alt="Image placeholder" src="assets/img/theme/team-1.jpg">
+                        </a>
+                      </div>
                     </td>
 
-                    <!-- Fifth Column --------------------------------------------------------->
+                    <!-- Burger --------------------------------------------------------->
+                    <td class="text-right">
+                      <div class="dropdown">
+                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fas fa-ellipsis-v"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                          <a class="dropdown-item" href="#">Edit</a>
+                          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal-notification">Delete</a>
+                          <a class="dropdown-item" href="#">Send</a>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <!-- Second Row ----------------------------------------------------------------------------------------------------------------------------->
+                  <tr>
+                    <!-- First Column --------------------------------------------------------->
+                    <th scope="row">
+                      <div class="media align-items-center">
+                        <!-- <a href="#" class="avatar rounded-circle mr-3">
+                          <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
+                        </a> -->
+                        <div class="media-body">
+                            <span class="name mb-0 text-sm"><li>Creative Title 2</li></span>
+                        </div>
+                      </div>
+                    </th>
+
+                    <!-- Second Column --------------------------------------------------------->
+                    <td class="budget">
+                      Date
+                    </td>
+
+                    <!-- Third Column --------------------------------------------------------->
                     <td>
-                        <span class="badge badge-dot mr-4">
-                            <i class="bg-success"></i>
-                            <span class="status">Active</span>
-                        </span>
+                      <span class="badge badge-dot mr-4">
+                        <i class="bg-warning"></i>
+                        <span class="status">pending</span>
+                      </span>
+                    </td>
+
+                    <!-- Fourth Column --------------------------------------------------------->
+                    <td>
+                      <div class="avatar-group">
+                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="John">
+                          <img alt="Image placeholder" src="assets/img/theme/team-1.jpg">
+                        </a>
+                      </div>
                     </td>
 
                     <!-- Burger --------------------------------------------------------->
@@ -355,11 +405,30 @@
   <script src="assets/vendor/js-cookie/js.cookie.js"></script>
   <script src="assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
   <script src="assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="node_modules/mdbootstrap/js/mdb.min.js"></script>
+  <!-- Plugin file -->
+  <script src="node_modules/mdbootstrap/js/addons/datatables.min.js"></script>
   <!-- Optional JS -->
   <script src="assets/vendor/chart.js/dist/Chart.min.js"></script>
   <script src="assets/vendor/chart.js/dist/Chart.extension.js"></script>
   <!-- Argon JS -->
   <script src="assets/js/argon.js?v=1.2.0"></script>
+
+  <!-- Your custom scripts (optional) -->
+  <script type="text/javascript">
+      //sorting and disable certain column
+      $(document).ready(function () {
+      $('#dtBasicExample').DataTable({
+        "aaSorting": [],
+        columnDefs: [{
+        orderable: false,
+        targets: 4
+        }]
+      });
+        $('.dataTables_length').addClass('bs-select');
+      });
+    </script>
 </body>
 
 </html>
