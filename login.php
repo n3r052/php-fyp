@@ -76,7 +76,8 @@
                         </form>
                         <?php
                             include('config.php');
-                            $email = $_POST['email'];  
+                            if (isset($_POST['login'])) {
+                                $email = $_POST['email'];  
                             $password = $_POST['password'];  
                                 
                             //to prevent from mysqli injection  
@@ -95,7 +96,8 @@
                             }  
                             else{  
                                 echo "<h1> Login failed. Invalid username or password.</h1>";  
-                        }  
+                        } 
+                              }
                     ?>
                     </div>
                 </div>
