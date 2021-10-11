@@ -1,7 +1,10 @@
 <?php
     require 'config.php';
     session_start();
-
+    $username = $_SESSION["username"];
+    $position = $_SESSION['position'];
+    $userid = $_SESSION["userid"];
+    
     $sql = "SELECT user.user_id, user.first_name, user.last_name, user.email, user.status, user.position, user.company, profile.about, profile.profile, CONCAT(user.first_name, ' ', user.last_name) AS whole_name FROM user
             INNER JOIN profile on user.user_id = profile.user_id
             WHERE user.user_id = 3001";
