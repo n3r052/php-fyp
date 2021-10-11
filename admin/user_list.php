@@ -1,18 +1,5 @@
 <?php
-
-//session_start();
-$servername = 'localhost';
-$user = 'root';
-$password = '';
-$dbname = 'fyp';
-
-//create connection
-$connect = new mysqli($servername, $username, $password, $dbname);
-
-//check connection
-if ($connect->connect_error){
-    die('connection failed: '.$connect->connect_error);
-}
+    require '../config.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -168,13 +155,6 @@ if ($connect->connect_error){
           <div class="row align-items-center py-4">
             <div class="col-lg-6 col-7">
             <h6 class="h2 text-white d-inline-block mb-0">User List</h6>
-            <!-- <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
-                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-                <li class="breadcrumb-item"><a href="#">Dashboards</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Default</li>
-                </ol>
-            </nav> -->
             </div>
             <!-- Add User Button ------------------------------------------------------------------>
             <div class="col-lg-6 col-5 text-right">
@@ -200,67 +180,79 @@ if ($connect->connect_error){
               <table class="table align-items-center table-flush">
                 <thead class="thead-light">
                   <tr>
-                    <th scope="col" class="sort" data-sort="id">id</th>
-                    <th scope="col" class="sort" data-sort="name">Username</th>
+                    <th scope="col" class="sort" data-sort="id">User Id</th>
+                    <th scope="col" class="sort" data-sort="name">First Name</th>
+                    <th scope="col" class="sort" data-sort="name">Last Name</th>
                     <th scope="col" class="sort" data-sort="budget">Email</th>
-                    <th scope="col" class="sort" data-sort="status">Password</th>
-                    <th scope="col" class="sort" data-sort="role">Role</th>
-                    <th scope="col" class="sort" data-sort="status">Status</th>
+                    <th scope="col" class="sort" data-sort="name">Status</th>
+                    <th scope="col" class="sort" data-sort="status">Position</th>
+                    <th scope="col" class="sort" data-sort="role">Company</th>
                     <!-- for burger icon -->
                     <th scope="col"></th>
                   </tr>
                 </thead>
                 <tbody class="list">
-                  <!-- First Row ----------------------------------------------------------------------------------------------------------------------------->
-                  <tr>
-                    <!-- First Column --------------------------------------------------------->
-                    <th scope="row">
-                        <div class="media-body">
-                            <span class="name mb-0 text-sm">1</span>
-                        </div>
-                    </th>
-
-                    <!-- Second Column --------------------------------------------------------->
-                    <td>
-                        <div class="media-body">
-                            <span class="name mb-0 text-sm">User 1</span>
-                        </div>
-                    </td>
-
-                    <!-- Third Column --------------------------------------------------------->
-                    <td>
-                        email@gmail.com
-                    </td>
-
-                    <!-- Fourth Column --------------------------------------------------------->
-                    <td>
-                        password
-                    </td>
-
-                    <!-- Fifth Column --------------------------------------------------------->
-                    <td>
-                        Role
-                    </td>
-
-                    <!-- Sixth Column --------------------------------------------------------->
-                    <td>
-                        <span class="text-success">Active</span>
-                    </td>
-
-                    <!-- Burger --------------------------------------------------------->
-                    <td class="text-right">
-                      <div class="dropdown">
-                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="fas fa-ellipsis-v"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit-user-form">Edit</a>
-                          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal-notification">Delete</a>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-
+                <?php
+                    $sql = "SELECT * FROM user";
+                    $result = $connect->query($sql);
+                    if ($result->num_rows > 0) {
+                        // output data of each row
+                        while($row = $result->fetch_assoc()) {
+                            echo "";
+                            echo "<tr>";
+                            //first column
+                            echo 
+                            "<th scope=\"row\">
+                                <div class=\"media-body\">
+                                    <span class=\"name mb-0 text-sm\"> ".$row['user_id']. "</span>
+                                </div>
+                            </th>";
+                            //second column
+                            echo 
+                            "<td>
+                                <div class=\"media-body\">
+                                    <span class=\"name mb-0 text-sm\">" . $row['first_name'] . "</span>
+                                </div>
+                            </td>";
+                            //third column
+                            echo
+                            "<td>
+                                <div class=\"media-body\">
+                                    <span class=\"name mb-0 text-sm\">" . $row['last_name'] . "</span>
+                                </div>
+                            </td>";
+                            //fourth column
+                            echo "<td>" . $row['email'] . "</td>";
+                            //fifth column
+                            echo 
+                            "<td>
+                                <span class=\"text-success\">" . $row['status'] . "</span>
+                            </td>";
+                            //sixth column
+                            echo "<td>" . $row['position'] . "</td>";
+                            //seventh column
+                            echo "<td>" . $row['company'] . "</td>";
+                            //burger
+                            echo 
+                            "<td class=\"text-right\">
+                                <div class=\"dropdown\">
+                                    <a class=\"btn btn-sm btn-icon-only text-light\" href=\"#\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
+                                    <i class=\"fas fa-ellipsis-v\"></i>
+                                    </a>
+                                    <div class=\"dropdown-menu dropdown-menu-right dropdown-menu-arrow\">
+                                    <a class=\"dropdown-item\" href=\"#\" data-toggle=\"modal\" data-target=\"#edit-user-form\">Edit</a>
+                                    <a class=\"dropdown-item\" href=\"#\" data-toggle=\"modal\" data-target=\"#modal-notification\">Delete</a>
+                                    </div>
+                                </div>
+                                </td>
+                            </tr>";
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "0 results";
+                    }
+                    $connect->close();
+                ?>
                   <!-- First Row ----------------------------------------------------------------------------------------------------------------------------->
                   <tr>
                     <!-- First Column --------------------------------------------------------->
