@@ -58,14 +58,14 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link active" href="../documents.php">
+              <a class="nav-link" href="../documents.php">
                 <i class="ni ni-bullet-list-67 text-default"></i>
                 <span class="nav-link-text">Documents</span>
               </a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="../admin/user_list.php">
+              <a class="nav-link active" href="../admin/user_list.php">
                 <i class="ni ni-bullet-list-67 text-default"></i>
                 <span class="nav-link-text">User List</span>
               </a>
@@ -131,7 +131,11 @@
                   </span>
                   <!-- User Name -->
                   <div class="media-body  ml-2  d-none d-lg-block">
-                    <span class="mb-0 text-sm  font-weight-bold">John Doe</span>
+                    <span class="mb-0 text-sm  font-weight-bold">
+                      <?php
+                        echo $_SESSION["username"];
+                      ?>
+                    </span>
                   </div>
                 </div>
               </a>
@@ -142,10 +146,6 @@
                 <a href="#!" class="dropdown-item">
                   <i class="ni ni-single-02"></i>
                   <span>My profile</span>
-                </a>
-                <a href="#!" class="dropdown-item">
-                  <i class="ni ni-settings-gear-65"></i>
-                  <span>Settings</span>
                 </a>
                 <div class="dropdown-divider"></div>
                 <a href="#!" class="dropdown-item">
@@ -196,6 +196,7 @@
                     <th scope="col" class="sort" data-sort="name">First Name</th>
                     <th scope="col" class="sort" data-sort="name">Last Name</th>
                     <th scope="col" class="sort" data-sort="budget">Email</th>
+                    <th scope="col" class="sort" data-sort="budget">Password</th>
                     <th scope="col" class="sort" data-sort="name">Status</th>
                     <th scope="col" class="sort" data-sort="status">Position</th>
                     <th scope="col" class="sort" data-sort="role">Company</th>
@@ -239,7 +240,10 @@
                             //fourth column
                             echo "<td>" . $row['email'] . "</td>";
 
-                            //fifth column
+                            //5th column
+                            echo "<td>" . $row['password'] . "</td>";
+
+                            //6th column
                             if ($row['status']=="active"){
                               echo 
                             "<td>
@@ -252,10 +256,10 @@
                             </td>";
                             }
 
-                            //sixth column
+                            //7th column
                             echo "<td>" . $row['position'] . "</td>";
 
-                            //seventh column
+                            //8th column
                             echo "<td>" . $row['company'] . "</td>";
 
                             //burger
