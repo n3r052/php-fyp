@@ -58,8 +58,10 @@
                 if($count == 1){  
                     $_SESSION["username"] = $row['first_name'];
                     $_SESSION["position"] = $row['position'];
+                    $_SESSION["userid"] = $row['user_id'];
                     $username = $_SESSION["username"];
-                    $position = $row['position'];
+                    $position = $_SESSION['position'];
+                    $userid = $_SESSION["userid"];
                     // echo $username."</br>";
                     // echo $position."</br>";
                     if($position=="admin" && $row['status']=="active"){
