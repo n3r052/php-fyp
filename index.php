@@ -1,7 +1,10 @@
 <?php
   include "config.php";
   session_start();
-  //echo $_SESSION["username"];
+  $username = $_SESSION["username"];
+  $position = $_SESSION['position'];
+  $userid = $_SESSION["userid"];
+  
 ?>
 <!DOCTYPE html>
 <html>
