@@ -1,5 +1,6 @@
 <?php
     require '../config.php';
+    session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -39,30 +40,41 @@
           <ul class="navbar-nav">
 
             <li class="nav-item">
-              <a class="nav-link" href="../index.html">
+              <a class="nav-link" href="../index.php">
                 <i class="ni ni-tv-2 text-primary"></i>
                 <span class="nav-link-text">Dashboard</span>
               </a>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="../report.html">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="ni ni-bullet-list-67 text-default"></i>
-                <span class="nav-link-text">Compose Report</span>
+                <span class="nav-link-text">Compose</span>
               </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="report.html">Report</a>
+                <a class="dropdown-item" href="#">Statistic Report</a>
+              </div>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link active" href="../documents.html">
+              <a class="nav-link active" href="../documents.php">
                 <i class="ni ni-bullet-list-67 text-default"></i>
                 <span class="nav-link-text">Documents</span>
               </a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="../examples/map.html">
+              <a class="nav-link" href="../admin/user_list.php">
+                <i class="ni ni-bullet-list-67 text-default"></i>
+                <span class="nav-link-text">User List</span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="../location.php">
                 <i class="ni ni-pin-3 text-primary"></i>
-                <span class="nav-link-text">Google</span>
+                <span class="nav-link-text">Device Location</span>
               </a>
             </li>
 
