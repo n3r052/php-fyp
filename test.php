@@ -3,7 +3,7 @@
     $database = "fyp";
     $user= "root";
     $pass = "";
-    session_start();
+    //session_start();
 
   // // Create connection
   $connect = new mysqli($host, $user, $pass, $database);
@@ -139,12 +139,18 @@
                     $username = $_SESSION["username"];
                     $position = $row['position']; 
                     echo $username."</br>";
-                    echo $position;
-                    header("location: session_test/home.php");  
+                    echo $position."</br>";
+                    //header("location: session_test/home.php"); 
+                    if($position=="admin" && $row['status']=="active"){
+                        echo "am admin";
+                    }elseif($position=="officer"){
+                        echo "am officer";
+                    }elseif($position=="operator"){
+                        echo "am operator";
+                    }else{  
+                    echo "<h1> Login failed. Invalid username or password. | account not active</h1>";  
                 }  
-                else{  
-                    echo "<h1> Login failed. Invalid username or password.</h1>";  
-                }     
+            }   
         ?>
         
 </body>
