@@ -198,8 +198,8 @@
                     if ($result->num_rows > 0) {
                         // output data of each row
                         while($row = $result->fetch_assoc()) {
-                            echo "";
                             echo "<tr>";
+
                             //first column
                             echo 
                             "<th scope=\"row\">
@@ -207,6 +207,7 @@
                                     <span class=\"name mb-0 text-sm\"> ".$row['user_id']. "</span>
                                 </div>
                             </th>";
+
                             //second column
                             echo 
                             "<td>
@@ -214,6 +215,7 @@
                                     <span class=\"name mb-0 text-sm\">" . $row['first_name'] . "</span>
                                 </div>
                             </td>";
+
                             //third column
                             echo
                             "<td>
@@ -221,17 +223,29 @@
                                     <span class=\"name mb-0 text-sm\">" . $row['last_name'] . "</span>
                                 </div>
                             </td>";
+
                             //fourth column
                             echo "<td>" . $row['email'] . "</td>";
+
                             //fifth column
-                            echo 
+                            if ($row['status']=="active"){
+                              echo 
                             "<td>
                                 <span class=\"text-success\">" . $row['status'] . "</span>
                             </td>";
+                            }else{
+                              echo
+                            "<td>
+                              <span class=\"text-danger\">" . $row['status'] . "</span>
+                            </td>";
+                            }
+
                             //sixth column
                             echo "<td>" . $row['position'] . "</td>";
+
                             //seventh column
                             echo "<td>" . $row['company'] . "</td>";
+
                             //burger
                             echo 
                             "<td class=\"text-right\">
@@ -251,62 +265,7 @@
                     } else {
                         echo "0 results";
                     }
-                    $connect->close();
                 ?>
-                  <!-- First Row ----------------------------------------------------------------------------------------------------------------------------->
-                  <tr>
-                    <!-- First Column --------------------------------------------------------->
-                    <th scope="row">
-                      <!-- <div class="media align-items-center"> -->
-                        <!-- <a href="#" class="avatar rounded-circle mr-3">
-                          <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
-                        </a> -->
-                        <div class="media-body">
-                            <span class="name mb-0 text-sm">2</span>
-                        </div>
-                      <!-- </div> -->
-                    </th>
-
-                    <!-- Second Column --------------------------------------------------------->
-                    <td>
-                        <div class="media-body">
-                            <span class="name mb-0 text-sm">User 2</span>
-                        </div>
-                    </td>
-
-                    <!-- Third Column --------------------------------------------------------->
-                    <td>
-                        email@gmail.com
-                    </td>
-
-                    <!-- Fourth Column --------------------------------------------------------->
-                    <td>
-                        password
-                    </td>
-
-                    <!-- Fifth Column --------------------------------------------------------->
-                    <td>
-                        Role
-                    </td>
-
-                    <!-- Sixth Column --------------------------------------------------------->
-                    <td>
-                        <span class="text-danger">Inactive</span>
-                    </td>
-
-                    <!-- Burger --------------------------------------------------------->
-                    <td class="text-right">
-                      <div class="dropdown">
-                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="fas fa-ellipsis-v"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit-user-form">Edit</a>
-                          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete-notification">Delete</a>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
                 </tbody>
               </table>
             </div>
