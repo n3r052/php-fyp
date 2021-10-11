@@ -1,18 +1,19 @@
-<!--
-=========================================================
-* Argon Dashboard - v1.2.0
-=========================================================
-* Product Page: https://www.creative-tim.com/product/argon-dashboard
+<?php
 
+//session_start();
+$servername = 'localhost';
+$user = 'root';
+$password = '';
+$dbname = 'fyp';
 
-* Copyright  Creative Tim (http://www.creative-tim.com)
-* Coded by www.creative-tim.com
+//create connection
+$connect = new mysqli($servername, $username, $password, $dbname);
 
-
-
-=========================================================
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
+//check connection
+if ($connect->connect_error){
+    die('connection failed: '.$connect->connect_error);
+}
+?>
 <!DOCTYPE html>
 <html>
 
