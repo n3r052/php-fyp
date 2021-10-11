@@ -1,17 +1,18 @@
-<!--
-=========================================================
-* Argon Dashboard - v1.2.0
-=========================================================
-* Product Page: https://www.creative-tim.com/product/argon-dashboard
+<?php
+    $host= "localhost";
+    $database = "fyp";
+    $user= "root";
+    $pass = "";
 
-* Copyright  Creative Tim (http://www.creative-tim.com)
-* Coded by www.creative-tim.com
-=========================================================
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
+  // // Create connection
+  $connect = new mysqli($host, $user, $pass, $database);
+  // // Check connection
+   if ($connect->connect_error) {
+    die("Connection failed: " . $connect->connect_error);
+   }
+?>
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -35,16 +36,6 @@
   <div class="main-content">
     <!-- Header -->
     <div class="header bg-gradient-primary py-7 py-lg-8 pt-lg-9">
-      <div class="container">
-        <div class="header-body text-center mb-7">
-          <div class="row justify-content-center">
-            <div class="col-xl-5 col-lg-6 col-md-8 px-5">
-              <!-- <h1 class="text-white">Welcome!</h1>
-              <p class="text-lead text-white">Use these awesome forms to login or create new account in your project for free.</p> -->
-            </div>
-          </div>
-        </div>
-      </div>
       <div class="separator separator-bottom separator-skew zindex-100">
         <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
           <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
@@ -57,45 +48,55 @@
             <div class="col-lg-5 col-md-7">
                 <div class="card bg-secondary border-0 mb-0">
                     <div class="card-body px-lg-5 py-lg-5">
-                        <!-- <div class="text-center text-muted mb-4">
-                            <small>Or sign in with credentials</small>
-                        </div> -->
-                        <form role="form">
+
+                        <form action="" method="post">
                           <img src="assets/img/login.png" alt="" width="88%">
 
                             <div class="form-group mb-3">
                             <div class="input-group input-group-merge input-group-alternative">
                                 <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                                    <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                 </div>
-                                <input class="form-control" placeholder="Email" type="email">
+                                <input class="form-control" placeholder="Email" type="text" name="email">
                             </div>
                             </div>
+
                             <div class="form-group">
-                            <div class="input-group input-group-merge input-group-alternative">
-                                <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                <div class="input-group input-group-merge input-group-alternative">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                    </div>
+                                    <input class="form-control" placeholder="Password" type="text" name="password">
                                 </div>
-                                <input class="form-control" placeholder="Password" type="password">
                             </div>
-                            </div>
-                            <div class="custom-control custom-control-alternative custom-checkbox">
-                            <input class="custom-control-input" id=" customCheckLogin" type="checkbox">
-                            <label class="custom-control-label" for=" customCheckLogin">
-                                <!-- <span class="text-muted">Remember me</span> -->
-                            </label>
-                            </div>
+
                             <div class="text-center">
-                            <button type="button" class="btn btn-primary my-4">Sign in</button>
+                                <button type="button" class="btn btn-primary my-4" name="login">Sign in</button>
                             </div>
                         </form>
-                        </div>
-                </div>
-                
-
-                <div class="row mt-3">
-                    <div class="col-6">
-                    <!-- <a href="#" class="text-light"><small>Forgot password?</small></a> -->
+                        <?php
+                            include('config.php');
+                            $email = $_POST['email'];  
+                            $password = $_POST['password'];  
+                                
+                            //to prevent from mysqli injection  
+                            $username = stripcslashes($email);  
+                            $password = stripcslashes($password);  
+                            $email = mysqli_real_escape_string($connect, $email);  
+                            $password = mysqli_real_escape_string($connect, $password);  
+                            
+                            $sql = "select * from user where email = '$email' and password = '$password'";  
+                            $result = mysqli_query($connect, $sql);  
+                            $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
+                            $count = mysqli_num_rows($result);  
+                                
+                            if($count == 1){  
+                                header("location: index.php");  
+                            }  
+                            else{  
+                                echo "<h1> Login failed. Invalid username or password.</h1>";  
+                        }  
+                    ?>
                     </div>
                 </div>
             </div>
@@ -139,6 +140,7 @@
   <script src="assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
   <!-- Argon JS -->
   <script src="assets/js/argon.js?v=1.2.0"></script>
-</body>
 
+  
+</body>
 </html>
