@@ -3,6 +3,7 @@
     $database = "fyp";
     $user= "root";
     $pass = "";
+    session_start();
 
   // // Create connection
   $connect = new mysqli($host, $user, $pass, $database);
@@ -55,7 +56,8 @@
                   
                 if($count == 1){  
                     $_SESSION["username"] = $row['first_name'];
-                    header("location: ../index.php");  
+                    header("location: ../index.php"); 
+                    //echo  $_SESSION["username"];
                 }  
                 else{  
                     echo "<h1> Login failed. Invalid username or password.</h1>";  
