@@ -1,18 +1,8 @@
-<!--
-=========================================================
-* Argon Dashboard - v1.2.0
-=========================================================
-* Product Page: https://www.creative-tim.com/product/argon-dashboard
-
-
-* Copyright  Creative Tim (http://www.creative-tim.com)
-* Coded by www.creative-tim.com
-
-
-
-=========================================================
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
+<?php
+  include "config.php";
+  session_start();
+  //echo $_SESSION["username"];
+?>
 <!DOCTYPE html>
 <html>
 
@@ -148,7 +138,11 @@
                   </span>
                   <!-- User Name -->
                   <div class="media-body  ml-2  d-none d-lg-block">
-                    <span class="mb-0 text-sm  font-weight-bold">John Doe</span>
+                    <span class="mb-0 text-sm  font-weight-bold">
+                      <?php
+                        echo $_SESSION["username"];
+                      ?>
+                    </span>
                   </div>
                 </div>
               </a>
@@ -156,7 +150,7 @@
                 <div class="dropdown-header noti-title">
                   <h6 class="text-overflow m-0">Welcome!</h6>
                 </div>
-                <a href="#!" class="dropdown-item">
+                <a href="profile.php" class="dropdown-item">
                   <i class="ni ni-single-02"></i>
                   <span>My profile</span>
                 </a>
