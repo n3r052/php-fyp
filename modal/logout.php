@@ -15,7 +15,7 @@ session_destroy();
 
 ?>
 
-<a href="../login.php">home</a>
+<a href="sign_in.php">home</a>
 
 </body>
 </html> 
