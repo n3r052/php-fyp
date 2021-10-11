@@ -65,21 +65,21 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="documents.html">
+              <a class="nav-link" href="documents.php">
                 <i class="ni ni-bullet-list-67 text-default"></i>
                 <span class="nav-link-text">Documents</span>
               </a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="admin/user_list.html">
+              <a class="nav-link" href="admin/user_list.php">
                 <i class="ni ni-bullet-list-67 text-default"></i>
                 <span class="nav-link-text">User List</span>
               </a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="location.html">
+              <a class="nav-link" href="location.php">
                 <i class="ni ni-pin-3 text-primary"></i>
                 <span class="nav-link-text">Device Map</span>
               </a>
@@ -153,10 +153,6 @@
                 <a href="profile.php" class="dropdown-item">
                   <i class="ni ni-single-02"></i>
                   <span>My profile</span>
-                </a>
-                <a href="#!" class="dropdown-item">
-                  <i class="ni ni-settings-gear-65"></i>
-                  <span>Settings</span>
                 </a>
                 <div class="dropdown-divider"></div>
                 <a href="modal/logout.php" class="dropdown-item">
