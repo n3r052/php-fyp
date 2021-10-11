@@ -57,6 +57,7 @@
 
     </table>
 
+    <h1>Inner Join</h1>
     <?php
             $sql = "SELECT user.user_id, user.first_name, user.last_name, user.email, user.status, user.position, user.company, profile.about, profile.profile, CONCAT(user.first_name, ' ', user.last_name) AS whole_name FROM user
             INNER JOIN profile on user.user_id = profile.user_id
@@ -80,6 +81,63 @@
                 echo "0 results";
             }
         ?>
-<img src="" alt="">
+
+        <h1>if statement</h1>
+        <?php
+            $sql = "SELECT user_id, first_name, last_name, email, status, position, company FROM user WHERE user_id = 5845";
+            $result = $connect->query($sql);
+            if ($result->num_rows > 0) {
+                // output data of each row
+                while($row = $result->fetch_assoc()) {
+                    
+                    if ($row['status']=="active"){
+                        echo "<p>".$row['user_id']."</p>";
+                        echo "<p>".$row['first_name']."</p>";
+                        echo "<p>".$row['last_name']."</p>";
+                        echo "<p>".$row['email']."</p>";
+                        echo "<p>".$row['status']."</p>";
+                        echo "<p>".$row['position']."</p>";
+                        echo "<p>".$row['company']."</p>";
+                    }else{
+                        echo "nada";
+                    }
+                    
+                }
+            } else {
+                echo "0 results";
+            }
+        ?>
+        <h1>Login</h1>
+        <form action="" method="post">
+            <label for="">email:</label>
+            <input type="text" name="email" id="">
+            <label for="">password:</label>
+            <input type="text" name="password" id="">
+            <button name="login">login</button>
+        </form>
+        <?php
+            include('config.php');  
+            $email = $_POST['email'];  
+            $password = $_POST['password'];  
+              
+                //to prevent from mysqli injection  
+                $username = stripcslashes($email);  
+                $password = stripcslashes($password);  
+                $email = mysqli_real_escape_string($connect, $email);  
+                $password = mysqli_real_escape_string($connect, $password);  
+              
+                $sql = "select * from user where email = '$email' and password = '$password'";  
+                $result = mysqli_query($connect, $sql);  
+                $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
+                $count = mysqli_num_rows($result);  
+                  
+                if($count == 1){  
+                    echo "<h1><center> Login successful </center></h1>";  
+                }  
+                else{  
+                    echo "<h1> Login failed. Invalid username or password.</h1>";  
+                }     
+        ?>
+        
 </body>
 </html>
