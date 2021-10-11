@@ -29,10 +29,11 @@
             <th>status</th>
             <th>position</th>
             <th>company</th>
+            <th>full name</th>
         </tr>
 
         <?php
-            $sql = "SELECT * FROM user";
+            $sql = "SELECT user_id, first_name, last_name, email, status, position, company, CONCAT(first_name, ' ', last_name) AS whole_name FROM user WHERE user_id = 3001";
             $result = $connect->query($sql);
             if ($result->num_rows > 0) {
                 // output data of each row
@@ -46,6 +47,7 @@
                     echo "<td>" . $row['status'] . "</td>";
                     echo "<td>" . $row['position'] . "</td>";
                     echo "<td>" . $row['company'] . "</td>";
+                    echo "<td>" . $row['whole_name'] . "</td>";
                     echo "</tr>";
                 }
             } else {
@@ -55,5 +57,6 @@
         ?>
 
     </table>
+
 </body>
 </html>
