@@ -3,7 +3,7 @@
     $database = "fyp";
     $user= "root";
     $pass = "";
-    //session_start();
+    session_start();
 
   // // Create connection
   $connect = new mysqli($host, $user, $pass, $database);
@@ -60,8 +60,8 @@
                     $_SESSION["position"] = $row['position'];
                     $username = $_SESSION["username"];
                     $position = $row['position'];
-                    echo $username."</br>";
-                    echo $position."</br>";
+                    // echo $username."</br>";
+                    // echo $position."</br>";
                     if($position=="admin" && $row['status']=="active"){
                       //echo "am admin";
                       header("location: ../index.php");
