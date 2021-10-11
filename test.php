@@ -53,10 +53,33 @@
             } else {
                 echo "0 results";
             }
-            $connect->close();
         ?>
 
     </table>
 
+    <?php
+            $sql = "SELECT user.user_id, user.first_name, user.last_name, user.email, user.status, user.position, user.company, profile.about, profile.profile, CONCAT(user.first_name, ' ', user.last_name) AS whole_name FROM user
+            INNER JOIN profile on user.user_id = profile.user_id
+            WHERE user.user_id = 3001";
+            $result = $connect->query($sql);
+            if ($result->num_rows > 0) {
+                // output data of each row
+                while($row = $result->fetch_assoc()) {
+                    echo "<p>".$row['whole_name']."</p>";
+                    echo "<p>".$row['user_id']."</p>";
+                    echo "<p>".$row['first_name']."</p>";
+                    echo "<p>".$row['last_name']."</p>";
+                    echo "<p>".$row['email']."</p>";
+                    echo "<p>".$row['status']."</p>";
+                    echo "<p>".$row['position']."</p>";
+                    echo "<p>".$row['company']."</p>";
+                    echo "<p>".$row['about']."</p>";
+                    echo "<img src=".$row['profile']." alt=\"\"";
+                }
+            } else {
+                echo "0 results";
+            }
+        ?>
+<img src="" alt="">
 </body>
 </html>
