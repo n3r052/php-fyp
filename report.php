@@ -206,6 +206,19 @@
                         <input class="form-control" placeholder="plate_license" type="text" id="plate_license" name="plate_license">
                     </div>
 
+                    <div class="form-group">
+                        <label for="example-text-input" class="form-control-label">Location</label>
+                        <input class="form-control" placeholder="location" type="text" id="location" name="location">
+                    </div>
+                    <div class="form-group">
+                        <label for="example-text-input" class="form-control-label">Date</label>
+                        <input class="form-control" placeholder="date_time" type="text" id="date_time" name="date_time">
+                    </div>
+                    <div class="form-group">
+                        <label for="example-text-input" class="form-control-label">Offense</label>
+                        <input class="form-control" placeholder="offense" type="text" id="offense" name="offense">
+                    </div>
+
                     <!-- <div class="form-group">
                         <label for="example-text-input" class="form-control-label">Location</label>
                         <input class="form-control" type="text" placeholder="Jerudong" id="example-text-input" name="location">
@@ -310,9 +323,12 @@
     if (isset($_POST['submit'])){
       $first_name= $_POST['first_name'];
       $plate_license= $_POST['plate_license'];
+      $location= $_POST['location'];
+      $date_time= $_POST['date_time'];
+      $offense= $_POST['offense'];
         include "config.php";
 
-            $sql = "INSERT INTO report(first_name, plate_license) VALUES($first_name, $plate_license)";
+            $sql = "INSERT INTO report(first_name, plate_license, location, date_time, offense) VALUES($first_name, $plate_license, $location, $date_time, $offense)";
             if($connect->query($sql) === true){
                 echo "success insert";
             
