@@ -1,11 +1,20 @@
 <?php
-  include "config.php";
+  include "../config.php";
   session_start();
   $username = $_SESSION["username"];
   $position = $_SESSION['position'];
   $userid = $_SESSION["userid"];
-  
+
+  $sql = "SELECT user.user_id, user.first_name, user.last_name, user.email, user.status, user.position, user.company, profile.about, profile.profile, CONCAT(user.first_name, ' ', user.last_name) AS whole_name FROM user
+          INNER JOIN profile on user.user_id = profile.user_id";  
+          $result = mysqli_query($connect, $sql);  
+          $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
+          $count = mysqli_num_rows($result);
+
+          $profile_pic = $row['profile'];
 ?>
+  
+
 <!DOCTYPE html>
 <html>
 
@@ -44,30 +53,34 @@
           <ul class="navbar-nav">
 
             <li class="nav-item">
-              <a class="nav-link" href="index.html">
+              <a class="nav-link" href="index.php">
                 <i class="ni ni-tv-2 text-primary"></i>
                 <span class="nav-link-text">Dashboard</span>
               </a>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="report.html">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="ni ni-bullet-list-67 text-default"></i>
-                <span class="nav-link-text">Compose Report</span>
+                <span class="nav-link-text">Compose</span>
               </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="../report.html">Report</a>
+                <a class="dropdown-item" href="#">Statistic Report</a>
+              </div>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link active" href="documents.html">
+              <a class="nav-link" href="../documents.php">
                 <i class="ni ni-bullet-list-67 text-default"></i>
                 <span class="nav-link-text">Documents</span>
               </a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="examples/map.html">
+              <a class="nav-link" href="../location.php">
                 <i class="ni ni-pin-3 text-primary"></i>
-                <span class="nav-link-text">Google</span>
+                <span class="nav-link-text">Device Location</span>
               </a>
             </li>
 
@@ -120,11 +133,15 @@
               <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="media align-items-center">
                   <span class="avatar avatar-sm rounded-circle">
-                    <img alt="Image placeholder" src="../assets/img/theme/team-6.jpg">
+                    <img alt="Image placeholder" src="<?php echo $profile_pic; ?>">
                   </span>
                   <!-- User Name -->
                   <div class="media-body  ml-2  d-none d-lg-block">
-                    <span class="mb-0 text-sm  font-weight-bold">Bread</span>
+                    <span class="mb-0 text-sm  font-weight-bold">
+                      <?php
+                        echo $_SESSION["username"];
+                      ?>
+                    </span>
                   </div>
                 </div>
               </a>
@@ -132,16 +149,12 @@
                 <div class="dropdown-header noti-title">
                   <h6 class="text-overflow m-0">Welcome!</h6>
                 </div>
-                <a href="#!" class="dropdown-item">
+                <a href="../profile.php" class="dropdown-item">
                   <i class="ni ni-single-02"></i>
                   <span>My profile</span>
                 </a>
-                <a href="#!" class="dropdown-item">
-                  <i class="ni ni-settings-gear-65"></i>
-                  <span>Settings</span>
-                </a>
                 <div class="dropdown-divider"></div>
-                <a href="#!" class="dropdown-item">
+                <a href="../modal/logout.php" class="dropdown-item">
                   <i class="ni ni-user-run"></i>
                   <span>Logout</span>
                 </a>
