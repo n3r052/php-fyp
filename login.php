@@ -73,6 +73,9 @@
                             <div class="text-center">
                                 <button type="button" class="btn btn-primary my-4" name="login">Sign in</button>
                             </div>
+
+                          <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
+
                         </form>
                         <?php
                             include('config.php');
