@@ -128,27 +128,41 @@
                 $email = mysqli_real_escape_string($connect, $email);  
                 $password = mysqli_real_escape_string($connect, $password);  
               
-                $sql = "select * from user where email = '$email' and password = '$password'";  
+                $sql = "SELECT user.user_id, user.first_name, user.last_name, user.email, user.status, user.position, user.company, profile.about, profile.profile, CONCAT(user.first_name, ' ', user.last_name) AS whole_name FROM user
+                INNER JOIN profile on user.user_id = profile.user_id
+                WHERE email = '$email' AND password= '$password'";  
                 $result = mysqli_query($connect, $sql);  
                 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
                 $count = mysqli_num_rows($result);  
                   
                 if($count == 1){
-                    $_SESSION["username"] = $row['first_name']; 
-                    $_SESSION["position"] = $row['position'];
-                    $username = $_SESSION["username"];
-                    $position = $row['position']; 
+                    // $_SESSION["username"] = $row['first_name'];
+                    // $_SESSION["position"] = $row['position'];
+                    // $_SESSION["userid"] = $row['user_id'];
+                    // $_SESSION["profile_pic"] = $row['profile'];
+                    // $username = $_SESSION["username"];
+                    // $position = $_SESSION['position'];
+                    // $userid = $_SESSION["userid"];
+                    $username = $row['first_name'];
+                    $position = $row['position'];
+                    $userid = $row['user_id'];
+                    $profile_pic = $row['profile'];
+
                     echo $username."</br>";
                     echo $position."</br>";
-                    //header("location: session_test/home.php"); 
+                    echo $userid."</br>";
+                    echo $profile_pic."</br>";
                     if($position=="admin" && $row['status']=="active"){
-                        echo "am admin";
+                      echo "am admin";
+                      //header("location: ../index.php");
                     }elseif($position=="officer"){
-                        echo "am officer";
+                      echo "am officer";
+                      //header("location: ../officer/index.php");
                     }elseif($position=="operator"){
-                        echo "am operator";
+                      echo "am operator";
+                      //header("location: ../operator/index.php");
                     }else{  
-                    echo "<h1> Login failed. Invalid username or password. | account not active</h1>";  
+                    echo "<h1> Login failed. Invalid username or password. | account not active</h1>";
                 }  
             }   
         ?>
