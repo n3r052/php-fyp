@@ -195,18 +195,18 @@
             </div>
             
             <div class="card-body">
-                <form action="form.php" method="post">
+                <form action="report.php" method="post">
                     <div class="form-group">
                         <label for="example-text-input" class="form-control-label">Name</label>
-                        <input class="form-control" type="text" placeholder="John Snow" id="example-text-input" name="first_name">
+                        <input class="form-control" placeholder="Name" type="text" id="first_name" name="first_name">
                     </div>
 
                     <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Plate Licence</label>
-                        <input class="form-control" type="text" placeholder="Number plz" id="example-text-input" name="plate_licenase">
+                        <label for="example-text-input" class="form-control-label">Plate license</label>
+                        <input class="form-control" placeholder="plate_license" type="text" id="plate_license" name="plate_license">
                     </div>
 
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="example-text-input" class="form-control-label">Location</label>
                         <input class="form-control" type="text" placeholder="Jerudong" id="example-text-input" name="location">
                     </div>
@@ -229,7 +229,7 @@
                             <option>Option 1</option>
                             <option>Option 2</option>
                         </select>
-                    </div>
+                    </div>  -->
 
                     <!-- Form Button Modal, Trigger ----------------------------------------------------------->
                     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal">Save</button>
@@ -307,25 +307,18 @@
   <script src="assets/js/argon.js?v=1.2.0"></script>
 
   <?php
-  if (isset($_POST['submit'])){
-        // $user_id= $_POST['user_id'];
-        $name= $_POST['first_name'];
-        // $last_name= $_POST['last_name'];
-        $status= $_POST['status'];
-        $plate_license= $_POST['plate_license'];
-        $offense= $_POST['offense']; //category dropdown option
-        $status= $_POST['status']; //inactive or active
-        $date_time= $_POST['date_time'];
+    if (isset($_POST['submit'])){
+      $first_name= $_POST['first_name'];
+      $plate_license= $_POST['plate_license'];
         include "config.php";
 
-            $sql = "INSERT INTO report(first_name, status, plate_license, location, offense, date_time) 
-            VALUES($name, $status, $plate_license, $location, $offense, $date_time)";
+            $sql = "INSERT INTO report(first_name, plate_license) VALUES($first_name, $plate_license)";
             if($connect->query($sql) === true){
                 echo "success insert";
             
         }
     }
-    ?>
+    ?> 
 
 
 </body>
