@@ -195,30 +195,30 @@
             </div>
             
             <div class="card-body">
-                <form>
+                <form action="form.php" method="post">
                     <div class="form-group">
                         <label for="example-text-input" class="form-control-label">Name</label>
-                        <input class="form-control" type="text" value="John Snow" id="example-text-input">
+                        <input class="form-control" type="text" placeholder="John Snow" id="example-text-input" name="first_name">
                     </div>
 
                     <div class="form-group">
                         <label for="example-text-input" class="form-control-label">Plate Licence</label>
-                        <input class="form-control" type="text" value="Number plz" id="example-text-input">
+                        <input class="form-control" type="text" placeholder="Number plz" id="example-text-input" name="plate_licenase">
                     </div>
 
                     <div class="form-group">
                         <label for="example-text-input" class="form-control-label">Location</label>
-                        <input class="form-control" type="text" value="Jerudong" id="example-text-input">
+                        <input class="form-control" type="text" placeholder="Jerudong" id="example-text-input" name="location">
                     </div>
 
                     <div class="form-group">
                         <label for="example-date-input" class="form-control-label">Date and Time</label>
                         <div class="form-row">
                           <div class="col">
-                            <input class="form-control" type="date" value="2018-11-23" id="example-date-input">
+                            <input class="form-control" type="date" placeholder="2018-11-23" id="example-date-input" name="date_time">
                           </div>
                           <div class="col">
-                            <input class="form-control" type="time" value="10:30:00" id="example-time-input">
+                            <input class="form-control" type="time" placeholder="10:30:00" id="example-time-input" name="date_time">
                           </div>
                         </div>
                     </div>
@@ -249,7 +249,7 @@
                             </div>
                             <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Save changes</button>
+                            <button type="submit" class="btn btn-primary" name="submit">Save changes</button>
                             </div>
                         </div>
                         </div>
@@ -309,8 +309,8 @@
   <?php
   if (isset($_POST['submit'])){
         // $user_id= $_POST['user_id'];
-        $first_name= $_POST['first_name'];
-        $last_name= $_POST['last_name'];
+        $name= $_POST['first_name'];
+        // $last_name= $_POST['last_name'];
         $status= $_POST['status'];
         $plate_license= $_POST['plate_license'];
         $offense= $_POST['offense']; //category dropdown option
@@ -318,8 +318,8 @@
         $date_time= $_POST['date_time'];
         include "config.php";
 
-            $sql = "INSERT INTO report(first_name, last_name, status, plate_license, location, offense, date_time) 
-            VALUES($first_name, $last_name, $status, $plate_license, $location, $offense, $date_time)";
+            $sql = "INSERT INTO report(first_name, status, plate_license, location, offense, date_time) 
+            VALUES($name, $status, $plate_license, $location, $offense, $date_time)";
             if($connect->query($sql) === true){
                 echo "success insert";
             

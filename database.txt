@@ -28,8 +28,12 @@ PRIMARY KEY (location_name)
 __________________
 CREATE TABLE report(
 user_id int(11) NOT NULL,
-offense varchar(255) NOT NULL,
-date varchar(255) NOT NULL,
+first_name varchar(255) NOT NULL,
+last_name varchar(255) NOT NULL,
 status varchar(255) NOT NULL,
+plate_license varchar(255) NOT NULL,
+location varchar(255) NOT NULL,
+offense varchar(255) NOT NULL,
+date_time varchar(255) NOT NULL,
 PRIMARY KEY (user_id)
 )
