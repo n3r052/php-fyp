@@ -32,6 +32,8 @@
   <link rel="stylesheet" href="../assets/vendor/nucleo/css/nucleo.css" type="text/css">
   <link rel="stylesheet" href="../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
   <!-- Page plugins -->
+  <link rel="stylesheet" href="../node_modules/mdbootstrap/css/addons/datatables.min.css">
+  <link rel="stylesheet" href="../node_modules/mdbootstrap/css/style.css">
   <!-- Argon CSS -->
   <link rel="stylesheet" href="../assets/css/argon.css?v=1.2.0" type="text/css">
 </head>
@@ -181,7 +183,7 @@
                 </div>
                 <!-- Light table -->
                 <div class="table-responsive">
-                  <table class="table align-items-center table-flush">
+                  <table id="dtBasicExample" class="table align-items-center table-flush">
                     <thead class="thead-light">
                       <tr>
                         <th scope="col" class="sort" data-sort="name">Name</th>
@@ -339,11 +341,28 @@
   <script src="../assets/vendor/js-cookie/js.cookie.js"></script>
   <script src="../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
   <script src="../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="../node_modules/mdbootstrap/js/mdb.min.js"></script>
+  <!-- Plugin file -->
+  <script src="../node_modules/mdbootstrap/js/addons/datatables.min.js"></script>
   <!-- Optional JS -->
   <script src="../assets/vendor/chart.js/dist/Chart.min.js"></script>
   <script src="../assets/vendor/chart.js/dist/Chart.extension.js"></script>
   <!-- Argon JS -->
   <script src="../assets/js/argon.js?v=1.2.0"></script>
+  <script type="text/javascript">
+    //sorting and disable certain column
+    $(document).ready(function () {
+    $('#dtBasicExample').DataTable({
+      "aaSorting": [],
+      columnDefs: [{
+      orderable: false,
+      targets: 4
+      }]
+    });
+      $('.dataTables_length').addClass('bs-select');
+    });
+  </script>
 </body>
 
 </html>
