@@ -195,7 +195,7 @@
             </div>
             
             <div class="card-body">
-                <form action="report.php" method="post">
+                <form action="form.php" method="post">
                     <div class="form-group">
                         <label for="example-text-input" class="form-control-label">Name</label>
                         <input class="form-control" placeholder="Name" type="text" id="first_name" name="first_name">
