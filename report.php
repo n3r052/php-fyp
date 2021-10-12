@@ -249,7 +249,7 @@
                             </div>
                             <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
                             </div>
                         </div>
                         </div>
@@ -305,6 +305,29 @@
   <script src="assets/vendor/chart.js/dist/Chart.extension.js"></script>
   <!-- Argon JS -->
   <script src="assets/js/argon.js?v=1.2.0"></script>
+
+  <?php
+  if (isset($_POST['submit'])){
+        // $user_id= $_POST['user_id'];
+        $first_name= $_POST['first_name'];
+        $last_name= $_POST['last_name'];
+        $status= $_POST['status'];
+        $plate_license= $_POST['plate_license'];
+        $offense= $_POST['offense']; //category dropdown option
+        $status= $_POST['status']; //inactive or active
+        $date_time= $_POST['date_time'];
+        include "config.php";
+
+            $sql = "INSERT INTO report(first_name, last_name, status, plate_license, location, offense, date_time) 
+            VALUES($first_name, $last_name, $status, $plate_license, $location, $offense, $date_time)";
+            if($connect->query($sql) === true){
+                echo "success insert";
+            
+        }
+    }
+    ?>
+
+
 </body>
 
 </html>
