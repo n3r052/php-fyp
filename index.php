@@ -4,6 +4,7 @@
   $username = $_SESSION["username"];
   $position = $_SESSION['position'];
   $userid = $_SESSION["userid"];
+  $profile_pic = $_SESSION["profile_pic"];
   
 ?>
 <!DOCTYPE html>
@@ -133,7 +134,7 @@
               <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="media align-items-center">
                   <span class="avatar avatar-sm rounded-circle">
-                    <img alt="Image placeholder" src="assets/img/theme/team-6.jpg">
+                    <img alt="Image placeholder" src="<?php echo $profile_pic; ?>">
                   </span>
                   <!-- User Name -->
                   <div class="media-body  ml-2  d-none d-lg-block">
