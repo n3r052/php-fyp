@@ -31,13 +31,45 @@
 </head>
 <body class="bg-default">
     <!-- Page content -->
-        <form action="" method="post">
+    <div class="card-body px-lg-5 py-lg-5">
+        <div id="content" class="flex">
+          <div class="">
+              <div class="page-content page-container" id="page-content">
+                  <div class="padding">
+                      <div class="row">
+                          <div class="col-md-6">
+                              <div class="card">
+                                  <div class="card-header"><strong>Login to your account</strong></div>
+                                  <div class="card-body">
+                                      <form action="" method="post">
+                                          <div class="form-group">
+                                            <label class="text-muted" for="exampleInputEmail1">Email address</label>
+                                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email"> 
+                                          </div>
+                                          <div class="form-group">
+                                            <label class="text-muted" for="exampleInputPassword1">Password</label>
+                                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password"> 
+                                          </div>
+                                          <button type="submit" class="btn btn-primary" name="login">Login</button>
+                                      </form>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+    </div>
+        
+        <!-- <form action="" method="post">
             <label for="">email:</label>
             <input type="text" name="email" id="">
             <label for="">password:</label>
             <input type="text" name="password" id="">
             <button name="login">login</button>
-        </form>
+        </form> -->
+
         <?php
             include('../config.php');
             if (isset($_POST['login'])) {
