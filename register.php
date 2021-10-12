@@ -67,8 +67,7 @@ function myFunction() {
                             
 
                             <div class="text-center">
-                            <input class="submit" type="submit" value="Submit" name="submit" id="submit" onclick ="myFunction()" /><br><br>
-                                <button type="button" class="btn btn-primary my-4" name="submit">Submit</button>
+                                <button type="submit" class="btn btn-primary my-4" name="submit">Submit</button>
                             </div>
                         </form>
                  </div>
