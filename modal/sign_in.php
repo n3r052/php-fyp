@@ -72,7 +72,7 @@
                       header("location: ../officer/index.php");
                     }elseif($position=="operator"){
                       //echo "am operator";
-                      header("location: ../operator/index.html");
+                      header("location: ../operator/index.php");
                     }else{  
                     echo "<h1> Login failed. Invalid username or password. | account not active</h1>";  
                 }  
