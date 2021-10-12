@@ -126,7 +126,11 @@
                   </span>
                   <!-- User Name -->
                   <div class="media-body  ml-2  d-none d-lg-block">
-                    <span class="mb-0 text-sm  font-weight-bold">Sasha</span>
+                    <span class="mb-0 text-sm  font-weight-bold">
+                        <?php
+                            echo $_SESSION["username"];
+                        ?>
+                    </span>
                   </div>
                 </div>
               </a>
@@ -134,7 +138,7 @@
                 <div class="dropdown-header noti-title">
                   <h6 class="text-overflow m-0">Welcome!</h6>
                 </div>
-                <a href="../profile.html" class="dropdown-item">
+                <a href="../profile.php" class="dropdown-item">
                   <i class="ni ni-single-02"></i>
                   <span>My profile</span>
                 </a>
@@ -159,7 +163,7 @@
         <div class="container-fluid d-flex align-items-center">
           <div class="row">
             <div class="col-lg-7 col-md-10">
-              <h1 class="display-2 text-white">Hello Sasha</h1>
+              <h1 class="display-2 text-white">Hello <?php echo $_SESSION["username"]; ?></h1>
               <p class="text-white mt-0 mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt repellendus est earum eius facere, laboriosam explicabo consequatur iure doloremque suscipit dolorem voluptate maxime reprehenderit placeat pariatur deleniti, rem vero incidunt?</p>
             </div>
           </div>
