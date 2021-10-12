@@ -55,21 +55,21 @@
           <ul class="navbar-nav">
 
             <li class="nav-item">
-              <a class="nav-link active" href="index.html">
+              <a class="nav-link active" href="index.php">
                 <i class="ni ni-tv-2 text-primary"></i>
                 <span class="nav-link-text">Dashboard</span>
               </a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="../report.html">
+              <a class="nav-link" href="../report.php">
                 <i class="ni ni-bullet-list-67 text-default"></i>
                 <span class="nav-link-text">Compose Report</span>
               </a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="../location.html">
+              <a class="nav-link" href="../location.php">
                 <i class="ni ni-pin-3 text-primary"></i>
                 <span class="nav-link-text">Device Map</span>
               </a>
