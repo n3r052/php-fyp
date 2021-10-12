@@ -69,7 +69,7 @@
                       header("location: ../index.php");
                     }elseif($position=="officer"){
                       //echo "am officer";
-                      header("location: ../officer/index.html");
+                      header("location: ../officer/index.php");
                     }elseif($position=="operator"){
                       //echo "am operator";
                       header("location: ../operator/index.html");

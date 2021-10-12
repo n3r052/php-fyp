@@ -1,10 +1,17 @@
 <?php
-  include "config.php";
+  include "../config.php";
   session_start();
   $username = $_SESSION["username"];
   $position = $_SESSION['position'];
   $userid = $_SESSION["userid"];
   
+  $sql = "SELECT user.user_id, user.first_name, user.last_name, user.email, user.status, user.position, user.company, profile.about, profile.profile, CONCAT(user.first_name, ' ', user.last_name) AS whole_name FROM user
+          INNER JOIN profile on user.user_id = profile.user_id";  
+          $result = mysqli_query($connect, $sql);  
+          $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
+          $count = mysqli_num_rows($result);
+
+          $profile_pic = $row['profile'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -126,11 +133,15 @@
               <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="media align-items-center">
                   <span class="avatar avatar-sm rounded-circle">
-                    <img alt="Image placeholder" src="../assets/img/theme/team-6.jpg">
+                    <img alt="Image placeholder" src="<?php echo $profile_pic; ?>">
                   </span>
                   <!-- User Name -->
                   <div class="media-body  ml-2  d-none d-lg-block">
-                    <span class="mb-0 text-sm  font-weight-bold">Bread</span>
+                    <span class="mb-0 text-sm  font-weight-bold">
+                      <?php
+                        echo $_SESSION["username"];
+                      ?>
+                    </span>
                   </div>
                 </div>
               </a>
@@ -138,16 +149,12 @@
                 <div class="dropdown-header noti-title">
                   <h6 class="text-overflow m-0">Welcome!</h6>
                 </div>
-                <a href="#!" class="dropdown-item">
+                <a href="../profile.php" class="dropdown-item">
                   <i class="ni ni-single-02"></i>
                   <span>My profile</span>
                 </a>
-                <a href="#!" class="dropdown-item">
-                  <i class="ni ni-settings-gear-65"></i>
-                  <span>Settings</span>
-                </a>
                 <div class="dropdown-divider"></div>
-                <a href="#!" class="dropdown-item">
+                <a href="../modal/logout.php" class="dropdown-item">
                   <i class="ni ni-user-run"></i>
                   <span>Logout</span>
                 </a>
@@ -184,7 +191,7 @@
               </div>
               <!-- Light table -->
               <div class="table-responsive">
-                <table class="table align-items-center table-flush">
+                <table id="dtBasicExample" class="table align-items-center table-flush">
                   <thead class="thead-light">
                     <tr>
                       <th scope="col" class="sort" data-sort="name">Name</th>
@@ -200,11 +207,8 @@
                       <!-- First Column --------------------------------------------------------->
                       <th scope="row">
                         <div class="media align-items-center">
-                          <!-- <a href="#" class="avatar rounded-circle mr-3">
-                            <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
-                          </a> -->
                           <div class="media-body">
-                              <span class="name mb-0 text-sm"><li>Creative Title 1</li></span>
+                              <span class="name mb-0 text-sm"><a href="info.php">Creative Title 1</span>
                           </div>
                         </div>
                       </th>
@@ -226,7 +230,7 @@
                       <td>
                         <div class="avatar-group">
                           <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="John">
-                            <img alt="Image placeholder" src="assets/img/theme/team-1.jpg">
+                            <img alt="Image placeholder" src="../assets/img/theme/team-1.jpg">
                           </a>
                         </div>
                       </td>
