@@ -1,0 +1,35 @@
+CREATE TABLE profile(
+user_id int(11) NOT NULL,
+about varchar(255) NOT NULL,
+profile varchar(255) NOT NULL,
+offense varchar(255) NOT NULL,
+PRIMARY KEY(user_id)
+)
+__________________
+CREATE TABLE user(
+user_id int(11) NOT NULL,
+first_name varchar(255) NOT NULL,
+last_name varchar(255) NOT NULL,
+email varchar(255) NOT NULL,
+password varchar(255) NOT NULL,
+status varchar(255) NOT NULL,
+position varchar(255) NOT NULL,
+company varchar(255) NOT NULL, 
+PRIMARY KEY (user_id)
+)
+__________________
+CREATE TABLE device(
+longitude int(255) NOT NULL,
+altitude int(255) NOT NULL,
+location_name varchar(255) NOT NULL,
+status varchar(255) NOT NULL,
+PRIMARY KEY (location_name)
+)
+__________________
+CREATE TABLE report(
+user_id int(11) NOT NULL,
+offense varchar(255) NOT NULL,
+date varchar(255) NOT NULL,
+status varchar(255) NOT NULL,
+PRIMARY KEY (user_id)
+)
