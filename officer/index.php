@@ -23,6 +23,8 @@
   <link rel="stylesheet" href="../assets/vendor/nucleo/css/nucleo.css" type="text/css">
   <link rel="stylesheet" href="../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
   <!-- Page plugins -->
+  <link rel="stylesheet" href="../node_modules/mdbootstrap/css/addons/datatables.min.css">
+  <link rel="stylesheet" href="../node_modules/mdbootstrap/css/style.css">
   <!-- Argon CSS -->
   <link rel="stylesheet" href="../assets/css/argon.css?v=1.2.0" type="text/css">
 </head>
@@ -44,30 +46,34 @@
           <ul class="navbar-nav">
 
             <li class="nav-item">
-              <a class="nav-link" href="index.html">
+              <a class="nav-link active" href="index.php">
                 <i class="ni ni-tv-2 text-primary"></i>
                 <span class="nav-link-text">Dashboard</span>
               </a>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="report.html">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="ni ni-bullet-list-67 text-default"></i>
-                <span class="nav-link-text">Compose Report</span>
+                <span class="nav-link-text">Compose</span>
               </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="../report.html">Report</a>
+                <a class="dropdown-item" href="#">Statistic Report</a>
+              </div>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link active" href="documents.html">
+              <a class="nav-link" href="../documents.php">
                 <i class="ni ni-bullet-list-67 text-default"></i>
                 <span class="nav-link-text">Documents</span>
               </a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="examples/map.html">
+              <a class="nav-link" href="../location.php">
                 <i class="ni ni-pin-3 text-primary"></i>
-                <span class="nav-link-text">Google</span>
+                <span class="nav-link-text">Device Map</span>
               </a>
             </li>
 
@@ -339,11 +345,35 @@
   <script src="../assets/vendor/js-cookie/js.cookie.js"></script>
   <script src="../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
   <script src="../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="../node_modules/mdbootstrap/js/mdb.min.js"></script>
+  <!-- Plugin file -->
+  <script src="../node_modules/mdbootstrap/js/addons/datatables.min.js"></script>
   <!-- Optional JS -->
   <script src="../assets/vendor/chart.js/dist/Chart.min.js"></script>
   <script src="../assets/vendor/chart.js/dist/Chart.extension.js"></script>
   <!-- Argon JS -->
   <script src="../assets/js/argon.js?v=1.2.0"></script>
+  <!-- Your custom scripts (optional) -->
+  <script type="text/javascript">
+  //sorting
+    // $(document).ready(function () {
+    //   $('#dtBasicExample').DataTable();
+    //   $('.dataTables_length').addClass('bs-select');
+    // });
+
+    //sorting and disable certain column
+    $(document).ready(function () {
+    $('#dtBasicExample').DataTable({
+      "aaSorting": [],
+      columnDefs: [{
+      orderable: false,
+      targets: 4
+      }]
+    });
+      $('.dataTables_length').addClass('bs-select');
+    });
+  </script>
 </body>
 
 </html>
