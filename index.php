@@ -5,21 +5,21 @@
   //   $result = mysqli_query($con, "SELECT * FROM user WHERE email '" . $_POST["email"] ."' and password = '" . $_POST["password"]. "'");
   // $row = mysqli_fetch_array($result);
   // if(is_array($row)){
-     
+          // $_SESSION["email"] = $row['email'];
+          // $_SESSION["username"] = $row['username'];
+          // $_SESSION['position'] = $row['position'];
+          // $_SESSION["userid"] = $row['userid'];
+          // $_SESSION["profile_pic"] = $row['profile_pic'];
   //   }
   // }
 //   if(!isset($_SESSION["email"])){
 //     header("Location:login.php");  
 // }
-$_SESSION["email"] = $row['email'];
-$_SESSION["username"] = $row['username'];
-$_SESSION['position'] = $row['position'];
-$_SESSION["userid"] = $row['userid'];
-$_SESSION["profile_pic"] = $row['profile_pic'];
 
-  
-
-    
+  $username = $_SESSION["username"];
+  $position = $_SESSION['position'];
+  $userid = $_SESSION["userid"];
+  $profile_pic = $_SESSION["profile_pic"];
 ?>
 <!DOCTYPE html>
 <html>
