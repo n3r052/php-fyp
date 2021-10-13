@@ -38,3 +38,16 @@ offense varchar(255) NOT NULL,
 date_time varchar(255) NOT NULL,
 PRIMARY KEY (user_id)
 )
+
+INSERT INTO `user` (`user_id`, `first_name`, `last_name`, `email`, `password`, `status`, `position`, `company`) VALUES
+("3001", "Haziq", "Ghani", "henshin25@gmail.com", "123456", "active", "officer", "JKR"),
+("4001", "Rizal", "Minato", "minato@gmail.com", "123456", "active", "operator", "JPD"),
+("5825", "Zabid", "Ayup", "zabiayub@gmail.com", "123456", "active", "admin", "IUTD"),
+("5835", "Hisham", "Hashim", "hisham_achoo@gmail.com", "123456", "active", "admin", "IUTD"),
+("5845", "Hazim", "Man", "hazimmen@gmail.com", "123456", "unactive", "admin", "IUTD");
+
+INSERT INTO `profile` (`user_id`, `about`, `profile`, `offense`) VALUES
+("3001", "A Hoshiyomi",  "https://external-preview.redd.it/gpRaWHIA_vqZtG3GLf_mOLG80u8n9-", "0"),
+("4001", "im the yellow flash",  "https://pbs.twimg.com/profile_images/1079510793463447554/Kch2AA_Z_400x400.jpg", "0"),
+("5825", "ZabidMan",  "https://scontent.fbwn1-1.fna.fbcdn.net/v/t1.6435-9/s526x395/48357871_111955239845053_4484113785950306304_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=CEl5Hn4o67QAX9POBaV&_nc_ht=scontent.fbwn1-1.fna&oh=b86536a18a71874695d02eabc40a2aff&oe=61886A68", "0"),
+("5835", "I Sneeze",  "https://upload.wikimedia.org/wikipedia/commons/7/77/Sneeze.JPG", "0");
