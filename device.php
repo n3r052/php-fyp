@@ -58,7 +58,7 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="report.html">
+              <a class="nav-link" href="report.php">
                 <i class="ni ni-bullet-list-67 text-default"></i>
                 <span class="nav-link-text">Compose Report</span>
               </a>

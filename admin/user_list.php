@@ -55,7 +55,7 @@
                 <span class="nav-link-text">Compose</span>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="report.html">Report</a>
+                <a class="dropdown-item" href="../report.php">Report</a>
                 <a class="dropdown-item" href="#">Statistic Report</a>
               </div>
             </li>
