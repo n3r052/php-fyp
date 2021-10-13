@@ -7,15 +7,17 @@ session_start();
 <body>
 
 <?php
-// remove all session variables
-session_unset();
-
-// destroy the session
-session_destroy();
+  if(count($_POST)>0){
+    // remove all session variables
+    session_unset();
+    
+    // destroy the session
+    session_destroy();
+  }
 
 ?>
 
-<a href="sign_in.php">home</a>
+<a href="../login.php">home</a>
 
 </body>
 </html> 
