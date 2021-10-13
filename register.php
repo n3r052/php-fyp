@@ -63,7 +63,7 @@ function myFunction() {
                                 </div>
                             </div>
                                     <p>By creating new account, you are agreeing to our  terms and conditions.</p>
-                            <a href="">Already sign up? Sign in</a>
+                            <a href="login.php">Already sign up? Sign in</a>
                             
 
                             <div class="text-center">
