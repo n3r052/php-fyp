@@ -363,25 +363,25 @@
           <form>
             <div class="form-group">
               <!-- <i class="fas fa-user prefix grey-text"></i> -->
-              <label for="#" class="col-form-label">Username:</label>
-              <input type="text" class="form-control" id="#" placeholder="Josh">
+              <label for="username" class="col-form-label">Username:</label>
+              <input type="text" class="form-control" id="username" placeholder="Josh">
             </div>
             
             <div class="form-group">
-              <label for="#" class="col-form-label">Email:</label>
-              <input type="text" class="form-control" id="#" placeholder="Josh@gmail.com">
+              <label for="email" class="col-form-label">Email:</label>
+              <input type="text" class="form-control" id="email" placeholder="Josh@gmail.com">
             </div>
 
             <div class="form-group">
-              <label for="#" class="col-form-label">Password:</label>
-              <input type="text" class="form-control" id="#" placeholder="password">
+              <label for="PASSWORD" class="col-form-label">Password:</label>
+              <input type="text" class="form-control" id="PASSWORD" placeholder="password">
             </div>
           </form>
         </div>
 
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary">Save User</button>
+          <button type="submit" class="btn btn-primary">Save User</button>
         </div>
       </div>
     </div>
@@ -474,5 +474,20 @@
   <!-- Argon JS -->
   <script src="../assets/js/argon.js?v=1.2.0"></script>
 </body>
+
+<?php
+    if (isset($_POST['submit'])){
+        $username= $_POST['$username'];
+        $email= $_POST['email'];
+        $PASSWORD= $_POST['PASSWORD'];
+        include "config.php";
+
+            $sql = "INSERT INTO user(username, email, password) VALUES($username, $email, $PASSWORD)";
+            if($connect->query($sql) === true){
+                echo "success insert";
+            
+        }
+    }
+    ?>
 
 </html>
