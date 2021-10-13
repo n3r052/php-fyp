@@ -95,7 +95,31 @@
                             $count = mysqli_num_rows($result);  
                                 
                             if($count == 1){  
-                                header("location: index.php");  
+                              $_SESSION["username"] = $row['first_name'];
+                              $_SESSION["position"] = $row['position'];
+                              $_SESSION["userid"] = $row['user_id'];
+                              $_SESSION["profile_pic"] = $row['profile'];
+                              $username = $_SESSION["username"];
+                              $position = $_SESSION['position'];
+                              $userid = $_SESSION["userid"];
+          
+                              $username = $row['first_name'];
+                              $position = $row['position'];
+                              $userid = $row['user_id'];
+                              $profile_pic = $row['profile'];
+                              
+                              if($position=="admin" && $row['status']=="active"){
+                                // echo "am admin";
+                                header("location: ../index.php");
+                              }elseif($position=="officer"){
+                                //echo "am officer";
+                                header("location: ../officer/index.php");
+                              }elseif($position=="operator"){
+                                //echo "am operator";
+                                header("location: ../operator/index.php");
+                              }else{  
+                              echo "<h1> Login failed. Invalid username or password. | account not active</h1>";  
+                          }   
                             }  
                             else{  
                                 echo "<h3> Login failed. Invalid username or password.</h3>";  
