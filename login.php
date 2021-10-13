@@ -74,7 +74,7 @@
                                 <button type="login" class="btn btn-primary my-4" name="login">Sign in</button>
                             </div>
 
-                          <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
+                          <p>Forgot <a href="modal/for_pass.php"> password?</a>.</p>
 
                         </form>
                         <?php
