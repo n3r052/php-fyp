@@ -1,3 +1,11 @@
+<?php
+  include "../config.php";
+  session_start();
+
+  $username = $_SESSION["username"];
+  $position = $_SESSION['position'];
+  $userid = $_SESSION["userid"];
+?>
 <!--
 =========================================================
 * Argon Dashboard - v1.2.0
