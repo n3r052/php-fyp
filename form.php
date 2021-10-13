@@ -42,9 +42,8 @@
     $pdf->Cell(0,10,'within 72hours. We have payment plans available if necessary.',0,0);
     
 
-
-
-    // $pdf->Image('test.jpeg',30,80,0,90);
+    $pdf->Image('logo.png',140,30,0,30);
+    $pdf->Image('logo.png',30,80,0,90);
 
     $pdf->Cell(0,10,'',0,1,0);
     $pdf->Cell(0,10,'',0,1,0);
@@ -72,7 +71,7 @@
     $pdf->Cell(0,10,'All citations must be paid online.',0,1);
     $pdf->Cell(0,20,'If you have any questions or concerns, or need assistance, please contact me at +673 7135636 ',0,1);
     $pdf->Cell(0,5,'or by email support teams at 19ftt1185@student.pb.edu.bn.',0,1);
-    $pdf->Cell(0,20,'This was an automated message sent on behalf of your local Department of Motor Vehicles. Do not reply to this message and do not mail in your checks to us.',0,1);
+    $pdf->Cell(0,20,'This was an automated message sent on behalf of your local Department of Motor Vehicles. ',0,1);
     $pdf->Cell(0,5,'Do not reply to this message and do not mail in your checks to us.',0,1);
     
     
