@@ -2,9 +2,9 @@
   include "../config.php";
   session_start();
 
-  $username = $_SESSION["username"];
-  $position = $_SESSION['position'];
-  $userid = $_SESSION["userid"];
+  // $username = $_SESSION["username"];
+  // $position = $_SESSION['position'];
+  // $userid = $_SESSION["userid"];
 ?>
 <!--
 =========================================================
