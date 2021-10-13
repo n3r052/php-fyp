@@ -49,7 +49,7 @@
                 <div class="card bg-secondary border-0 mb-0">
                     <div class="card-body px-lg-5 py-lg-5">
 
-                        <form action="" method="post">
+                        <form action="login.php" method="post">
                           <img src="assets/img/login.png" alt="" width="88%">
 
                             <div class="form-group mb-3">
@@ -71,7 +71,7 @@
                             </div>
 
                             <div class="text-center">
-                                <button type="button" class="btn btn-primary my-4" name="login">Sign in</button>
+                                <button type="login" class="btn btn-primary my-4" name="login">Sign in</button>
                             </div>
 
                           <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
