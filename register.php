@@ -54,6 +54,13 @@ function myFunction() {
                             </div>
                             </div>
 
+                            <input class="form-control" placeholder="first_name" type="text" id="first_name" name="first_name">
+                            <input class="form-control" placeholder="last_name" type="text" id="last_name" name="last_name">
+                            <input class="form-control" placeholder="status" type="text" id="status" name="status">
+                            <input class="form-control" placeholder="position" type="text" id="position" name="position">
+                            <input class="form-control" placeholder="company" type="text" id="company" name="company">
+
+
                             <div class="form-group">
                                 <div class="input-group input-group-merge input-group-alternative">
                                     <div class="input-group-prepend">
@@ -75,10 +82,15 @@ function myFunction() {
     <?php
     if (isset($_POST['submit'])){
         $email= $_POST['email'];
+        $first_name= $_POST['first_name'];
+        $last_name= $_POST['last_name'];
+        $status= $_POST['status'];
+        $position= $_POST['position'];
+        $company= $_POST['company'];
         $PASSWORD= $_POST['PASSWORD'];
         include "config.php";
 
-            $sql = "INSERT INTO user(email, password) VALUES($email, $PASSWORD)";
+            $sql = "INSERT INTO user(email, first_name, last_name, status, position, company, password) VALUES($email, $first_name, $last_name, $status, $position, $company, $PASSWORD)";
             if($connect->query($sql) === true){
                 echo "success insert";
             
