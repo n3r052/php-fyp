@@ -17,8 +17,8 @@ session_start();
     unset($_SESSION['profile_pic']);
     // destroy the session
     session_destroy();
-        // header("location: ../login.php")
+        header("location: ../login.php")
 ?>
-<a href="../login.php">home</a>
+<!-- <a href="../login.php">home</a> -->
 </body>
 </html> 
