@@ -360,32 +360,32 @@
         </div>
 
         <div class="modal-body">
-          <form>
+          <form action="user_list.php" method="post">
             <div class="form-group">
               <!-- <i class="fas fa-user prefix grey-text"></i> -->
 
-              <label for="username" class="col-form-label">Username:</label>
-              <input type="text" class="form-control" id="username" placeholder="Josh">
+              <label for="first_name" class="col-form-label">Username:</label>
+              <input class="form-control" placeholder="first_name" type="text" id="first_name" name="first_name">
             </div>
 
             <div class="form-group">
               <label for="email" class="col-form-label">Email:</label>
-              <input type="text" class="form-control" id="email" placeholder="Josh@gmail.com">
+              <input class="form-control" placeholder="email" type="text" id="email" name="email">
             </div>
 
             <div class="form-group">
               <label for="PASSWORD" class="col-form-label">Password:</label>
-              <input type="text" class="form-control" id="PASSWORD" placeholder="password">
+              <input class="form-control" placeholder="PASSWORD" type="password" id="PASSWORD" name="PASSWORD">
             </div>
 
             <div class="form-group">
               <label for="position" class="col-form-label">Position:</label>
-              <input type="text" class="form-control" id="position" placeholder="position">
+              <input class="form-control" placeholder="position" type="text" id="position" name="position">
             </div>
 
             <div class="form-group">
               <label for="company" class="col-form-label">Company:</label>
-              <input type="text" class="form-control" id="company" placeholder="company">
+              <input class="form-control" placeholder="company" type="text" id="company" name="company">
             </div>
 
             <div class="form-group col-md-4">
@@ -424,28 +424,28 @@
           <form>
             <div class="form-group">
               <!-- <i class="fas fa-user prefix grey-text"></i> -->
-              <label for="#" class="col-form-label">Username:</label>
-              <input type="text" class="form-control" id="#" placeholder="Josh">
+              <label for="first_name" class="col-form-label">Username:</label>
+              <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Josh">
             </div>
 
             <div class="form-group">
-              <label for="#" class="col-form-label">Email:</label>
-              <input type="text" class="form-control" id="#" placeholder="Josh@gmail.com">
+              <label for="email" class="col-form-label">Email:</label>
+              <input type="text" class="form-control" id="email" name="email" placeholder="Josh@gmail.com">
             </div>
 
             <div class="form-group">
               <label for="PASSWORD" class="col-form-label">Password:</label>
-              <input type="text" class="form-control" id="PASSWORD" placeholder="password">
+              <input type="text" class="form-control" id="PASSWORD" name="PASSWORD" placeholder="password">
             </div>
 
             <div class="form-group">
               <label for="position" class="col-form-label">Position:</label>
-              <input type="text" class="form-control" id="position" placeholder="position">
+              <input type="text" class="form-control" id="position" name="position" placeholder="position">
             </div>
 
             <div class="form-group">
               <label for="company" class="col-form-label">Company:</label>
-              <input type="text" class="form-control" id="company" placeholder="company">
+              <input type="text" class="form-control" id="company" name="company" placeholder="company">
             </div>
 
             <div class="form-group col-md-4">
@@ -461,7 +461,7 @@
 
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="save" class="btn btn-primary" name="save">Save Changes</button>
+          <button type="save" class="btn btn-primary">Save Changes</button>
         </div>
       </div>
     </div>
@@ -523,9 +523,9 @@
       $position= $_POST['position'];
       $company= $_POST['company'];
       $PASSWORD= $_POST['PASSWORD'];
-      include "config.php";
+      include "../config.php";
 
-          $sql = "INSERT INTO user(username, email, first_name, last_name, status, position, company, password) VALUES($username, $email, $first_name, $last_name, $status, $position, $company, $PASSWORD)";
+          $sql = "INSERT INTO user(username, email, first_name, last_name, status, position, company, password) VALUES($username, $email, $first_name, $last_name, $inputState, $position, $company, $PASSWORD)";
            if($connect->query($sql) === true){
                 echo "success insert";
             
@@ -553,7 +553,7 @@
       `company`='". $company ."', 
       `PASSWORD`='". $PASSWORD ."' 
       
-      WHERE `user_id`=user.user_id";
+      WHERE `user_id`='". 'user.user_id' ."'";
 
       }
   
