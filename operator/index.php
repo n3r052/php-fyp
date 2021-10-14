@@ -405,5 +405,24 @@
     });
   </script>
 </body>
+<?php
+if (isset($_POST['save'])){
+  $name= $_POST['name'];
+  $date= $_POST['date'];
+  $status= $_POST['inputState'];
+  $user= $_POST['user'];
+  include "config.php";
+        
+  $query = "UPDATE `user` SET 
+  `name`='". $name ."', 
+  `date`='". $date ."', 
+  `status`='". $inputState ."', 
+  `user`='". $user ."', 
+  WHERE `user_id`=user.user_id";
 
+  }
+
+
+
+?>
 </html>
