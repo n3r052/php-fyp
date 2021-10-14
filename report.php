@@ -197,11 +197,12 @@
             <div class="card-body">
                 <form action="form.php" method="post">
                   <?php
-                  $sql = "SELECT * u.user_id, p.plate_no, i.location, i.date/time, u.offense_type
+                  $sql = "SELECT u.user_id, u.offense_type, i.image_id, p.plate_no
                   FROM `user` AS u
                   INNER JOIN `confirmation_list` AS c ON c.offense_type = u.offense_type
                   INNER JOIN `image_list` AS i ON i.image_id = c.image_id
-                  INNER JOIN `driver` AS p ON p.plate_no = c.plat_no";
+                  INNER JOIN `driver` AS p ON p.plate_no = c.plat_no
+                  WHERE user_id = user_id";
                   $result = $connect->query($sql);
                   if ($result->num_rows > 0) {
                       // output data of each row
@@ -213,20 +214,17 @@
 
                     echo "<div class=\"form-group\">
                         <label for=\"example-text-input\" class=\"form-control-label\">Plate license</label>
-                        <input class=\"form-control\" placeholder='".$row['plate_no']."' type=\"text\" id=\"plate_license\" name=\"plate_license\">
+                        <input class=\"form-control\" placeholder='".$row['plate_no']."' type=\"text\" id=\"plate_no\" name=\"plate_no\">
                     </div>";
 
                     echo "<div class=\"form-group\">
                         <label for=\"example-text-input\" class=\"form-control-label\">Location</label>
                         <input class=\"form-control\" placeholder='".$row['location']."' type=\"text\" id=\"location\" name=\"location\">
                     </div>
-                    <div class=\"form-group\">
-                        <label for=\"example-text-input\" class=\"form-control-label\">Date</label>
-                        <input class=\"form-control\" placeholder='".$row['date/time']."' type=\"text\" id=\"date_time\" name=\"date_time\">
-                    </div>
+
                     <div class=\"form-group\">
                         <label for=\"example-text-input\" class=\"form-control-label\">Offense</label>
-                        <input class=\"form-control\" placeholder='".$row['offense_type']."' type=\"text\" id=\"offense\" name=\"offense\">
+                        <input class=\"form-control\" placeholder='".$row['offense_type']."' type=\"text\" id=\"offense_type\" name=\"offense_type\">
                     </div>";
 
                   
@@ -313,11 +311,11 @@
       $first_name= $_POST['first_name'];
       $plate_no= $_POST['plate_no'];
       $location= $_POST['location'];
-      $date/time= $_POST['date/time'];
+      // $date/time= $_POST['date/time'];
       $offense_type= $_POST['offense_type'];
         include "config.php";
 
-            $sql = "INSERT INTO report(first_name, plate_license, location, date_time, offense) VALUES($first_name, $plate_license, $location, $date_time, $offense)";
+            $sql = "INSERT INTO report(first_name, plate_no, location, offense_type) VALUES($first_name, $plate_no, $location, $offense_type)";
             if($connect->query($sql) === true){
                 echo "success insert";
             
