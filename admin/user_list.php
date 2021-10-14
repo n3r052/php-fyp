@@ -426,7 +426,7 @@
 
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="save" class="btn btn-primary">Save Changes</button>
+          <button type="save" class="btn btn-primary" name="save">Save Changes</button>
         </div>
       </div>
     </div>
@@ -493,7 +493,7 @@
     }
     if (isset($_POST['save'])){
       $email= $_POST['email'];
-      include "config.php";
+      include "../config.php";
             
       $query = "UPDATE `user` SET `email`='". $email ."' WHERE `user_id`=`3001`";
 
