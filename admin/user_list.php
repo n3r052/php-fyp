@@ -421,7 +421,7 @@
         </div>
 
         <div class="modal-body">
-          <form>
+          <form action="user_list.php" method="post">
             <div class="form-group">
               <!-- <i class="fas fa-user prefix grey-text"></i> -->
               <label for="first_name" class="col-form-label">Username:</label>
