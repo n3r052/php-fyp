@@ -540,8 +540,8 @@
       $position= $_POST['position'];
       $company= $_POST['company'];
       $PASSWORD= $_POST['PASSWORD'];
-      include "config.php";
-      // include "../config.php";
+      // include "config.php";
+      include "../config.php";
             
       $query = "UPDATE `user` SET 
       `username`='". $username ."', 
