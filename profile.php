@@ -344,20 +344,20 @@
                 </div>
               </div>
               <div class="card-body">
-                <form>
+                <form action="profile.php" method="post">
                   <h6 class="heading-small text-muted mb-4">User information</h6>
                   <div class="pl-lg-4">
                   <div class="row">
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-control-label" for="input-first-name">First name</label>
-                          <input type="text" id="input-first-name" class="form-control" placeholder="<?php echo $row['first_name']; ?>" value="">
+                          <input type="text" id="input-first-name" class="form-control"> 
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-control-label" for="input-last-name">Last name</label>
-                          <input type="text" id="input-last-name" class="form-control" placeholder="<?php echo $row['last_name']; ?>" value="">
+                          <input type="text" id="input-last-name" class="form-control"> 
                         </div>
                       </div>
                     </div>
@@ -366,7 +366,7 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-control-label" for="input-email">Email address</label>
-                          <input type="email" id="input-email" class="form-control" placeholder="<?php echo $row['email']; ?>">
+                          <input type="email" id="input-email" class="form-control">
                         </div>
                       </div>
                     </div>
@@ -382,10 +382,10 @@
                     </div>
                   </div>
                   <!-- Form Button Modal, Trigger ----------------------------------------------------------->
-                  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal">Save</button>
+                  <button type="save" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal">Save</button>
 
                   <!-- Modal ------------------------------------------------------->
-                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -399,11 +399,11 @@
                         </div>
                         <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="save" class="btn btn-primary">Save changes</button>
                         </div>
                     </div>
                     </div>
-                </div>
+                </div> -->
                 </form>
               </div>
             </div>
@@ -456,5 +456,25 @@
   <!-- Argon JS -->
   <script src="assets/js/argon.js?v=1.2.0"></script>
 </body>
+
+<?php
+if(isset($_POST['save'])){
+  include 'config.php';
+
+  $first_name = $_POST['input-first-name'];
+  $last_name = $_POST['input-last-name'];
+  $email = $_POST['input-email'];
+  $query = "UPDATE `user` SET `first_name`='". $first_name ."',`last_name`='". $last_name ."' WHERE `user_id`=`3001`";
+  
+  // $result = mysqli_query($connect, $query);
+
+  // if($result){
+  //   echo 'updated';
+  // }else{
+  //   echo 'not updated';
+  // }
+}
+
+?>
 
 </html>
