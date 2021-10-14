@@ -12,9 +12,9 @@
           // $_SESSION["profile_pic"] = $row['profile_pic'];
   //   }
   // }
-  if(!isset($_SESSION["email"])){
-    header("Location:login.php");  
-}
+//   if(!isset($_SESSION["email"])){
+//     header("Location:login.php");  
+// }
 
   $username = $_SESSION["username"];
   $position = $_SESSION['position'];
