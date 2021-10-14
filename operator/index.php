@@ -194,56 +194,97 @@
                       </tr>
                     </thead>
                     <tbody class="list">
-                      <!-- First Row ----------------------------------------------------------------------------------------------------------------------------->
-                      <tr>
-                        <!-- First Column --------------------------------------------------------->
-                        <th scope="row">
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck1">
-                            <label class="custom-control-label" for="customCheck1">1</label>
+                      <?php
+                      //First Row
+                      echo "<tr>";
+                        //First Column
+                        echo "<th scope=\"row\">
+                          <div class=\"custom-control custom-checkbox\">
+                            <input type=\"checkbox\" class=\"custom-control-input\" id=\"customCheck1\">
+                            <label class=\"custom-control-label\" for=\"customCheck1\">1</label>
                         </div>
-                        </th>
+                        </th>";
     
-                        <!-- Second Column --------------------------------------------------------->
-                        <td class="budget">
+                        //Second Column
+                        echo "<td class=\"budget\">
                           Date
-                        </td>
+                        </td>";
     
-                        <!-- Third Column --------------------------------------------------------->
-                        <td>
-                          <span class="badge badge-dot mr-4">
-                            <i class="bg-warning"></i>
-                            <span class="status">pending</span>
+                        //Third Column
+                        echo "<td>
+                          <span class=\"badge badge-dot mr-4\">
+                            <i class=\"bg-warning\"></i>
+                            <span class=\"status\">pending</span>
                           </span>
-                        </td>
+                        </td>";
     
-                        <!-- Fourth Column --------------------------------------------------------->
-                        <td>
-                          <div class="avatar-group">
-                            <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="John">
-                              <img alt="Image placeholder" src="../assets/img/theme/team-1.jpg">
+                        //Fourth Column
+                        echo "<td>
+                          <div class=\"avatar-group\">
+                            <a href=\"#\" class=\"avatar avatar-sm rounded-circle\" data-toggle=\"tooltip\" data-original-title=\"John\">
+                              <img alt=\"Image placeholder\" src=\"../assets/img/theme/team-1.jpg\">
                             </a>
                           </div>
-                        </td>
+                        </td>";
     
-                        <!-- Burger --------------------------------------------------------->
-                        <td class="text-right">
-                          <div class="dropdown">
-                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <i class="fas fa-ellipsis-v"></i>
+                        //Burger
+                        echo "<td class=\"text-right\">
+                          <div class=\"dropdown\">
+                            <a class=\"btn btn-sm btn-icon-only text-light\" href=\"#\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
+                              <i class=\"fas fa-ellipsis-v\"></i>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                              <a class="dropdown-item" href="#">Edit</a>
-                              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal-notification">Delete</a>
-                              <a class="dropdown-item" href="#">Send</a>
+                            <div class=\"dropdown-menu dropdown-menu-right dropdown-menu-arrow\">
+                              <a class=\"dropdown-item\" href=\"#\" data-toggle=\"modal\" data-target=\"#edit-operator-form\">Edit</a>
+                              <a class=\"dropdown-item\" href=\"#\" data-toggle=\"modal\" data-target=\"#modal-notification\">Delete</a>
+                              <a class=\"dropdown-item\" href=\"#\">Send</a>
                             </div>
                           </div>
                         </td>
-                      </tr>
-
+                      </tr>";
+                        ?>
                     </tbody>
                   </table>
                 </div>
+
+<form action="index.php" method="post">
+  <div class="modal fade" id="edit-operator-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Document</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="name" class="col-form-label">Name:</label>
+              <input type="text" class="form-control" id="name" placeholder="File name">
+            </div>
+
+            <div class="form-group">
+              <label for="date" class="col-form-label">Date:</label>
+              <input type="text" class="form-control" id="date" placeholder="Date">
+            </div>
+
+            <div class="form-group">
+              <label for="user" class="col-form-label">User:</label>
+              <input type="text" class="form-control" id="user" placeholder="user">
+            </div>
+
+            <div class="form-group col-md-4">
+              <label for="inputState">Status</label>
+              <select id="inputState" class="form-control">
+                <option selected>Choose...</option>
+                <option>Active</option>
+                <option>Inactive</option>
+              </select>
+            </div>
+          </form>
+        </div>
+
     
                   <!-- Delete Modal -->
                   <div class="modal fade" id="modal-notification" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
