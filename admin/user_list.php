@@ -515,22 +515,44 @@
 
 <?php
     if (isset($_POST['submit'])){
-        $username= $_POST['$username'];
-        $email= $_POST['email'];
-        $PASSWORD= $_POST['PASSWORD'];
-        include "config.php";
+      $username= $_POST['username'];
+      $email= $_POST['email'];
+      $first_name= $_POST['first_name'];
+      $last_name= $_POST['last_name'];
+      $status= $_POST['status'];
+      $position= $_POST['position'];
+      $company= $_POST['company'];
+      $PASSWORD= $_POST['PASSWORD'];
+      include "config.php";
 
-            $sql = "INSERT INTO user(username, email, password) VALUES($username, $email, $PASSWORD)";
-            if($connect->query($sql) === true){
+          $sql = "INSERT INTO user(username, email, first_name, last_name, status, position, company, password) VALUES($username, $email, $first_name, $last_name, $status, $position, $company, $PASSWORD)";
+           if($connect->query($sql) === true){
                 echo "success insert";
             
         }
     }
     if (isset($_POST['save'])){
+      $username= $_POST['username'];
       $email= $_POST['email'];
+      $first_name= $_POST['first_name'];
+      $last_name= $_POST['last_name'];
+      $status= $_POST['status'];
+      $position= $_POST['position'];
+      $company= $_POST['company'];
+      $PASSWORD= $_POST['PASSWORD'];
       include "config.php";
             
-      $query = "UPDATE `user` SET `email`='". $email ."' WHERE `user_id`=`3001`";
+      $query = "UPDATE `user` SET 
+      `username`='". $username ."', 
+      `email`='". $email ."', 
+      `first_name`='". $first_name ."', 
+      `last_name`='". $last_name ."', 
+      `status`='". $status ."', 
+      `position`='". $position ."', 
+      `company`='". $company ."', 
+      `PASSWORD`='". $PASSWORD ."' 
+      
+      WHERE `user_id`=user.user_id";
 
       }
   
