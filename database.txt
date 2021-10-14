@@ -2,7 +2,7 @@ CREATE TABLE profile(
 user_id int(11) NOT NULL,
 about varchar(255) NOT NULL,
 profile varchar(255) NOT NULL,
-offense varchar(255) NOT NULL,
+offense_type varchar(255) NOT NULL,
 PRIMARY KEY(user_id)
 )
 __________________

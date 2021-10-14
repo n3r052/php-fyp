@@ -196,78 +196,67 @@
             
             <div class="card-body">
                 <form action="form.php" method="post">
-                    <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Name</label>
-                        <input class="form-control" placeholder="Name" type="text" id="first_name" name="first_name">
-                    </div>
+                  <?php
+                  $sql = "SELECT * u.user_id, p.plate_no, i.location, i.date/time, u.offense_type
+                  FROM `user` AS u
+                  INNER JOIN `confirmation_list` AS c ON c.offense_type = u.offense_type
+                  INNER JOIN `image_list` AS i ON i.image_id = c.image_id
+                  INNER JOIN `driver` AS p ON p.plate_no = c.plat_no";
+                  $result = $connect->query($sql);
+                  if ($result->num_rows > 0) {
+                      // output data of each row
+                      while($row = $result->fetch_assoc()) {
+                    echo "<div class=\"form-group\">
+                        <label for=\"example-text-input\" class=\"form-control-label\">Name</label>
+                        <input class=\"form-control\" placeholder='".$row['user_id']."' type=\"text\" id=\"first_name\" name=\"first_name\">
+                    </div>";
 
-                    <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Plate license</label>
-                        <input class="form-control" placeholder="plate_license" type="text" id="plate_license" name="plate_license">
-                    </div>
+                    echo "<div class=\"form-group\">
+                        <label for=\"example-text-input\" class=\"form-control-label\">Plate license</label>
+                        <input class=\"form-control\" placeholder='".$row['plate_no']."' type=\"text\" id=\"plate_license\" name=\"plate_license\">
+                    </div>";
 
-                    <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Location</label>
-                        <input class="form-control" placeholder="location" type="text" id="location" name="location">
+                    echo "<div class=\"form-group\">
+                        <label for=\"example-text-input\" class=\"form-control-label\">Location</label>
+                        <input class=\"form-control\" placeholder='".$row['location']."' type=\"text\" id=\"location\" name=\"location\">
                     </div>
-                    <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Date</label>
-                        <input class="form-control" placeholder="date_time" type="text" id="date_time" name="date_time">
+                    <div class=\"form-group\">
+                        <label for=\"example-text-input\" class=\"form-control-label\">Date</label>
+                        <input class=\"form-control\" placeholder='".$row['date/time']."' type=\"text\" id=\"date_time\" name=\"date_time\">
                     </div>
-                    <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Offense</label>
-                        <input class="form-control" placeholder="offense" type="text" id="offense" name="offense">
-                    </div>
+                    <div class=\"form-group\">
+                        <label for=\"example-text-input\" class=\"form-control-label\">Offense</label>
+                        <input class=\"form-control\" placeholder='".$row['offense_type']."' type=\"text\" id=\"offense\" name=\"offense\">
+                    </div>";
 
-                    <!-- <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Location</label>
-                        <input class="form-control" type="text" placeholder="Jerudong" id="example-text-input" name="location">
-                    </div>
+                  
 
-                    <div class="form-group">
-                        <label for="example-date-input" class="form-control-label">Date and Time</label>
-                        <div class="form-row">
-                          <div class="col">
-                            <input class="form-control" type="date" placeholder="2018-11-23" id="example-date-input" name="date_time">
-                          </div>
-                          <div class="col">
-                            <input class="form-control" type="time" placeholder="10:30:00" id="example-time-input" name="date_time">
-                          </div>
-                        </div>
-                    </div>
+                    //Form Button Modal, Trigger
+                    echo "<button type=\"button\" class=\"btn btn-primary btn-lg\" data-toggle=\"modal\" data-target=\"#exampleModal\">Save</button>";
 
-                    <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Category</label>
-                        <select class="form-control">
-                            <option>Option 1</option>
-                            <option>Option 2</option>
-                        </select>
-                    </div>  -->
-
-                    <!-- Form Button Modal, Trigger ----------------------------------------------------------->
-                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal">Save</button>
-
-                    <!-- Modal ------------------------------------------------------->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
+                    //Modal
+                    echo "<div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
+                        <div class=\"modal-dialog modal-dialog-centered\" role=\"document\">
+                        <div class=\"modal-content\">
+                            <div class=\"modal-header\">
+                            <h5 class=\"modal-title\" id=\"exampleModalLabel\">Modal title</h5>
+                            <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">
+                                <span aria-hidden=\"true\">&times;</span>
                             </button>
                             </div>
-                            <div class="modal-body">
+                            <div class=\"modal-body\">
                             ...
                             </div>
-                            <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary" name="submit">Save changes</button>
+                            <div class=\"modal-footer\">
+                            <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>
+                            <button type=\"submit\" class=\"btn btn-primary\" name=\"submit\">Save changes</button>
                             </div>
                         </div>
                         </div>
-                    </div>
-
+                    </div>";
+                      }
+                    }
+                    ?>
                 </form>
             </div>
             
@@ -322,10 +311,10 @@
   <?php
     if (isset($_POST['submit'])){
       $first_name= $_POST['first_name'];
-      $plate_license= $_POST['plate_license'];
+      $plate_no= $_POST['plate_no'];
       $location= $_POST['location'];
-      $date_time= $_POST['date_time'];
-      $offense= $_POST['offense'];
+      $date/time= $_POST['date/time'];
+      $offense_type= $_POST['offense_type'];
         include "config.php";
 
             $sql = "INSERT INTO report(first_name, plate_license, location, date_time, offense) VALUES($first_name, $plate_license, $location, $date_time, $offense)";

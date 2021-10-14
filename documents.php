@@ -255,7 +255,7 @@
                         <div class=\"dropdown-menu dropdown-menu-right dropdown-menu-arrow\">
                           <a class=\"dropdown-item\" href=\"#\" data-toggle=\"modal\" data-target=\"#edit-document-form\">Edit</a>
                           <a class=\"dropdown-item\" href=\"#\" data-toggle=\"modal\" data-target=\"#modal-notification\">Delete</a>
-                          <a class=\"dropdown-item\" href=\"#\">Send</a>
+                          <a class=\"dropdown-item\" href=\"report.php\">Send</a>
                         </div>
                       </div>
                     </td>
@@ -303,7 +303,7 @@
                         <div class=\"dropdown-menu dropdown-menu-right dropdown-menu-arrow\">
                           <a class=\"dropdown-item\" href=\"#\" data-toggle=\"modal\" data-target=\"#edit-document-form\">Edit</a>
                           <a class=\"dropdown-item\" href=\"#\" data-toggle=\"modal\" data-target=\"#modal-notification\">Delete</a>
-                          <a class=\"dropdown-item\" href=\"#\">Send</a>
+                          <a class=\"dropdown-item\" href=\"report.php\">Send</a>
                         </div>
                       </div>
                     </td>
