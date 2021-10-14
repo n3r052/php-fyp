@@ -388,6 +388,8 @@
   </div>
 
   <!-- Edit Modal -->
+
+  <form action="user_list.php" method="post">
   <div class="modal fade" id="edit-user-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -424,11 +426,12 @@
 
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary">Save Changes</button>
+          <button type="save" class="btn btn-primary">Save Changes</button>
         </div>
       </div>
     </div>
   </div>
+  </form>
 
   <!-- Delete Modal -->
   <div class="modal fade" id="delete-notification" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
@@ -488,6 +491,15 @@
             
         }
     }
+    if (isset($_POST['save'])){
+      $email= $_POST['email'];
+      include "config.php";
+            
+      $query = "UPDATE `user` SET `email`='". $email ."' WHERE `user_id`=`3001`";
+
+      }
+  
+  
     ?>
 
 </html>
