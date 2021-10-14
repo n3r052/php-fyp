@@ -363,10 +363,11 @@
           <form>
             <div class="form-group">
               <!-- <i class="fas fa-user prefix grey-text"></i> -->
+
               <label for="username" class="col-form-label">Username:</label>
               <input type="text" class="form-control" id="username" placeholder="Josh">
             </div>
-            
+
             <div class="form-group">
               <label for="email" class="col-form-label">Email:</label>
               <input type="text" class="form-control" id="email" placeholder="Josh@gmail.com">
@@ -375,6 +376,25 @@
             <div class="form-group">
               <label for="PASSWORD" class="col-form-label">Password:</label>
               <input type="text" class="form-control" id="PASSWORD" placeholder="password">
+            </div>
+
+            <div class="form-group">
+              <label for="position" class="col-form-label">Position:</label>
+              <input type="text" class="form-control" id="position" placeholder="position">
+            </div>
+
+            <div class="form-group">
+              <label for="company" class="col-form-label">Company:</label>
+              <input type="text" class="form-control" id="company" placeholder="company">
+            </div>
+
+            <div class="form-group col-md-4">
+              <label for="inputState">Status</label>
+              <select id="inputState" class="form-control">
+                <option selected>Choose...</option>
+                <option>Active</option>
+                <option>Inactive</option>
+              </select>
             </div>
           </form>
         </div>
@@ -411,6 +431,21 @@
             <div class="form-group">
               <label for="#" class="col-form-label">Email:</label>
               <input type="text" class="form-control" id="#" placeholder="Josh@gmail.com">
+            </div>
+
+            <div class="form-group">
+              <label for="PASSWORD" class="col-form-label">Password:</label>
+              <input type="text" class="form-control" id="PASSWORD" placeholder="password">
+            </div>
+
+            <div class="form-group">
+              <label for="position" class="col-form-label">Position:</label>
+              <input type="text" class="form-control" id="position" placeholder="position">
+            </div>
+
+            <div class="form-group">
+              <label for="company" class="col-form-label">Company:</label>
+              <input type="text" class="form-control" id="company" placeholder="company">
             </div>
 
             <div class="form-group col-md-4">
