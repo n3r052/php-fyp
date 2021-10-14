@@ -519,7 +519,7 @@
       $email= $_POST['email'];
       $first_name= $_POST['first_name'];
       $last_name= $_POST['last_name'];
-      $status= $_POST['status'];
+      $status= $_POST['inputState'];
       $position= $_POST['position'];
       $company= $_POST['company'];
       $PASSWORD= $_POST['PASSWORD'];
@@ -536,7 +536,7 @@
       $email= $_POST['email'];
       $first_name= $_POST['first_name'];
       $last_name= $_POST['last_name'];
-      $status= $_POST['status'];
+      $status= $_POST['inputState'];
       $position= $_POST['position'];
       $company= $_POST['company'];
       $PASSWORD= $_POST['PASSWORD'];
