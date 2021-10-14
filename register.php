@@ -1,3 +1,13 @@
+<?php
+require 'config.php';
+
+$select = "SELECT * FROM user";
+$result = mysqli_query($connect, $select);
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,6 +70,28 @@ function myFunction() {
                             <input class="form-control" placeholder="position" type="text" id="position" name="position">
                             <input class="form-control" placeholder="company" type="text" id="company" name="company">
 
+
+                            <!-- <div class="form-group">
+                            <label for="status">Status</label>
+                            <select id="status" name="status" class="form-control">
+                                <option> Please select status: </option>
+                                <option>Active</option>
+                                <option>Inactive</option>
+                            </select>
+                            </div> -->
+
+
+                            <!-- <div class="form-group">
+                                    <select name="status" id="status" class="form-control">
+                                        <option> Please select status: </option>
+                                        <?php
+                                        // foreach($result as $key => $value){?>
+                                        // <option value="<?=$value['status'];?>"><?=$value['status'];?></option>
+
+                                        // <?php 
+                                    // }?>
+                                    </select>
+                            </div> -->
 
                             <div class="form-group">
                                 <div class="input-group input-group-merge input-group-alternative">
