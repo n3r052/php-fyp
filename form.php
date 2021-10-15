@@ -19,11 +19,10 @@
             $this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'C');
         }
     }
-    $first_name= $_POST['first_name'];
-    $plate_license= $_POST['plate_license'];
-    $location= $_POST['location'];
-    $date_time= $_POST['date_time'];
-    $offense= $_POST['offense'];
+    $owner= $_POST['owner'];
+    $plate_no= $_POST['plate_no'];
+    $offense_type= $_POST['offense_type'];
+      include "config.php";
 
     $pdf = new myPDF();
     $pdf->AliasNbPages();
@@ -31,11 +30,11 @@
     $pdf->SetFont('Times','',12);
 
 
-    $pdf->Cell(10,10,'Date:',0,0);
-    $pdf->Cell(10,10,$date_time,0,1);
+    // $pdf->Cell(10,10,'Date:',0,0);
+    // $pdf->Cell(10,10,$date_time,0,1);
 
     $pdf->Cell(10,10,'Dear',0,0);
-    $pdf->Cell(10,10,$first_name,0,1);
+    $pdf->Cell(10,10,$owner,0,1);
 
 
     $pdf->Cell(80,10,'This notice is to inform you that you have been cited with a traffic violation and must pay your citation ',0,1);
@@ -59,14 +58,14 @@
 
     $pdf->Cell(0,10,'DETAILS OF CITATION',1,1,'C');
 
-    $pdf->Cell(100,10,'Offense:',1,0);
-    $pdf->Cell(0,10,$offense,1,1);
+    // $pdf->Cell(100,10,'Offense:',1,0);
+    // $pdf->Cell(0,10,$offense_type,1,1);
 
-    $pdf->Cell(100,10,'City:',1,0);
-    $pdf->Cell(0,10,$location,1,1);
+    // $pdf->Cell(100,10,'City:',1,0);
+    // $pdf->Cell(0,10,$location,1,1);
 
-    $pdf->Cell(100,10,'District:',1,0);
-    $pdf->Cell(0,10,$plate_license,1,1);
+    $pdf->Cell(100,10,'Plate number:',1,0);
+    $pdf->Cell(0,10,$plate_no,1,1);
 
     $pdf->Cell(0,10,'All citations must be paid online.',0,1);
     $pdf->Cell(0,20,'If you have any questions or concerns, or need assistance, please contact me at +673 7135636 ',0,1);

@@ -209,8 +209,8 @@
                       // output data of each row
                       while($row = $result->fetch_assoc()) {
                     echo "<div class=\"form-group\">
-                        <label for=\"example-text-input\" class=\"form-control-label\">Name</label>
-                        <input class=\"form-control\" placeholder='".$row['user_id']."' type=\"text\" id=\"first_name\" name=\"first_name\">
+                        <label for=\"example-text-input\" class=\"form-control-label\">Owner Name</label>
+                        <input class=\"form-control\" placeholder='".$row['owner']."' type=\"text\" id=\"owner\" name=\"owner\">
                     </div>";
 
                     echo "<div class=\"form-group\">
@@ -219,11 +219,6 @@
                     </div>";
 
                     echo "<div class=\"form-group\">
-                        <label for=\"example-text-input\" class=\"form-control-label\">Location</label>
-                        <input class=\"form-control\" placeholder='".$row['location']."' type=\"text\" id=\"location\" name=\"location\">
-                    </div>
-
-                    <div class=\"form-group\">
                         <label for=\"example-text-input\" class=\"form-control-label\">Offense</label>
                         <input class=\"form-control\" placeholder='".$row['offense_type']."' type=\"text\" id=\"offense_type\" name=\"offense_type\">
                     </div>";
@@ -309,18 +304,17 @@
 
   <?php
     if (isset($_POST['submit'])){
-      $first_name= $_POST['first_name'];
+      $owner= $_POST['owner'];
       $plate_no= $_POST['plate_no'];
-      $location= $_POST['location'];
       // $date/time= $_POST['date/time'];
       $offense_type= $_POST['offense_type'];
         include "config.php";
 
-            $sql = "INSERT INTO report(first_name, plate_no, location, offense_type) VALUES($first_name, $plate_no, $location, $offense_type)";
-            if($connect->query($sql) === true){
-                echo "success insert";
+        //     $sql = "INSERT INTO report(owner, plate_no, offense_type) VALUES($owner, $plate_no, $offense_type)";
+        //     if($connect->query($sql) === true){
+        //         echo "success insert";
             
-        }
+        // }
     }
     ?> 
 
