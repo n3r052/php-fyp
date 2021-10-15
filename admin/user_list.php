@@ -48,35 +48,35 @@
                 //echo "am admin";
                 echo " 
                 <li class=\"nav-item\">
-                <a class=\"nav-link\" href=\"index.php\">
+                <a class=\"nav-link\" href=\"../index.php\">
                   <i class=\"ni ni-tv-2 text-primary\"></i>
                   <span class=\"nav-link-text\">Dashboard</span>
                 </a>
               </li>
 
               <li class=\"nav-item\">
-                <a class=\"nav-link\" href=\"admin/user_list.php\">
+                <a class=\"nav-link active\" href=\"user_list.php\">
                   <i class=\"ni ni-bullet-list-67 text-default\"></i>
                   <span class=\"nav-link-text\">User List</span>
                 </a>
               </li>
   
               <li class=\"nav-item\">
-                <a class=\"nav-link\" href=\"report.php\">
+                <a class=\"nav-link\" href=\"../report.php\">
                   <i class=\"ni ni-bullet-list-67 text-default\"></i>
                   <span class=\"nav-link-text\">Compose Report</span>
                 </a>
               </li>
 
               <li class=\"nav-item\">
-                <a class=\"nav-link\" href=\"documents.php\">
+                <a class=\"nav-link\" href=\"../documents.php\">
                   <i class=\"ni ni-bullet-list-67 text-default\"></i>
                   <span class=\"nav-link-text\">Document</span>
                 </a>
               </li>
 
               <li class=\"nav-item\">
-                <a class=\"nav-link\" href=\"device.php\">
+                <a class=\"nav-link\" href=\"../device.php\">
                   <i class=\"ni ni-pin-3 text-primary\"></i>
                   <span class=\"nav-link-text\">Device List</span>
                 </a>

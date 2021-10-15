@@ -71,9 +71,9 @@
               </li>
 
               <li class=\"nav-item\">
-                <a class=\"nav-link\" href=\"documents.php\">
+                <a class=\"nav-link active\" href=\"documents.php\">
                   <i class=\"ni ni-bullet-list-67 text-default\"></i>
-                  <span class=\"nav-link-text\">Document</span>
+                  <span class=\"nav-link-text\">Documents</span>
                 </a>
               </li>
 
@@ -103,7 +103,7 @@
               </li>
   
               <li class=\"nav-item\">
-                <a class=\"nav-link\" href=\"documents.php\">
+                <a class=\"nav-link active\" href=\"documents.php\">
                   <i class=\"ni ni-bullet-list-67 text-default\"></i>
                   <span class=\"nav-link-text\">Documents</span>
                 </a>

@@ -5,21 +5,6 @@
     $position = $_SESSION['position'];
     $userid = $_SESSION["userid"];
 ?>
-<!--
-=========================================================
-* Argon Dashboard - v1.2.0
-=========================================================
-* Product Page: https://www.creative-tim.com/product/argon-dashboard
-
-
-* Copyright  Creative Tim (http://www.creative-tim.com)
-* Coded by www.creative-tim.com
-
-
-
-=========================================================
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
 <!DOCTYPE html>
 <html>
 
@@ -57,33 +42,96 @@
           <!-- Nav items -->
           <ul class="navbar-nav">
 
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">
-                <i class="ni ni-tv-2 text-primary"></i>
-                <span class="nav-link-text">Dashboard</span>
-              </a>
-            </li>
+          <?php
+              if($position == "admin"){
+                //echo "am admin";
+                echo " 
+                <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"index.php\">
+                  <i class=\"ni ni-tv-2 text-primary\"></i>
+                  <span class=\"nav-link-text\">Dashboard</span>
+                </a>
+              </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="report.php">
-                <i class="ni ni-bullet-list-67 text-default"></i>
-                <span class="nav-link-text">Compose Report</span>
-              </a>
-            </li>
+              <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"admin/user_list.php\">
+                  <i class=\"ni ni-bullet-list-67 text-default\"></i>
+                  <span class=\"nav-link-text\">User List</span>
+                </a>
+              </li>
+  
+              <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"report.php\">
+                  <i class=\"ni ni-bullet-list-67 text-default\"></i>
+                  <span class=\"nav-link-text\">Compose Report</span>
+                </a>
+              </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="documents.html">
-                <i class="ni ni-bullet-list-67 text-default"></i>
-                <span class="nav-link-text">Documents</span>
-              </a>
-            </li>
+              <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"documents.php\">
+                  <i class=\"ni ni-bullet-list-67 text-default\"></i>
+                  <span class=\"nav-link-text\">Document</span>
+                </a>
+              </li>
 
-            <li class="nav-item">
-              <a class="nav-link active" href="examples/map.html">
-                <i class="ni ni-pin-3 text-primary"></i>
-                <span class="nav-link-text">Google</span>
-              </a>
-            </li>
+              <li class=\"nav-item\">
+                <a class=\"nav-link active\" href=\"device.php\">
+                  <i class=\"ni ni-pin-3 text-primary\"></i>
+                  <span class=\"nav-link-text\">Device List</span>
+                </a>
+              </li>
+                ";
+              }elseif($position == "operator"){
+               // echo "am operator";
+
+                echo " 
+                <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"operator/index.php\">
+                  <i class=\"ni ni-tv-2 text-primary\"></i>
+                  <span class=\"nav-link-text\">Dashboard</span>
+                </a>
+              </li>
+  
+              <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"report.php\">
+                  <i class=\"ni ni-bullet-list-67 text-default\"></i>
+                  <span class=\"nav-link-text\">Compose Report</span>
+                </a>
+              </li>
+  
+              <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"documents.php\">
+                  <i class=\"ni ni-bullet-list-67 text-default\"></i>
+                  <span class=\"nav-link-text\">Documents</span>
+                </a>
+              </li>
+  
+              <li class=\"nav-item\">
+                <a class=\"nav-link active\" href=\"device.php.\">
+                  <i class=\"ni ni-pin-3 text-primary\"></i>
+                  <span class=\"nav-link-text\">Device</span>
+                </a>
+              </li>
+                ";
+              }elseif($position == "officer"){
+                //echo "am officer";
+                echo " 
+                <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"officer/index.php\">
+                  <i class=\"ni ni-tv-2 text-primary\"></i>
+                  <span class=\"nav-link-text\">Dashboard</span>
+                </a>
+              </li>
+  
+              <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"report.php\">
+                  <i class=\"ni ni-bullet-list-67 text-default\"></i>
+                  <span class=\"nav-link-text\">Compose Report</span>
+                </a>
+              </li>
+                ";
+              }
+            ?>
 
           </ul>
         </div>
@@ -205,72 +253,73 @@
                     <th scope="col" class="sort" data-sort="protocol">Latitude</th>
                     <th scope="col" class="sort" data-sort="location">Longitude</th>
                     <th scope="col" class="sort" data-sort="activity">Imgtaken</th>
-
                     <th scope="col"></th>
                   </tr>
                 </thead>
                 <tbody class="list">
                   <?php
-                $sql = "SELECT * FROM device";
-                  $result = $connect->query($sql);
-                  if ($result->num_rows > 0) {
-                      // output data of each row
-                      while($row = $result->fetch_assoc()) {
-                  //First Row
-                  echo "<tr>";
-                    //First Column
-                    echo "<th scope=\"row\">
-                    <div class=\"media-body\">
-                        <span class=\"name mb-0 text-sm\"> ".$row['device_id']. "</span>
-                    </div>
-                </th>";
+                        $sql = "SELECT * FROM device";
+                          $result = $connect->query($sql);
+                          if ($result->num_rows > 0) {
+                              // output data of each row
+                              while($row = $result->fetch_assoc()) {
+                          //First Row
+                          echo "<tr>";
+                            //First Column
+                            echo "<td scope=\"row\">
 
-                    //Second Column
-                    echo "<th scope=\"row\">
-                    <div class=\"media-body\">
-                        <span class=\"name mb-0 text-sm\"> ".$row['location']. "</span>
-                    </div>
-                </th>";
-
-                    //Third Column
-                    echo "<th scope=\"row\">
-                    <div class=\"media-body\">
-                        <span class=\"name mb-0 text-sm\"> ".$row['latitude']. "</span>
-                    </div>
-                </th>";
-
-                    //Fourth Column
-                    echo "<th scope=\"row\">
-                    <div class=\"media-body\">
-                        <span class=\"name mb-0 text-sm\"> ".$row['longtitude']. "</span>
-                    </div>
-                </th>";
-
-                    //Fifth Column
-                    echo "<th scope=\"row\">
-                    <div class=\"media-body\">
-                        <span class=\"name mb-0 text-sm\"> ".$row['Imgtaken']. "</span>
-                    </div>
-                </th>";
-
-                    //Burger
-                    echo 
-                    "<td class=\"text-right\">
-                        <div class=\"dropdown\">
-                            <a class=\"btn btn-sm btn-icon-only text-light\" href=\"#\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
-                            <i class=\"fas fa-ellipsis-v\"></i>
-                            </a>
-                            <div class=\"dropdown-menu dropdown-menu-right dropdown-menu-arrow\">
-                            <a class=\"dropdown-item\" href=\"#\" data-toggle=\"modal\" data-target=\"#edit-dev-form\">Edit</a>
-                            <a class=\"dropdown-item\" href=\"#\" data-toggle=\"modal\" data-target=\"#modal-notification\">Delete</a>
+                            <div class=\"media-body\">
+                                <span class=\"name mb-0 text-sm\"> ".$row['device_id']. "</span>
                             </div>
-                        </div>
-                        </td>
-                        </tr>
-                    </tr>";
-              }
-            }
-            ?>
+                        </td>";
+
+                            //Second Column
+                            echo "<td>
+                            <div class=\"media-body\">
+                                <span class=\"name mb-0 text-sm\"> ".$row['location']. "</span>
+                            </div>
+                        </td>";
+
+                            //Third Column
+                            echo "<td>
+                            <div class=\"media-body\">
+                                <span class=\"name mb-0 text-sm\"> ".$row['latitude']. "</span>
+                            </div>
+                        </td>";
+
+                            //Fourth Column
+                            echo "<td>
+                            <div class=\"media-body\">
+                                <span class=\"name mb-0 text-sm\"> ".$row['longtitude']. "</span>
+                            </div>
+                        </td>";
+
+
+                            //Fifth Column
+                            echo "<td>
+                            <div class=\"media-body\">
+                                <span class=\"name mb-0 text-sm\"> ".$row['Imgtaken']. "</span>
+                            </div>
+                        </td>";
+
+                            //Burger
+                            echo "<td class=\"text-right\">
+                              <div class=\"dropdown\">
+                                <a class=\"btn btn-sm btn-icon-only text-light\" href=\"#\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
+                                  <i class=\"fas fa-ellipsis-v\"></i>
+                                </a>
+                                <div class=\"dropdown-menu dropdown-menu-right dropdown-menu-arrow\">
+                                  <a class=\"dropdown-item\" href=\"#\">Edit</a>
+                                  <a class=\"dropdown-item\" href=\"#\" data-toggle=\"modal\" data-target=\"#modal-notification\">Delete</a>
+                                  <a class=\"dropdown-item\" href=\"#\">Send</a>
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                        ";
+                      }
+                    }
+                  ?>
                 </tbody>
               </table>
             </div>

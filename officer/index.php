@@ -129,7 +129,7 @@
                 //echo "am officer";
                 echo " 
                 <li class=\"nav-item\">
-                <a class=\"nav-link\" href=\"officer/index.php\">
+                <a class=\"nav-link active\" href=\"officer/index.php\">
                   <i class=\"ni ni-tv-2 text-primary\"></i>
                   <span class=\"nav-link-text\">Dashboard</span>
                 </a>
