@@ -226,10 +226,11 @@
                           <label for=\"example-text-input\" class=\"form-control-label\">Offense</label>
                           <input class=\"form-control\" placeholder='".$row['offense_type']."' type=\"text\" id=\"offense_type\" name=\"offense_type\" value='".$row['offense_type']."'>
                       </div>";
-                        
 
-
-                  
+                      // echo "<div class=\"form-group\">
+                      //     <label for=\"example-text-input\" class=\"form-control-label\">Location</label>
+                      //     <input class=\"form-control\" placeholder='".$row['location']."' type=\"text\" id=\"location\" name=\"location\" value='".$row['location']."'>
+                      // </div>";
 
                     //Form Button Modal, Trigger
                     echo "<button type=\"button\" class=\"btn btn-primary btn-lg\" data-toggle=\"modal\" data-target=\"#exampleModal\">Save</button>";
@@ -313,15 +314,9 @@
     if (isset($_POST['submit'])){
       $owner= $_POST['owner'];
       $plate_no= $_POST['plate_no'];
-      // $date/time= $_POST['date/time'];
+      $image= $_POST['image'];
       $offense_type= $_POST['offense_type'];
         include "config.php";
-
-        //     $sql = "INSERT INTO report(owner, plate_no, offense_type) VALUES($owner, $plate_no, $offense_type)";
-        //     if($connect->query($sql) === true){
-        //         echo "success insert";
-            
-        // }
     }
     ?> 
 
