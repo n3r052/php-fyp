@@ -1,3 +1,10 @@
+<?php
+    require 'config.php';
+    session_start();
+    $username = $_SESSION["username"];
+    $position = $_SESSION['position'];
+    $userid = $_SESSION["userid"];
+?>
 <!--
 =========================================================
 * Argon Dashboard - v1.2.0
@@ -194,18 +201,17 @@
               <table class="table align-items-center table-flush">
                 <thead class="thead-light">
                     <th scope="col" class="sort" data-sort="name">Name</th>
-                    <th scope="col" class="sort" data-sort="ssid">SSID</th>
-                    <th scope="col" class="sort" data-sort="protocol">Protocol</th>
-                    <th scope="col" class="sort" data-sort="location">Location</th>
-                    <th scope="col" class="sort" data-sort="activity">Activity</th>
+                    <th scope="col" class="sort" data-sort="ssid">Location</th>
+                    <th scope="col" class="sort" data-sort="protocol">Latitude</th>
+                    <th scope="col" class="sort" data-sort="location">Longitude</th>
+                    <th scope="col" class="sort" data-sort="activity">Imgtaken</th>
 
                     <th scope="col"></th>
                   </tr>
                 </thead>
                 <tbody class="list">
-                  <?
-                $sql = "SELECT device_id, location, latitude, longtitude, Imgtaken
-                  FROM `device` WHERE device_id = device_id";
+                  <?php
+                $sql = "SELECT * FROM device";
                   $result = $connect->query($sql);
                   if ($result->num_rows > 0) {
                       // output data of each row
@@ -214,35 +220,38 @@
                   echo "<tr>";
                     //First Column
                     echo "<th scope=\"row\">
-                      <div class=\"media align-items-center\">
-                        <div class=\"media-body\">
-                            <span class=\"name mb-0 text-sm\">Creative Title 1</span>
-                        </div>
-                      </div>
-                    </th>":
+                    <div class=\"media-body\">
+                        <span class=\"name mb-0 text-sm\"> ".$row['device_id']. "</span>
+                    </div>
+                </th>";
 
                     //Second Column
-                    echo "<td class=\"budget\">
-                      f8:g8:d7:d5:56
-                    </td>";
+                    echo "<th scope=\"row\">
+                    <div class=\"media-body\">
+                        <span class=\"name mb-0 text-sm\"> ".$row['location']. "</span>
+                    </div>
+                </th>";
 
                     //Third Column
-                    echo "<td>
-                      something
-                    </td>";
+                    echo "<th scope=\"row\">
+                    <div class=\"media-body\">
+                        <span class=\"name mb-0 text-sm\"> ".$row['latitude']. "</span>
+                    </div>
+                </th>";
 
                     //Fourth Column
-                    echo "<td>
-                      Tutong
-                    </td>";
+                    echo "<th scope=\"row\">
+                    <div class=\"media-body\">
+                        <span class=\"name mb-0 text-sm\"> ".$row['longtitude']. "</span>
+                    </div>
+                </th>";
 
                     //Fifth Column
-                    echo "<td>
-                        <span class=\"badge badge-dot mr-4\">
-                            <i class=\"bg-success\"></i>
-                            <span class=\"status\">Active</span>
-                        </span>
-                    </td>";
+                    echo "<th scope=\"row\">
+                    <div class=\"media-body\">
+                        <span class=\"name mb-0 text-sm\"> ".$row['Imgtaken']. "</span>
+                    </div>
+                </th>";
 
                     //Burger
                     echo "<td class=\"text-right\">
