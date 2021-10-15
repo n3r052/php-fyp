@@ -68,12 +68,12 @@
               </a>
             </li>
 
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" href="admin/user_list.php">
                 <i class="ni ni-bullet-list-67 text-default"></i>
                 <span class="nav-link-text">User List</span>
               </a>
-            </li>
+            </li> -->
 
             <li class="nav-item">
               <a class="nav-link" href="location.php">
