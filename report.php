@@ -198,30 +198,36 @@
                 <form action="form.php" method="post">
                   <?php
                   //to allow username be extracted based from the session user_id
-                  $sql = "SELECT u.user_id, i.image_id, i.image, p.plate_no, c.offense_type, p.owner 
-                  FROM `user` AS u 
-                  INNER JOIN `confirmation_list` AS c 
-                  INNER JOIN `image_list` AS i ON i.image_id = c.image_id 
-                  INNER JOIN `driver` AS p ON p.plate_no = c.plat_no 
-                  WHERE user_id = user_id";
+                  $sql = "SELECT 
+                  i.image_id,
+                  p.plate_no, p.owner,
+                  c.offense_type,
+                  i.status
+                  FROM `confirmation_list` AS c
+                  INNER JOIN `image_list` AS i ON i.image_id = c.image_id
+                  INNER JOIN `driver` AS p ON p.plate_no = c.plat_no
+                  ";
                   $result = $connect->query($sql);
                   if ($result->num_rows > 0) {
                       // output data of each row
                       while($row = $result->fetch_assoc()) {
-                    echo "<div class=\"form-group\">
-                        <label for=\"example-text-input\" class=\"form-control-label\">Owner Name</label>
-                        <input class=\"form-control\" placeholder='".$row['owner']."' type=\"text\" id=\"owner\" name=\"owner\">
-                    </div>";
+                        if($row['status']=="confirm"){
+                          echo "<div class=\"form-group\">
+                          <label for=\"example-text-input\" class=\"form-control-label\">Owner Name</label>
+                          <input class=\"form-control\" placeholder='".$row['owner']."' type=\"text\" id=\"owner\" name=\"owner\">
+                      </div>";
+  
+                      echo "<div class=\"form-group\">
+                          <label for=\"example-text-input\" class=\"form-control-label\">Plate license</label>
+                          <input class=\"form-control\" placeholder='".$row['plate_no']."' type=\"text\" id=\"plate_no\" name=\"plate_no\">
+                      </div>";
+  
+                      echo "<div class=\"form-group\">
+                          <label for=\"example-text-input\" class=\"form-control-label\">Offense</label>
+                          <input class=\"form-control\" placeholder='".$row['offense_type']."' type=\"text\" id=\"offense_type\" name=\"offense_type\">
+                      </div>";
+                        
 
-                    echo "<div class=\"form-group\">
-                        <label for=\"example-text-input\" class=\"form-control-label\">Plate license</label>
-                        <input class=\"form-control\" placeholder='".$row['plate_no']."' type=\"text\" id=\"plate_no\" name=\"plate_no\">
-                    </div>";
-
-                    echo "<div class=\"form-group\">
-                        <label for=\"example-text-input\" class=\"form-control-label\">Offense</label>
-                        <input class=\"form-control\" placeholder='".$row['offense_type']."' type=\"text\" id=\"offense_type\" name=\"offense_type\">
-                    </div>";
 
                   
 
@@ -250,6 +256,7 @@
                     </div>";
                       }
                     }
+                  }
                     ?>
                 </form>
             </div>
