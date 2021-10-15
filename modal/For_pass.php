@@ -60,6 +60,7 @@
       </div>
     </div>
     <!-- Page content -->
+
     <form action="password-reset-token.php" method="post">
     <div class="container mt--8 pb-5">
       <div class="row justify-content-center">
@@ -69,46 +70,15 @@
                         <!-- <div class="text-center text-muted mb-4">
                             <small>Or sign in with credentials</small>
                         </div> -->
-                        <form role="form">
-
-                            <div class="form-group mb-3">
-                            <div class="input-group input-group-merge input-group-alternative">
-                                <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="ni ni-email-83"></i></span>
-                                </div>
-                            <input class="form-control" placeholder="email" type="text" id="email" name="first_name">
-                            </div>
-                            </div>
-                            <div class="form-group">
-                            <div class="input-group input-group-merge input-group-alternative">
-                                <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                                </div>
-                            <input class="form-control" placeholder="password" type="password" id="password" name="password">
-                            </div>
-                            </div>
-
-                            <div class="form-group">
-                            <div class="input-group input-group-merge input-group-alternative">
-                                <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                                </div>
-                            <input class="form-control" placeholder="cpassword" type="password" id="cpassword" name="cpassword">
-                            </div>
-                            </div>
-
-                            <div class="custom-control custom-control-alternative custom-checkbox">
-                            <input class="custom-control-input" id=" customCheckLogin" type="checkbox">
-                            <label class="custom-control-label" for=" customCheckLogin">
-                                <!-- <span class="text-muted">Remember me</span> -->
-                            </label>
-                            </div>
-                            <div class="text-center">
-                            <button type="submit" class="btn btn-primary my-4" name="password-reset-token">Sign in</button>
-                            </div>
-                        </form>
-                        </div>
+                            
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email address</label>
+                  <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp">
+                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
+                <input type="submit" name="password-reset-token" class="btn btn-primary">
+                </div>
+                </form>
                 
 
                 <div class="row mt-3">

@@ -1,7 +1,7 @@
 <?php
 if(isset($_POST['password']) && $_POST['reset_link_token'] && $_POST['email'])
 {
-include "config.php";
+include "../config.php";
 $emailId = $_POST['email'];
 $token = $_POST['reset_link_token'];
 $password = md5($_POST['password']);

@@ -1,7 +1,7 @@
 <?php
 if(isset($_POST['password-reset-token']) && $_POST['email'])
 {
-    include "config.php";
+    include "../config.php";
      
     $email = $_POST['email'];
     $result = mysqli_query($connect,"SELECT * FROM user WHERE email='" . $email . "'");

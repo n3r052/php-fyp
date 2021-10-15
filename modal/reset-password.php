@@ -17,7 +17,7 @@ Reset Password In PHP MySQL
 <?php
 if($_GET['key'] && $_GET['token'])
 {
-include "config.php";
+include "../config.php";
 $email = $_GET['key'];
 $token = $_GET['token'];
 $query = mysqli_query($connect,
