@@ -214,17 +214,17 @@
                         if($row['status']=="confirm"){
                           echo "<div class=\"form-group\">
                           <label for=\"example-text-input\" class=\"form-control-label\">Owner Name</label>
-                          <input class=\"form-control\" placeholder='".$row['owner']."' type=\"text\" id=\"owner\" name=\"owner\">
+                          <input class=\"form-control\" placeholder='".$row['owner']."' type=\"text\" id=\"owner\" name=\"owner\" value='".$row['owner']."'>
                       </div>";
   
                       echo "<div class=\"form-group\">
                           <label for=\"example-text-input\" class=\"form-control-label\">Plate license</label>
-                          <input class=\"form-control\" placeholder='".$row['plate_no']."' type=\"text\" id=\"plate_no\" name=\"plate_no\">
+                          <input class=\"form-control\" placeholder='".$row['plate_no']."' type=\"text\" id=\"plate_no\" name=\"plate_no\" value='".$row['plate_no']."'>
                       </div>";
   
                       echo "<div class=\"form-group\">
                           <label for=\"example-text-input\" class=\"form-control-label\">Offense</label>
-                          <input class=\"form-control\" placeholder='".$row['offense_type']."' type=\"text\" id=\"offense_type\" name=\"offense_type\">
+                          <input class=\"form-control\" placeholder='".$row['offense_type']."' type=\"text\" id=\"offense_type\" name=\"offense_type\" value='".$row['offense_type']."'>
                       </div>";
                         
 

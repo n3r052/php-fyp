@@ -1,5 +1,4 @@
 <?php
-
     require "fpdf/fpdf.php";
     
     class myPDF extends FPDF{ 
@@ -19,6 +18,7 @@
             $this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'C');
         }
     }
+
     $owner= $_POST['owner'];
     $plate_no= $_POST['plate_no'];
     $offense_type= $_POST['offense_type'];
@@ -37,12 +37,12 @@
     $pdf->Cell(10,10,$owner,0,1);
 
 
-    $pdf->Cell(80,10,'This notice is to inform you that you have been cited with a traffic violation and must pay your citation ',0,1);
-    $pdf->Cell(0,10,'within 72hours. We have payment plans available if necessary.',0,0);
+    // $pdf->Cell(80,10,'This notice is to inform you that you have been cited with a traffic violation and must pay your citation ',0,1);
+    // $pdf->Cell(0,10,'within 72hours. We have payment plans available if necessary.',0,0);
     
 
-    $pdf->Image('logo.png',140,30,0,30);
-    $pdf->Image('logo.png',30,80,0,90);
+    // $pdf->Image('logo.png',140,30,0,30);
+    // $pdf->Image('logo.png',30,80,0,90);
 
     $pdf->Cell(0,10,'',0,1,0);
     $pdf->Cell(0,10,'',0,1,0);
@@ -80,4 +80,5 @@
 
 
     $pdf->Output();
+
 ?>
