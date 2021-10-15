@@ -254,25 +254,26 @@
                 </th>";
 
                     //Burger
-                    echo "<td class=\"text-right\">
-                      <div class=\"dropdown\">
-                        <a class=\"btn btn-sm btn-icon-only text-light\" href=\"#\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
-                          <i class=\"fas fa-ellipsis-v\"></i>
-                        </a>
-                        <div class=\"dropdown-menu dropdown-menu-right dropdown-menu-arrow\">
-                          <a class=\"dropdown-item\" href=\"#\">Edit</a>
-                          <a class=\"dropdown-item\" href=\"#\" data-toggle=\"modal\" data-target=\"#modal-notification\">Delete</a>
-                          <a class=\"dropdown-item\" href=\"#\">Send</a>
+                    echo 
+                    "<td class=\"text-right\">
+                        <div class=\"dropdown\">
+                            <a class=\"btn btn-sm btn-icon-only text-light\" href=\"#\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
+                            <i class=\"fas fa-ellipsis-v\"></i>
+                            </a>
+                            <div class=\"dropdown-menu dropdown-menu-right dropdown-menu-arrow\">
+                            <a class=\"dropdown-item\" href=\"#\" data-toggle=\"modal\" data-target=\"#edit-user-form\">Edit</a>
+                            <a class=\"dropdown-item\" href=\"#\" data-toggle=\"modal\" data-target=\"#modal-notification\">Delete</a>
+                            </div>
                         </div>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>";
+                        </td>
+                        </tr>
+                    </tr>";
               }
             }
 ?>
+                </tbody>
+              </table>
+            </div>
             <!-- Delete Modal -->
             <div class="modal fade" id="modal-notification" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
               <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
