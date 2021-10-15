@@ -55,7 +55,7 @@
               </li>
 
               <li class=\"nav-item\">
-                <a class=\"nav-link\" href=\"admin/user_list.php\">
+                <a class=\"nav-link active\" href=\"admin/user_list.php\">
                   <i class=\"ni ni-bullet-list-67 text-default\"></i>
                   <span class=\"nav-link-text\">User List</span>
                 </a>
