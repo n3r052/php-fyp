@@ -60,44 +60,96 @@
           <!-- Nav items -->
           <ul class="navbar-nav">
 
-            <li class="nav-item">
-              <a class="nav-link active" href="index.php">
-                <i class="ni ni-tv-2 text-primary"></i>
-                <span class="nav-link-text">Dashboard</span>
-              </a>
-            </li>
+          <?php
+              if($position == "admin"){
+                //echo "am admin";
+                echo " 
+                <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"index.php\">
+                  <i class=\"ni ni-tv-2 text-primary\"></i>
+                  <span class=\"nav-link-text\">Dashboard</span>
+                </a>
+              </li>
 
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="ni ni-bullet-list-67 text-default"></i>
-                <span class="nav-link-text">Compose</span>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="report.php">Report</a>
-                <a class="dropdown-item" href="#">Statistic Report</a>
-              </div>
-            </li>
+              <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"admin/user_list.php\">
+                  <i class=\"ni ni-bullet-list-67 text-default\"></i>
+                  <span class=\"nav-link-text\">User List</span>
+                </a>
+              </li>
+  
+              <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"report.php\">
+                  <i class=\"ni ni-bullet-list-67 text-default\"></i>
+                  <span class=\"nav-link-text\">Compose Report</span>
+                </a>
+              </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="documents.php">
-                <i class="ni ni-bullet-list-67 text-default"></i>
-                <span class="nav-link-text">Documents</span>
-              </a>
-            </li>
+              <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"documents.php\">
+                  <i class=\"ni ni-bullet-list-67 text-default\"></i>
+                  <span class=\"nav-link-text\">Document</span>
+                </a>
+              </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="admin/user_list.php">
-                <i class="ni ni-bullet-list-67 text-default"></i>
-                <span class="nav-link-text">User List</span>
-              </a>
-            </li>
+              <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"location.php\">
+                  <i class=\"ni ni-pin-3 text-primary\"></i>
+                  <span class=\"nav-link-text\">Device List</span>
+                </a>
+              </li>
+                ";
+              }elseif($position == "operator"){
+               // echo "am operator";
 
-            <li class="nav-item">
-              <a class="nav-link" href="location.php">
-                <i class="ni ni-pin-3 text-primary"></i>
-                <span class="nav-link-text">Device Map</span>
-              </a>
-            </li>
+                echo " 
+                <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"operator/index.php\">
+                  <i class=\"ni ni-tv-2 text-primary\"></i>
+                  <span class=\"nav-link-text\">Dashboard</span>
+                </a>
+              </li>
+  
+              <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"report.php\">
+                  <i class=\"ni ni-bullet-list-67 text-default\"></i>
+                  <span class=\"nav-link-text\">Compose Report</span>
+                </a>
+              </li>
+  
+              <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"documents.php\">
+                  <i class=\"ni ni-bullet-list-67 text-default\"></i>
+                  <span class=\"nav-link-text\">Documents</span>
+                </a>
+              </li>
+  
+              <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"device.php.\">
+                  <i class=\"ni ni-pin-3 text-primary\"></i>
+                  <span class=\"nav-link-text\">Device</span>
+                </a>
+              </li>
+                ";
+              }elseif($position == "officer"){
+                //echo "am officer";
+                echo " 
+                <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"officer/index.php\">
+                  <i class=\"ni ni-tv-2 text-primary\"></i>
+                  <span class=\"nav-link-text\">Dashboard</span>
+                </a>
+              </li>
+  
+              <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"report.php\">
+                  <i class=\"ni ni-bullet-list-67 text-default\"></i>
+                  <span class=\"nav-link-text\">Compose Report</span>
+                </a>
+              </li>
+                ";
+              }
+            ?>
 
           </ul>
         </div>
@@ -305,216 +357,88 @@
               <table id="dtBasicExample" class="table table-striped table-bordered table-sm"  >
                 <thead class="thead-light">
                   <tr>
-                    <th class="th-sm" >Name</th>
-                    <th class="th-sm" >Date</th>
-                    <th class="th-sm" >Status</th>
-                    <th class="th-sm">Users</th>
+                    <th class="th-sm" >ID</th>
+                    <th class="th-sm" >Plate License</th>
+                    <th class="th-sm" >Offense Type</th>
+                    <th class="th-sm">Status</th>
                     <th class="th-sm"></th>
                   </tr>
                 </thead>
                 <tbody class="list">
-                  <!-- First Row ----------------------------------------------------------------------------------------------------------------------------->
-                  <tr>
-                    <!-- First Column --------------------------------------------------------->
-                    <th scope="row">
-                      <div class="media align-items-center">
-                        <!-- <a href="#" class="avatar rounded-circle mr-3">
-                          <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
+                  <?php
+                    $sql = "SELECT 
+                    i.image_id,
+                    p.plate_no,
+                    c.offense_type,
+                    i.status
+                    FROM `confirmation_list` AS c
+                    INNER JOIN `image_list` AS i ON i.image_id = c.image_id
+                    INNER JOIN `driver` AS p ON p.plate_no = c.plat_no
+                    ";
+                    $result = $connect->query($sql);
+                    if ($result->num_rows > 0){
+                      while($row = $result->fetch_assoc()) {
+                      echo"
+                      <tr>
+                    <th scope=\"row\">
+                      <div class=\"media align-items-center\">
+                        <!-- <a href=\"#\" class=\"avatar rounded-circle mr-3\">
+                          <img alt=\"Image placeholder\" src=\"../assets/img/theme/bootstrap.jpg\">
                         </a> -->
-                        <div class="media-body">
-                          <span class="name mb-0 text-sm">Creative Title 1</span>
+                        <div class=\"media-body\">
+                          <span class=\"name mb-0 text-sm\">".$row['image_id']."</span>
                         </div>
                       </div>
                     </th>
 
-                    <!-- Second Column --------------------------------------------------------->
-                    <td class="budget">
-                      Date
+                    
+                    <td class=\"budget\">
+                    ".$row['plate_no']."
                     </td>
 
-                    <!-- Third Column --------------------------------------------------------->
+                   
                     <td>
-                      <span class="badge badge-dot mr-4">
-                        <i class="bg-warning"></i>
-                        <span class="status">pending</span>
+                      ".$row['offense_type']."
+                    </td>";
+                    
+                      if ($row['status']=="confirm"){
+                        echo 
+                      "<td>
+                      <span class=\"badge badge-dot mr-4\">
+                        <i class=\"bg-success\"></i>
+                        <span class=\"status\">".$row['status']."</span>
                       </span>
-                    </td>
-
-                    <!-- Fourth Column --------------------------------------------------------->
-                    <td>
-                      <div class="avatar-group">
-                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="John">
-                          <img alt="Image placeholder" src="assets/img/theme/team-1.jpg">
-                        </a>
-                      </div>
-                    </td>
-
-                    <!-- Burger --------------------------------------------------------->
-                    <td class="text-right">
-                      <div class="dropdown">
-                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="fas fa-ellipsis-v"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                          <a class="dropdown-item" href="#">Edit</a>
-                          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal-notification">Delete</a>
-                          <a class="dropdown-item" href="#">Send</a>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-
-                  <!-- Second Row ----------------------------------------------------------------------------------------------------------------------------->
-                  <tr>
-                    <!-- First Column --------------------------------------------------------->
-                    <th scope="row">
-                      <div class="media align-items-center">
-                        <!-- <a href="#" class="avatar rounded-circle mr-3">
-                          <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
-                        </a> -->
-                        <div class="media-body">
-                          <span class="name mb-0 text-sm">Creative Title 2</span>
-                        </div>
-                      </div>
-                    </th>
-
-                    <!-- Second Column --------------------------------------------------------->
-                    <td class="budget">
-                      Date
-                    </td>
-
-                    <!-- Third Column --------------------------------------------------------->
-                    <td>
-                      <span class="badge badge-dot mr-4">
-                        <i class="bg-success"></i>
-                        <span class="status">completed</span>
+                      </td>";
+                      }else{
+                        echo
+                      "<td>
+                      <span class=\"badge badge-dot mr-4\">
+                        <i class=\"bg-warning\"></i>
+                        <span class=\"status\">".$row['status']."</span>
                       </span>
-                    </td>
-
-                    <!-- Fourth Column --------------------------------------------------------->
-                    <td>
-                      <div class="avatar-group">
-                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
-                          <img alt="Image placeholder" src="assets/img/theme/team-1.jpg">
+                      </td>";
+                      }
+                    echo"
+                    <td class=\"text-right\">
+                      <div class=\"dropdown\">
+                        <a class=\"btn btn-sm btn-icon-only text-light\" href=\"#\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
+                          <i class=\"fas fa-ellipsis-v\"></i>
                         </a>
-                      </div>
-                    </td>
-
-                    <!-- Burger --------------------------------------------------------->
-                    <td class="text-right">
-                      <div class="dropdown">
-                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="fas fa-ellipsis-v"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                          <a class="dropdown-item" href="#">Edit</a>
-                          <a class="dropdown-item" href="#">Delete</a>
-                          <a class="dropdown-item" href="#">Send</a>
+                        <div class=\"dropdown-menu dropdown-menu-right dropdown-menu-arrow\">
+                          <a class=\"dropdown-item\" href=\"#\">Edit</a>
+                          <a class=\"dropdown-item\" href=\"#\" data-toggle=\"modal\" data-target=\"#modal-notification\">Delete</a>
+                          <a class=\"dropdown-item\" href=\"#\">Send</a>
                         </div>
                       </div>
                     </td>
-                  </tr>
+                  </tr>";
+                      }
+                    }else{
+                      echo "0 results";
+                    }
 
-                  <!-- Third Row ----------------------------------------------------------------------------------------------------------------------------->
-                  <tr>
-                    <!-- First Column --------------------------------------------------------->
-                    <th scope="row">
-                      <div class="media align-items-center">
-                        <!-- <a href="#" class="avatar rounded-circle mr-3">
-                          <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
-                        </a> -->
-                        <div class="media-body">
-                          <span class="name mb-0 text-sm">Creative Title 3</span>
-                        </div>
-                      </div>
-                    </th>
-
-                    <!-- Second Column --------------------------------------------------------->
-                    <td class="budget">
-                      Date
-                    </td>
-
-                    <!-- Third Column --------------------------------------------------------->
-                    <td>
-                      <span class="badge badge-dot mr-4">
-                        <i class="bg-danger"></i>
-                        <span class="status">delayed</span>
-                      </span>
-                    </td>
-
-                    <!-- Fourth Column --------------------------------------------------------->
-                    <td>
-                      <div class="avatar-group">
-                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
-                          <img alt="Image placeholder" src="assets/img/theme/team-1.jpg">
-                        </a>
-                      </div>
-                    </td>
-
-                    <!-- Burger --------------------------------------------------------->
-                    <td class="text-right">
-                      <div class="dropdown">
-                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="fas fa-ellipsis-v"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                          <a class="dropdown-item" href="#">Edit</a>
-                          <a class="dropdown-item" href="#">Delete</a>
-                          <a class="dropdown-item" href="#">Send</a>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-
-                  <!-- Fourth Row ----------------------------------------------------------------------------------------------------------------------------->
-                  <tr>
-                    <!-- First Column --------------------------------------------------------->
-                    <th scope="row">
-                      <div class="media align-items-center">
-                        <!-- <a href="#" class="avatar rounded-circle mr-3">
-                          <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
-                        </a> -->
-                        <div class="media-body">
-                          <span class="name mb-0 text-sm">Creative Title 4</span>
-                        </div>
-                      </div>
-                    </th>
-                    <!-- Second Column --------------------------------------------------------->
-                    <td class="budget">
-                      Date
-                    </td>
-
-                    <!-- Third Column --------------------------------------------------------->
-                    <td>
-                      <span class="badge badge-dot mr-4">
-                        <i class="bg-info"></i>
-                        <span class="status">on schedule</span>
-                      </span>
-                    </td>
-
-                    <!-- Fourth Column --------------------------------------------------------->
-                    <td>
-                      <div class="avatar-group">
-                        <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
-                          <img alt="Image placeholder" src="assets/img/theme/team-1.jpg">
-                        </a>
-                      </div>
-                    </td>
-
-                    <!-- Burger --------------------------------------------------------->
-                    <td class="text-right">
-                      <div class="dropdown">
-                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="fas fa-ellipsis-v"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                          <a class="dropdown-item" href="#">Edit</a>
-                          <a class="dropdown-item" href="#">Delete</a>
-                          <a class="dropdown-item" href="#">Send</a>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
+                  ?>
+                  
                 </tbody>
               </table>
             </div>

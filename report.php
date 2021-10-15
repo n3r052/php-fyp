@@ -197,6 +197,7 @@
             <div class="card-body">
                 <form action="form.php" method="post">
                   <?php
+                  //to allow username be extracted based from the session user_id
                   $sql = "SELECT u.user_id, u.offense_type, i.image_id, p.plate_no
                   FROM `user` AS u
                   INNER JOIN `confirmation_list` AS c ON c.offense_type = u.offense_type

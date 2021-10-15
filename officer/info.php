@@ -4,14 +4,15 @@
   $username = $_SESSION["username"];
   $position = $_SESSION['position'];
   $userid = $_SESSION["userid"];
+  $profile_pic = $_SESSION["profile_pic"];
 
-  $sql = "SELECT user.user_id, user.first_name, user.last_name, user.email, user.status, user.position, user.company, profile.about, profile.profile, CONCAT(user.first_name, ' ', user.last_name) AS whole_name FROM user
-          INNER JOIN profile on user.user_id = profile.user_id";  
-          $result = mysqli_query($connect, $sql);  
-          $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
-          $count = mysqli_num_rows($result);
+  // $sql = "SELECT user.user_id, user.first_name, user.last_name, user.email, user.status, user.position, user.company, profile.about, profile.profile, CONCAT(user.first_name, ' ', user.last_name) AS whole_name FROM user
+  //         INNER JOIN profile on user.user_id = profile.user_id";  
+  //         $result = mysqli_query($connect, $sql);  
+  //         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
+  //         $count = mysqli_num_rows($result);
 
-          $profile_pic = $row['profile'];
+  //         $profile_pic = $row['profile'];
 ?>
   
 
@@ -52,37 +53,96 @@
           <!-- Nav items -->
           <ul class="navbar-nav">
 
-            <li class="nav-item">
-              <a class="nav-link" href="index.php">
-                <i class="ni ni-tv-2 text-primary"></i>
-                <span class="nav-link-text">Dashboard</span>
-              </a>
-            </li>
+          <?php
+              if($position == "admin"){
+                //echo "am admin";
+                echo " 
+                <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"index.php\">
+                  <i class=\"ni ni-tv-2 text-primary\"></i>
+                  <span class=\"nav-link-text\">Dashboard</span>
+                </a>
+              </li>
 
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="ni ni-bullet-list-67 text-default"></i>
-                <span class="nav-link-text">Compose</span>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="../report.html">Report</a>
-                <a class="dropdown-item" href="#">Statistic Report</a>
-              </div>
-            </li>
+              <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"admin/user_list.php\">
+                  <i class=\"ni ni-bullet-list-67 text-default\"></i>
+                  <span class=\"nav-link-text\">User List</span>
+                </a>
+              </li>
+  
+              <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"report.php\">
+                  <i class=\"ni ni-bullet-list-67 text-default\"></i>
+                  <span class=\"nav-link-text\">Compose Report</span>
+                </a>
+              </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="../documents.php">
-                <i class="ni ni-bullet-list-67 text-default"></i>
-                <span class="nav-link-text">Documents</span>
-              </a>
-            </li>
+              <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"documents.php\">
+                  <i class=\"ni ni-bullet-list-67 text-default\"></i>
+                  <span class=\"nav-link-text\">Document</span>
+                </a>
+              </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="../location.php">
-                <i class="ni ni-pin-3 text-primary"></i>
-                <span class="nav-link-text">Device Location</span>
-              </a>
-            </li>
+              <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"location.php\">
+                  <i class=\"ni ni-pin-3 text-primary\"></i>
+                  <span class=\"nav-link-text\">Device List</span>
+                </a>
+              </li>
+                ";
+              }elseif($position == "operator"){
+               // echo "am operator";
+
+                echo " 
+                <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"operator/index.php\">
+                  <i class=\"ni ni-tv-2 text-primary\"></i>
+                  <span class=\"nav-link-text\">Dashboard</span>
+                </a>
+              </li>
+  
+              <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"report.php\">
+                  <i class=\"ni ni-bullet-list-67 text-default\"></i>
+                  <span class=\"nav-link-text\">Compose Report</span>
+                </a>
+              </li>
+  
+              <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"documents.php\">
+                  <i class=\"ni ni-bullet-list-67 text-default\"></i>
+                  <span class=\"nav-link-text\">Documents</span>
+                </a>
+              </li>
+  
+              <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"device.php.\">
+                  <i class=\"ni ni-pin-3 text-primary\"></i>
+                  <span class=\"nav-link-text\">Device</span>
+                </a>
+              </li>
+                ";
+              }elseif($position == "officer"){
+                //echo "am officer";
+                echo " 
+                <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"officer/index.php\">
+                  <i class=\"ni ni-tv-2 text-primary\"></i>
+                  <span class=\"nav-link-text\">Dashboard</span>
+                </a>
+              </li>
+  
+              <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"report.php\">
+                  <i class=\"ni ni-bullet-list-67 text-default\"></i>
+                  <span class=\"nav-link-text\">Compose Report</span>
+                </a>
+              </li>
+                ";
+              }
+            ?>
 
           </ul>
         </div>
