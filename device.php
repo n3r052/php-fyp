@@ -258,69 +258,70 @@
                 </thead>
                 <tbody class="list">
                   <?php
-                $sql = "SELECT * FROM device";
-                  $result = $connect->query($sql);
-                  if ($result->num_rows > 0) {
-                      // output data of each row
-                      while($row = $result->fetch_assoc()) {
-                  //First Row
-                  echo "<tr>";
-                    //First Column
-                    echo "<th scope=\"row\">
+                        $sql = "SELECT * FROM device";
+                          $result = $connect->query($sql);
+                          if ($result->num_rows > 0) {
+                              // output data of each row
+                              while($row = $result->fetch_assoc()) {
+                          //First Row
+                          echo "<tr>";
+                            //First Column
+                            echo "<td scope=\"row\">
 
-                    <div class=\"media-body\">
-                        <span class=\"name mb-0 text-sm\"> ".$row['device_id']. "</span>
-                    </div>
-                </th>";
+                            <div class=\"media-body\">
+                                <span class=\"name mb-0 text-sm\"> ".$row['device_id']. "</span>
+                            </div>
+                        </td>";
 
-                    //Second Column
-                    echo "<th scope=\"row\">
-                    <div class=\"media-body\">
-                        <span class=\"name mb-0 text-sm\"> ".$row['location']. "</span>
-                    </div>
-                </th>";
+                            //Second Column
+                            echo "<td>
+                            <div class=\"media-body\">
+                                <span class=\"name mb-0 text-sm\"> ".$row['location']. "</span>
+                            </div>
+                        </td>";
 
-                    //Third Column
-                    echo "<th scope=\"row\">
-                    <div class=\"media-body\">
-                        <span class=\"name mb-0 text-sm\"> ".$row['latitude']. "</span>
-                    </div>
-                </th>";
+                            //Third Column
+                            echo "<td>
+                            <div class=\"media-body\">
+                                <span class=\"name mb-0 text-sm\"> ".$row['latitude']. "</span>
+                            </div>
+                        </td>";
 
-                    //Fourth Column
-                    echo "<th scope=\"row\">
-                    <div class=\"media-body\">
-                        <span class=\"name mb-0 text-sm\"> ".$row['longtitude']. "</span>
-                    </div>
-                </th>";
+                            //Fourth Column
+                            echo "<td>
+                            <div class=\"media-body\">
+                                <span class=\"name mb-0 text-sm\"> ".$row['longtitude']. "</span>
+                            </div>
+                        </td>";
 
-                    //Fifth Column
-                    echo "<th scope=\"row\">
-                    <div class=\"media-body\">
-                        <span class=\"name mb-0 text-sm\"> ".$row['Imgtaken']. "</span>
-                    </div>
-                </th>";
+                            //Fifth Column
+                            echo "<td>
+                            <div class=\"media-body\">
+                                <span class=\"name mb-0 text-sm\"> ".$row['Imgtaken']. "</span>
+                            </div>
+                        </td>";
 
-                    //Burger
-                    echo "<td class=\"text-right\">
-                      <div class=\"dropdown\">
-                        <a class=\"btn btn-sm btn-icon-only text-light\" href=\"#\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
-                          <i class=\"fas fa-ellipsis-v\"></i>
-                        </a>
-                        <div class=\"dropdown-menu dropdown-menu-right dropdown-menu-arrow\">
-                          <a class=\"dropdown-item\" href=\"#\">Edit</a>
-                          <a class=\"dropdown-item\" href=\"#\" data-toggle=\"modal\" data-target=\"#modal-notification\">Delete</a>
-                          <a class=\"dropdown-item\" href=\"#\">Send</a>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
+                            //Burger
+                            echo "<td class=\"text-right\">
+                              <div class=\"dropdown\">
+                                <a class=\"btn btn-sm btn-icon-only text-light\" href=\"#\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
+                                  <i class=\"fas fa-ellipsis-v\"></i>
+                                </a>
+                                <div class=\"dropdown-menu dropdown-menu-right dropdown-menu-arrow\">
+                                  <a class=\"dropdown-item\" href=\"#\">Edit</a>
+                                  <a class=\"dropdown-item\" href=\"#\" data-toggle=\"modal\" data-target=\"#modal-notification\">Delete</a>
+                                  <a class=\"dropdown-item\" href=\"#\">Send</a>
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                        ";
+                      }
+                    }
+                  ?>
                 </tbody>
               </table>
-            </div>";
-              }
-            }
-?>
+            </div>
             <!-- Delete Modal -->
             <div class="modal fade" id="modal-notification" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
               <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
