@@ -322,7 +322,7 @@
                         <i class=\"fas fa-ellipsis-v\"></i>
                       </a>
                       <div class=\"dropdown-menu dropdown-menu-right dropdown-menu-arrow\">
-                        <a class=\"dropdown-item\" href=\"#\">Edit</a>
+                        <a class=\"dropdown-item\" href=\"#\" data-toggle=\"modal\" data-target=\"#edit-document-form\">Edit</a>
                         <a class=\"dropdown-item\" href=\"#\" data-toggle=\"modal\" data-target=\"#modal-notification\">Delete</a>
                         <a class=\"dropdown-item\" href=\"#\">Send</a>
                       </div>
