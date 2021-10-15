@@ -66,7 +66,7 @@ function myFunction() {
 
                             <input class="form-control" placeholder="first_name" type="text" id="first_name" name="first_name">
                             <input class="form-control" placeholder="last_name" type="text" id="last_name" name="last_name">
-                            <input class="form-control" placeholder="status" type="text" id="status" name="status">
+                            <!-- <input class="form-control" placeholder="status" type="text" id="status" name="status"> -->
                             <input class="form-control" placeholder="position" type="text" id="position" name="position">
                             <input class="form-control" placeholder="company" type="text" id="company" name="company">
 
@@ -79,19 +79,23 @@ function myFunction() {
                                 <option>Inactive</option>
                             </select>
                             </div> -->
+                            
+                            <div id="select_box">
+                            <select onchange="fetch_select(this.value);">
+                            <option>Select state</option>
+                            <?php
+                            include 'config.php';
 
-
-                            <!-- <div class="form-group">
-                                    <select name="status" id="status" class="form-control">
-                                        <option> Please select status: </option>
-                                        <?php
-                                        // foreach($result as $key => $value){?>
-                                        // <option value="<?=$value['status'];?>"><?=$value['status'];?></option>
-
-                                        // <?php 
-                                    // }?>
-                                    </select>
-                            </div> -->
+                            $sql = "SELECT status FROM user";
+                            $result = $connect->query($sql);
+                            if ($result->num_rows > 0) {
+                                // output data of each row
+                                while($row = $result->fetch_assoc()) {
+                            echo "<option>".$row['status']."</option>";
+                            }}
+                            ?>
+                            </select>
+                        </div>
 
                             <div class="form-group">
                                 <div class="input-group input-group-merge input-group-alternative">
@@ -121,6 +125,15 @@ function myFunction() {
         $company= $_POST['company'];
         $PASSWORD= $_POST['PASSWORD'];
         include "config.php";
+
+
+        $sql = "SELECT status FROM user";
+                            $result = $connect->query($sql);
+                            if ($result->num_rows > 0) {
+                                // output data of each row
+                                while($row = $result->fetch_assoc()) {
+                            echo "<option>".$row['status']."</option>";
+                            }}
 
             $sql = "INSERT INTO user(email, first_name, last_name, status, position, company, password) VALUES($email, $first_name, $last_name, $status, $position, $company, $PASSWORD)";
             if($connect->query($sql) === true){

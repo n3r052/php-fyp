@@ -60,7 +60,7 @@
       </div>
     </div>
     <!-- Page content -->
-    <form action="For_pass.php" method="post">
+    <form action="password-reset-token.php" method="post">
     <div class="container mt--8 pb-5">
       <div class="row justify-content-center">
             <div class="col-lg-5 col-md-7">
@@ -104,7 +104,7 @@
                             </label>
                             </div>
                             <div class="text-center">
-                            <button type="submit" class="btn btn-primary my-4">Sign in</button>
+                            <button type="submit" class="btn btn-primary my-4" name="password-reset-token">Sign in</button>
                             </div>
                         </form>
                         </div>
@@ -160,35 +160,35 @@
   <script src="../assets/js/argon.js?v=1.2.0"></script>
 </body>
 <?php
-if(isset($_POST['submit'])){
-  include '../config.php';
-  $email = $_POST['email'];
-  $password = $_POST['password'];
-  $cpassword = $_POST['cpassword'];
+// if(isset($_POST['submit'])){
+//   include '../config.php';
+//   $email = $_POST['email'];
+//   $password = $_POST['password'];
+//   $cpassword = $_POST['cpassword'];
   
-  $_SESSION['info'] = "";
-    $password = mysqli_real_escape_string($connect, $_POST['password']);
-    $cpassword = mysqli_real_escape_string($connect, $_POST['cpassword']);
-    if($password !== $cpassword){
-        $errors['password'] = "Confirm password not matched!";
-    }else{
-        // $email = $_SESSION['email']; //getting this email using session
-        // $encpass = password_hash($password, PASSWORD_BCRYPT);
+//   $_SESSION['info'] = "";
+//     $password = mysqli_real_escape_string($connect, $_POST['password']);
+//     $cpassword = mysqli_real_escape_string($connect, $_POST['cpassword']);
+//     if($password !== $cpassword){
+//         $errors['password'] = "Confirm password not matched!";
+//     }else{
+//         // $email = $_SESSION['email']; //getting this email using session
+//         // $encpass = password_hash($password, PASSWORD_BCRYPT);
 
-        $sql = "SELECT user.user_id, user.first_name, user.last_name, user.email, user.status, user.position, user.company, profile.about, profile.profile, CONCAT(user.first_name, ' ', user.last_name) AS whole_name FROM user
-          INNER JOIN profile on user.user_id = profile.user_id
-          WHERE email = '$email' AND password= '$password'";  
-          $result = mysqli_query($connect, $sql);  
-          $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
-        $update_pass = "UPDATE user SET password = '$password' WHERE email = '$email'";
-        $run_query = $connect->query($update_pass);
-        if($run_query){
-            $info = "Your password changed. Now you can login with your new password.";
-            $_SESSION['info'] = $info;
-            header('Location: login.php');
-        }
-      }
-    }
+//         $sql = "SELECT user.user_id, user.first_name, user.last_name, user.email, user.status, user.position, user.company, profile.about, profile.profile, CONCAT(user.first_name, ' ', user.last_name) AS whole_name FROM user
+//           INNER JOIN profile on user.user_id = profile.user_id
+//           WHERE email = '$email' AND password= '$password'";  
+//           $result = mysqli_query($connect, $sql);  
+//           $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
+//         $update_pass = "UPDATE user SET password = '$password' WHERE email = '$email'";
+//         $run_query = $connect->query($update_pass);
+//         if($run_query){
+//             $info = "Your password changed. Now you can login with your new password.";
+//             $_SESSION['info'] = $info;
+//             header('Location: login.php');
+//         }
+//       }
+//     }
 
 ?>
 </html>
