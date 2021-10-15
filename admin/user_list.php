@@ -402,6 +402,7 @@
 
   <!-- Modal -------------------------------------------------------------------------->
   <!-- New User Modal -->
+  <form action="user_list.php" method="post">
   <div class="modal fade" id="new-user-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -413,7 +414,6 @@
         </div>
 
         <div class="modal-body">
-          <form action="user_list.php" method="post">
             <div class="form-group">
               <!-- <i class="fas fa-user prefix grey-text"></i> -->
 
@@ -441,15 +441,15 @@
               <input class="form-control" placeholder="company" type="text" id="company" name="company">
             </div>
 
-            <div class="form-group col-md-4">
-              <label for="inputState">Status</label>
-              <select id="inputState" class="form-control">
-                <option selected>Choose...</option>
+            <div class="form-group">
+              <label for="status" class="col-form-label">Status:</label>
+              <select id="status" class="form-control">
                 <option>Active</option>
                 <option>Inactive</option>
               </select>
             </div>
-          </form>
+
+          
         </div>
 
         <div class="modal-footer">
@@ -459,10 +459,8 @@
       </div>
     </div>
   </div>
-
   <!-- Edit Modal -->
 
-  <form action="user_list.php" method="post">
   <div class="modal fade" id="edit-user-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -474,7 +472,6 @@
         </div>
 
         <div class="modal-body">
-          <form action="user_list.php" method="post">
             <div class="form-group">
               <!-- <i class="fas fa-user prefix grey-text"></i> -->
               <label for="first_name" class="col-form-label">Username:</label>
@@ -501,15 +498,14 @@
               <input type="text" class="form-control" id="company" name="company" placeholder="company">
             </div>
 
-            <div class="form-group col-md-4">
-              <label for="inputState">Status</label>
-              <select id="inputState" class="form-control">
-                <option selected>Choose...</option>
+            <div class="form-group">
+              <label for="status" class="col-form-label">Status:</label>
+              <select id="status" class="form-control">
                 <option>Active</option>
                 <option>Inactive</option>
               </select>
             </div>
-          </form>
+          
         </div>
 
         <div class="modal-footer">
@@ -572,13 +568,13 @@
       $email= $_POST['email'];
       $first_name= $_POST['first_name'];
       $last_name= $_POST['last_name'];
-      $status= $_POST['inputState'];
+      $status= $_POST['status'];
       $position= $_POST['position'];
       $company= $_POST['company'];
       $PASSWORD= $_POST['PASSWORD'];
       include "../config.php";
 
-          $sql = "INSERT INTO user(username, email, first_name, last_name, status, position, company, password) VALUES($username, $email, $first_name, $last_name, $inputState, $position, $company, $PASSWORD)";
+          $sql = "INSERT INTO user(username, email, first_name, last_name, status, position, company, password) VALUES($username, $email, $first_name, $last_name, $status, $position, $company, $PASSWORD)";
            if($connect->query($sql) === true){
                 echo "success insert";
             
@@ -589,7 +585,7 @@
       $email= $_POST['email'];
       $first_name= $_POST['first_name'];
       $last_name= $_POST['last_name'];
-      $status= $_POST['inputState'];
+      $status= $_POST['status'];
       $position= $_POST['position'];
       $company= $_POST['company'];
       $PASSWORD= $_POST['PASSWORD'];
