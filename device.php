@@ -193,7 +193,6 @@
             <div class="table-responsive">
               <table class="table align-items-center table-flush">
                 <thead class="thead-light">
-                  echo "
                     <th scope="col" class="sort" data-sort="name">Name</th>
                     <th scope="col" class="sort" data-sort="ssid">SSID</th>
                     <th scope="col" class="sort" data-sort="protocol">Protocol</th>
