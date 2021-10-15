@@ -193,7 +193,7 @@
             <div class="table-responsive">
               <table class="table align-items-center table-flush">
                 <thead class="thead-light">
-                  <tr>
+                  echo "
                     <th scope="col" class="sort" data-sort="name">Name</th>
                     <th scope="col" class="sort" data-sort="ssid">SSID</th>
                     <th scope="col" class="sort" data-sort="protocol">Protocol</th>
@@ -204,61 +204,66 @@
                   </tr>
                 </thead>
                 <tbody class="list">
-                  <!-- First Row ----------------------------------------------------------------------------------------------------------------------------->
-                  <tr>
-                    <!-- First Column --------------------------------------------------------->
-                    <th scope="row">
-                      <div class="media align-items-center">
-                        <!-- <a href="#" class="avatar rounded-circle mr-3">
-                          <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
-                        </a> -->
-                        <div class="media-body">
-                            <span class="name mb-0 text-sm">Creative Title 1</span>
+                  <?
+                $sql = "SELECT device_id, location, latitude, longtitude, Imgtaken
+                  FROM `device` WHERE device_id = device_id";
+                  $result = $connect->query($sql);
+                  if ($result->num_rows > 0) {
+                      // output data of each row
+                      while($row = $result->fetch_assoc()) {
+                  //First Row ----------------------------------------------------------------------------------------------------------------------------->
+                  echo "<tr>";
+                    //First Column
+                    echo "<th scope=\"row\">
+                      <div class=\"media align-items-center\">
+                        <div class=\"media-body\">
+                            <span class=\"name mb-0 text-sm\">Creative Title 1</span>
                         </div>
                       </div>
-                    </th>
+                    </th>":
 
-                    <!-- Second Column --------------------------------------------------------->
-                    <td class="budget">
+                    //Second Column
+                    echo "<td class=\"budget\">
                       f8:g8:d7:d5:56
-                    </td>
+                    </td>";
 
-                    <!-- Third Column --------------------------------------------------------->
-                    <td>
+                    //Third Column
+                    echo "<td>
                       something
-                    </td>
+                    </td>";
 
-                    <!-- Fourth Column --------------------------------------------------------->
-                    <td>
+                    //Fourth Column
+                    echo "<td>
                       Tutong
-                    </td>
+                    </td>";
 
-                    <!-- Fifth Column --------------------------------------------------------->
-                    <td>
-                        <span class="badge badge-dot mr-4">
-                            <i class="bg-success"></i>
-                            <span class="status">Active</span>
+                    //Fifth Column
+                    echo "<td>
+                        <span class=\"badge badge-dot mr-4\">
+                            <i class=\"bg-success\"></i>
+                            <span class=\"status\">Active</span>
                         </span>
-                    </td>
+                    </td>";
 
-                    <!-- Burger --------------------------------------------------------->
-                    <td class="text-right">
-                      <div class="dropdown">
-                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="fas fa-ellipsis-v"></i>
+                    //Burger
+                    echo "<td class=\"text-right\">
+                      <div class=\"dropdown\">
+                        <a class=\"btn btn-sm btn-icon-only text-light\" href=\"#\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
+                          <i class=\"fas fa-ellipsis-v\"></i>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                          <a class="dropdown-item" href="#">Edit</a>
-                          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal-notification">Delete</a>
-                          <a class="dropdown-item" href="#">Send</a>
+                        <div class=\"dropdown-menu dropdown-menu-right dropdown-menu-arrow\">
+                          <a class=\"dropdown-item\" href=\"#\">Edit</a>
+                          <a class=\"dropdown-item\" href=\"#\" data-toggle=\"modal\" data-target=\"#modal-notification\">Delete</a>
+                          <a class=\"dropdown-item\" href=\"#\">Send</a>
                         </div>
                       </div>
                     </td>
                   </tr>
                 </tbody>
               </table>
-            </div>
-
+            </div>";
+              }
+?>
             <!-- Delete Modal -->
             <div class="modal fade" id="modal-notification" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
               <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
