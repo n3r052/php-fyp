@@ -309,7 +309,7 @@
                                   <i class=\"fas fa-ellipsis-v\"></i>
                                 </a>
                                 <div class=\"dropdown-menu dropdown-menu-right dropdown-menu-arrow\">
-                                  <a class=\"dropdown-item\" href=\"#\">Edit</a>
+                                  <a class=\"dropdown-item\" href=\"#\" data-toggle=\"modal\" data-target=\"#edit-dev-form\">Edit</a>
                                   <a class=\"dropdown-item\" href=\"#\" data-toggle=\"modal\" data-target=\"#modal-notification\">Delete</a>
                                   <a class=\"dropdown-item\" href=\"#\">Send</a>
                                 </div>
@@ -325,7 +325,7 @@
             </div>
 
             <!-- Edit Modal -->
-
+            <form action="device.php" method="post">
   <div class="modal fade" id="edit-dev-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -477,4 +477,24 @@
   <script src="assets/js/argon.js?v=1.2.0"></script>
 </body>
 
+<?php
+ if (isset($_POST['save'])){
+  $device_id= $_POST['device_id'];
+  $location= $_POST['location'];
+  $latitude= $_POST['latitude'];
+  $longtitude= $_POST['longtitude'];
+  $Imgtaken= $_POST['Imgtaken'];
+  include "config.php";
+        
+  $query = "UPDATE `device` SET 
+  `device_id`='". $device_id ."', 
+  `location`='". $location ."', 
+  `latitude`='". $latitude ."', 
+  `longtitude`='". $longtitude ."', 
+  `Imgtaken`='". $Imgtaken ."'
+  
+  WHERE `device_id`='". 'user.device_id' ."'";
+
+  }
+  ?>
 </html>
