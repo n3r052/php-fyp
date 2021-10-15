@@ -211,7 +211,7 @@
                   if ($result->num_rows > 0) {
                       // output data of each row
                       while($row = $result->fetch_assoc()) {
-                  //First Row ----------------------------------------------------------------------------------------------------------------------------->
+                  //First Row
                   echo "<tr>";
                     //First Column
                     echo "<th scope=\"row\">
@@ -263,6 +263,7 @@
               </table>
             </div>";
               }
+            }
 ?>
             <!-- Delete Modal -->
             <div class="modal fade" id="modal-notification" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
