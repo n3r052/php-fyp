@@ -37,11 +37,11 @@
     $pdf->Cell(10,10,$owner,0,1);
 
 
-    // $pdf->Cell(80,10,'This notice is to inform you that you have been cited with a traffic violation and must pay your citation ',0,1);
-    // $pdf->Cell(0,10,'within 72hours. We have payment plans available if necessary.',0,0);
+    $pdf->Cell(80,30,'This notice is to inform you that you have been cited with a traffic violation and must pay your citation ',0,1);
+    $pdf->Cell(0,0,'within 72hours. We have payment plans available if necessary.',0,0);
     
 
-    // $pdf->Image('logo.png',140,30,0,30);
+    $pdf->Image('logo.png',140,30,0,30);
     // $pdf->Image('logo.png',30,80,0,90);
 
     $pdf->Cell(0,10,'',0,1,0);
@@ -58,8 +58,8 @@
 
     $pdf->Cell(0,10,'DETAILS OF CITATION',1,1,'C');
 
-    // $pdf->Cell(100,10,'Offense:',1,0);
-    // $pdf->Cell(0,10,$offense_type,1,1);
+    $pdf->Cell(100,10,'Offense:',1,0);
+    $pdf->Cell(0,10,$offense_type,1,1);
 
     // $pdf->Cell(100,10,'City:',1,0);
     // $pdf->Cell(0,10,$location,1,1);
@@ -69,9 +69,9 @@
 
     $pdf->Cell(0,10,'All citations must be paid online.',0,1);
     $pdf->Cell(0,20,'If you have any questions or concerns, or need assistance, please contact me at +673 7135636 ',0,1);
-    $pdf->Cell(0,5,'or by email support teams at 19ftt1185@student.pb.edu.bn.',0,1);
+    $pdf->Cell(0,0,'or by email support teams at 19ftt1185@student.pb.edu.bn.',0,1);
     $pdf->Cell(0,20,'This was an automated message sent on behalf of your local Department of Motor Vehicles. ',0,1);
-    $pdf->Cell(0,5,'Do not reply to this message and do not mail in your checks to us.',0,1);
+    $pdf->Cell(0,0,'Do not reply to this message and do not mail in your checks to us.',0,1);
     
     
 
