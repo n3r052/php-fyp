@@ -261,7 +261,7 @@
                             <i class=\"fas fa-ellipsis-v\"></i>
                             </a>
                             <div class=\"dropdown-menu dropdown-menu-right dropdown-menu-arrow\">
-                            <a class=\"dropdown-item\" href=\"#\" data-toggle=\"modal\" data-target=\"#edit-user-form\">Edit</a>
+                            <a class=\"dropdown-item\" href=\"#\" data-toggle=\"modal\" data-target=\"#edit-dev-form\">Edit</a>
                             <a class=\"dropdown-item\" href=\"#\" data-toggle=\"modal\" data-target=\"#modal-notification\">Delete</a>
                             </div>
                         </div>
@@ -270,10 +270,61 @@
                     </tr>";
               }
             }
-?>
+            ?>
                 </tbody>
               </table>
             </div>
+
+            <!-- Edit Modal -->
+
+  <div class="modal fade" id="edit-dev-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Device information</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+            <div class="form-group">
+              <!-- <i class="fas fa-user prefix grey-text"></i> -->
+              <label for="device_id" class="col-form-label">Device ID:</label>
+              <input type="text" class="form-control" id="device_id" name="device_id" placeholder="device_id">
+            </div>
+
+            <div class="form-group">
+              <label for="location" class="col-form-label">Location:</label>
+              <input type="text" class="form-control" id="location" name="location" placeholder="location">
+            </div>
+
+            <div class="form-group">
+              <label for="latitude" class="col-form-label">Latitude:</label>
+              <input type="text" class="form-control" id="latitude" name="latitude" placeholder="latitude">
+            </div>
+
+            <div class="form-group">
+              <label for="longtitude" class="col-form-label">Longtitude:</label>
+              <input type="text" class="form-control" id="longtitude" name="longtitude" placeholder="longtitude">
+            </div>
+
+            <div class="form-group">
+              <label for="Imgtaken" class="col-form-label">Image taken:</label>
+              <input type="text" class="form-control" id="Imgtaken" name="Imgtaken" placeholder="Imgtaken">
+            </div>
+          
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="save" class="btn btn-primary">Save Changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </form>
+
             <!-- Delete Modal -->
             <div class="modal fade" id="modal-notification" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
               <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
