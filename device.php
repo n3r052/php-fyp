@@ -50,33 +50,96 @@
           <!-- Nav items -->
           <ul class="navbar-nav">
 
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">
-                <i class="ni ni-tv-2 text-primary"></i>
-                <span class="nav-link-text">Dashboard</span>
-              </a>
-            </li>
+          <?php
+              if($position == "admin"){
+                //echo "am admin";
+                echo " 
+                <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"index.php\">
+                  <i class=\"ni ni-tv-2 text-primary\"></i>
+                  <span class=\"nav-link-text\">Dashboard</span>
+                </a>
+              </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="report.php">
-                <i class="ni ni-bullet-list-67 text-default"></i>
-                <span class="nav-link-text">Compose Report</span>
-              </a>
-            </li>
+              <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"admin/user_list.php\">
+                  <i class=\"ni ni-bullet-list-67 text-default\"></i>
+                  <span class=\"nav-link-text\">User List</span>
+                </a>
+              </li>
+  
+              <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"report.php\">
+                  <i class=\"ni ni-bullet-list-67 text-default\"></i>
+                  <span class=\"nav-link-text\">Compose Report</span>
+                </a>
+              </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="documents.html">
-                <i class="ni ni-bullet-list-67 text-default"></i>
-                <span class="nav-link-text">Documents</span>
-              </a>
-            </li>
+              <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"documents.php\">
+                  <i class=\"ni ni-bullet-list-67 text-default\"></i>
+                  <span class=\"nav-link-text\">Document</span>
+                </a>
+              </li>
 
-            <li class="nav-item">
-              <a class="nav-link active" href="examples/map.html">
-                <i class="ni ni-pin-3 text-primary"></i>
-                <span class="nav-link-text">Google</span>
-              </a>
-            </li>
+              <li class=\"nav-item\">
+                <a class=\"nav-link active\" href=\"device.php\">
+                  <i class=\"ni ni-pin-3 text-primary\"></i>
+                  <span class=\"nav-link-text\">Device List</span>
+                </a>
+              </li>
+                ";
+              }elseif($position == "operator"){
+               // echo "am operator";
+
+                echo " 
+                <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"operator/index.php\">
+                  <i class=\"ni ni-tv-2 text-primary\"></i>
+                  <span class=\"nav-link-text\">Dashboard</span>
+                </a>
+              </li>
+  
+              <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"report.php\">
+                  <i class=\"ni ni-bullet-list-67 text-default\"></i>
+                  <span class=\"nav-link-text\">Compose Report</span>
+                </a>
+              </li>
+  
+              <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"documents.php\">
+                  <i class=\"ni ni-bullet-list-67 text-default\"></i>
+                  <span class=\"nav-link-text\">Documents</span>
+                </a>
+              </li>
+  
+              <li class=\"nav-item\">
+                <a class=\"nav-link active\" href=\"device.php.\">
+                  <i class=\"ni ni-pin-3 text-primary\"></i>
+                  <span class=\"nav-link-text\">Device</span>
+                </a>
+              </li>
+                ";
+              }elseif($position == "officer"){
+                //echo "am officer";
+                echo " 
+                <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"officer/index.php\">
+                  <i class=\"ni ni-tv-2 text-primary\"></i>
+                  <span class=\"nav-link-text\">Dashboard</span>
+                </a>
+              </li>
+  
+              <li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"report.php\">
+                  <i class=\"ni ni-bullet-list-67 text-default\"></i>
+                  <span class=\"nav-link-text\">Compose Report</span>
+                </a>
+              </li>
+                ";
+              }
+            ?>
 
           </ul>
         </div>
@@ -194,11 +257,11 @@
               <table class="table align-items-center table-flush">
                 <thead class="thead-light">
                   echo "
-                    <th scope="col" class="sort" data-sort="name">Name</th>
-                    <th scope="col" class="sort" data-sort="ssid">SSID</th>
-                    <th scope="col" class="sort" data-sort="protocol">Protocol</th>
-                    <th scope="col" class="sort" data-sort="location">Location</th>
-                    <th scope="col" class="sort" data-sort="activity">Activity</th>
+                    <th scope="col" class="sort" data-sort="name">Device Id</th>
+                    <th scope="col" class="sort" data-sort="ssid">Location</th>
+                    <th scope="col" class="sort" data-sort="protocol">Latitude</th>
+                    <th scope="col" class="sort" data-sort="location">Longtitude</th>
+                    <th scope="col" class="sort" data-sort="activity">Total Amount Taken</th>
 
                     <th scope="col"></th>
                   </tr>
@@ -220,7 +283,7 @@
                             <span class=\"name mb-0 text-sm\">Creative Title 1</span>
                         </div>
                       </div>
-                    </th>":
+                    </th>";
 
                     //Second Column
                     echo "<td class=\"budget\">
