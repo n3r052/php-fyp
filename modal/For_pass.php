@@ -60,8 +60,7 @@
       </div>
     </div>
     <!-- Page content -->
-
-    <form action="password-reset-token.php" method="post">
+    <form action="For_pass.php" method="post">
     <div class="container mt--8 pb-5">
       <div class="row justify-content-center">
             <div class="col-lg-5 col-md-7">
@@ -70,15 +69,46 @@
                         <!-- <div class="text-center text-muted mb-4">
                             <small>Or sign in with credentials</small>
                         </div> -->
-                            
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Email address</label>
-                  <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp">
-                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        <form role="form">
+
+                            <div class="form-group mb-3">
+                            <div class="input-group input-group-merge input-group-alternative">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                                </div>
+                            <input class="form-control" placeholder="email" type="text" id="email" name="first_name">
+                            </div>
+                            </div>
+                            <div class="form-group">
+                            <div class="input-group input-group-merge input-group-alternative">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                </div>
+                            <input class="form-control" placeholder="password" type="password" id="password" name="password">
+                            </div>
+                            </div>
+
+                            <div class="form-group">
+                            <div class="input-group input-group-merge input-group-alternative">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                </div>
+                            <input class="form-control" placeholder="cpassword" type="password" id="cpassword" name="cpassword">
+                            </div>
+                            </div>
+
+                            <div class="custom-control custom-control-alternative custom-checkbox">
+                            <input class="custom-control-input" id=" customCheckLogin" type="checkbox">
+                            <label class="custom-control-label" for=" customCheckLogin">
+                                <!-- <span class="text-muted">Remember me</span> -->
+                            </label>
+                            </div>
+                            <div class="text-center">
+                            <button type="submit" class="btn btn-primary my-4" name="password-reset-token">change</button>
+                            </div>
+                        </form>
+                        </div>
                 </div>
-                <input type="submit" name="password-reset-token" class="btn btn-primary">
-                </div>
-                </form>
                 
 
                 <div class="row mt-3">
@@ -130,35 +160,33 @@
   <script src="../assets/js/argon.js?v=1.2.0"></script>
 </body>
 <?php
-// if(isset($_POST['submit'])){
-//   include '../config.php';
-//   $email = $_POST['email'];
-//   $password = $_POST['password'];
-//   $cpassword = $_POST['cpassword'];
+if(isset($_POST['submit'])){
+  include '../config.php';
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+  $cpassword = $_POST['cpassword'];
   
-//   $_SESSION['info'] = "";
-//     $password = mysqli_real_escape_string($connect, $_POST['password']);
-//     $cpassword = mysqli_real_escape_string($connect, $_POST['cpassword']);
-//     if($password !== $cpassword){
-//         $errors['password'] = "Confirm password not matched!";
-//     }else{
-//         // $email = $_SESSION['email']; //getting this email using session
-//         // $encpass = password_hash($password, PASSWORD_BCRYPT);
+  $_SESSION['info'] = "";
+    $password = mysqli_real_escape_string($connect, $_POST['password']);
+    $cpassword = mysqli_real_escape_string($connect, $_POST['cpassword']);
+    if($password !== $cpassword){
+        $errors['password'] = "Confirm password not matched!";
+    }else{
+        // $email = $_SESSION['email']; //getting this email using session
+        // $encpass = password_hash($password, PASSWORD_BCRYPT);
 
-//         $sql = "SELECT user.user_id, user.first_name, user.last_name, user.email, user.status, user.position, user.company, profile.about, profile.profile, CONCAT(user.first_name, ' ', user.last_name) AS whole_name FROM user
-//           INNER JOIN profile on user.user_id = profile.user_id
-//           WHERE email = '$email' AND password= '$password'";  
-//           $result = mysqli_query($connect, $sql);  
-//           $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
-//         $update_pass = "UPDATE user SET password = '$password' WHERE email = '$email'";
-//         $run_query = $connect->query($update_pass);
-//         if($run_query){
-//             $info = "Your password changed. Now you can login with your new password.";
-//             $_SESSION['info'] = $info;
-//             header('Location: login.php');
-//         }
-//       }
-//     }
+        $sql = "SELECT * FROM user WHERE email = '$email'";  
+          $result = mysqli_query($connect, $sql);  
+          $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
+        $update_pass = "UPDATE `user` SET `password`= "$cpassword" WHERE email = "$email";";
+        $run_query = $connect->query($update_pass);
+        if($run_query){
+            $info = "Your password changed. Now you can login with your new password.";
+            $_SESSION['info'] = $info;
+            header('Location: login.php');
+        }
+      }
+    }
 
 ?>
 </html>
