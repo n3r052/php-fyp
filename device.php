@@ -294,6 +294,7 @@
                             </div>
                         </td>";
 
+
                             //Fifth Column
                             echo "<td>
                             <div class=\"media-body\">
