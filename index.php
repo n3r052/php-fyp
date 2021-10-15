@@ -93,7 +93,7 @@
               </li>
 
               <li class=\"nav-item\">
-                <a class=\"nav-link\" href=\"location.php\">
+                <a class=\"nav-link\" href=\"device.php\">
                   <i class=\"ni ni-pin-3 text-primary\"></i>
                   <span class=\"nav-link-text\">Device List</span>
                 </a>
