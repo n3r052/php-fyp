@@ -198,11 +198,11 @@
                 <form action="form.php" method="post">
                   <?php
                   //to allow username be extracted based from the session user_id
-                  $sql = "SELECT u.user_id, u.offense_type, i.image_id, p.plate_no
-                  FROM `user` AS u
-                  INNER JOIN `confirmation_list` AS c ON c.offense_type = u.offense_type
-                  INNER JOIN `image_list` AS i ON i.image_id = c.image_id
-                  INNER JOIN `driver` AS p ON p.plate_no = c.plat_no
+                  $sql = "SELECT u.user_id, i.image_id, i.image, p.plate_no, c.offense_type, p.owner 
+                  FROM `user` AS u 
+                  INNER JOIN `confirmation_list` AS c 
+                  INNER JOIN `image_list` AS i ON i.image_id = c.image_id 
+                  INNER JOIN `driver` AS p ON p.plate_no = c.plat_no 
                   WHERE user_id = user_id";
                   $result = $connect->query($sql);
                   if ($result->num_rows > 0) {
