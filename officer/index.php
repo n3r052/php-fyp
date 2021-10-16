@@ -185,61 +185,83 @@
                 <table id="dtBasicExample" class="table align-items-center table-flush">
                   <thead class="thead-light">
                     <tr>
-                      <th scope="col" class="sort" data-sort="name">Name</th>
-                      <th scope="col" class="sort" data-sort="budget">Date</th>
-                      <th scope="col" class="sort" data-sort="status">Status</th>
-                      <th scope="col">Users</th>
-                      <th scope="col"></th>
+                      <th class="th-sm" >ID</th>
+                      <th class="th-sm" >Plate License</th>
+                      <th class="th-sm" >Offense Type</th>
+                      <th class="th-sm">Status</th>
+                      <th class="th-sm"></th>
                     </tr>
                   </thead>
                   <tbody class="list">
-                    <!-- First Row ----------------------------------------------------------------------------------------------------------------------------->
+                  <?php
+                  $sql = "SELECT 
+                  i.image_id,
+                  p.plate_no,
+                  c.offense_type,
+                  i.status
+                  FROM `confirmation_list` AS c
+                  INNER JOIN `image_list` AS i ON i.image_id = c.image_id
+                  INNER JOIN `driver` AS p ON p.plate_no = c.plat_no
+                  WHERE i.status = 'pending'";
+                  $result = $connect->query($sql);
+                  if ($result->num_rows > 0){
+                    while($row = $result->fetch_assoc()) {
+                    echo"
                     <tr>
-                      <!-- First Column --------------------------------------------------------->
-                      <th scope="row">
-                        <div class="media align-items-center">
-                          <div class="media-body">
-                              <span class="name mb-0 text-sm"><a href="info.php">Creative Title 1</span>
-                          </div>
-                        </div>
-                      </th>
-  
-                      <!-- Second Column --------------------------------------------------------->
-                      <td class="budget">
-                        Date
-                      </td>
-  
-                      <!-- Third Column --------------------------------------------------------->
-                      <td>
-                        <span class="badge badge-dot mr-4">
-                          <i class="bg-warning"></i>
-                          <span class="status">pending</span>
-                        </span>
-                      </td>
-  
-                      <!-- Fourth Column --------------------------------------------------------->
-                      <td>
-                        <div class="avatar-group">
-                          <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="John">
-                            <img alt="Image placeholder" src="../assets/img/theme/team-1.jpg">
-                          </a>
-                        </div>
-                      </td>
-  
-                      <!-- Burger --------------------------------------------------------->
-                      <td class="text-right">
-                        <div class="dropdown">
-                          <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-ellipsis-v"></i>
-                          </a>
-                          <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                            <a class="dropdown-item" href="#">Edit</a>
-                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal-notification">Delete</a>
-                            <a class="dropdown-item" href="#">Send</a>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
+                  <th scope=\"row\">
+                    <div class=\"media align-items-center\">
+                      <div class=\"media-body\">
+                        <span class=\"name mb-0 text-sm\">".$row['image_id']."</span>
+                      </div>
+                    </div>
+                  </th>
+
+                  <td class=\"budget\">
+                  <a href=\"info.php\">
+                  ".$row['plate_no']."
+                  </a>
+                  </td>
+                 
+                  <td>
+                    ".$row['offense_type']."
+                  </td>";
+                  
+                    if ($row['status']=="confirm"){
+                      echo 
+                    "<td>
+                    <span class=\"badge badge-dot mr-4\">
+                      <i class=\"bg-success\"></i>
+                      <span class=\"status\">".$row['status']."</span>
+                    </span>
+                    </td>";
+                    }else{
+                      echo
+                    "<td>
+                    <span class=\"badge badge-dot mr-4\">
+                      <i class=\"bg-warning\"></i>
+                      <span class=\"status\">".$row['status']."</span>
+                    </span>
+                    </td>";
+                    }
+                  echo"
+                  <td class=\"text-right\">
+                    <div class=\"dropdown\">
+                      <a class=\"btn btn-sm btn-icon-only text-light\" href=\"#\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
+                        <i class=\"fas fa-ellipsis-v\"></i>
+                      </a>
+                      <div class=\"dropdown-menu dropdown-menu-right dropdown-menu-arrow\">
+                        <a class=\"dropdown-item\" href=\"#\" data-toggle=\"modal\" data-target=\"#edit-document-form\">Edit</a>
+                        <a class=\"dropdown-item\" href=\"#\" data-toggle=\"modal\" data-target=\"#modal-notification\">Delete</a>
+                        <a class=\"dropdown-item\" href=\"#\">Send</a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>";
+                    }
+                  }else{
+                    echo "0 results";
+                  }
+                  ?>
                   </tbody>
                 </table>
               </div>
