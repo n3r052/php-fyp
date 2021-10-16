@@ -412,7 +412,9 @@
   </div>
   <!-- Edit Modal -->
 <?php
-$sql = "SELECT * FROM user";
+$sql = "SELECT user.first_name, user.last_name, user.email, user.password, user.position, user.company
+FROM user
+WHERE user.user_id = user_id";
 $result = $connect->query($sql);
 if ($result->num_rows > 0) {
     // output data of each row
@@ -441,7 +443,7 @@ if ($result->num_rows > 0) {
 
             echo "<div class=\"form-group\">
               <label for=\"PASSWORD\" class=\"col-form-label\">Password:</label>
-              <input type=\"text\" class=\"form-control\" id=\"PASSWORD\" name=\"PASSWORD\" placeholder='".$row['PASSWORD']."' value='".$row['PASSWORD']."'>
+              <input type=\"text\" class=\"form-control\" id=\"PASSWORD\" name=\"PASSWORD\" placeholder='".$row['password']."' value='".$row['password']."'>
             </div>";
 
             echo "<div class=\"form-group\">
