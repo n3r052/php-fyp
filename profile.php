@@ -8,7 +8,7 @@
 
     $sql = "SELECT user.user_id, user.first_name, user.last_name, user.email, user.status, user.position, user.company, profile.about, profile.profile, CONCAT(user.first_name, ' ', user.last_name) AS whole_name FROM user
             INNER JOIN profile on user.user_id = profile.user_id
-            WHERE user.user_id = '$userid'";
+            WHERE user.user_id = $userid";
                     $result = $connect->query($sql);
                     if ($result->num_rows > 0) {
                         // output data of each row
@@ -296,81 +296,83 @@
           </div>
 
           <!-- Update Profile Page ----------------------------------------------------------------------------------------->
-          <div class="col-xl-8 order-xl-1">
-            <div class="card">
-              <div class="card-header">
-                <div class="row align-items-center">
-                  <div class="col-8">
-                    <h3 class="mb-0">Edit profile </h3>
+          <form action="profile.php" method="post">
+          <?php
+          echo "<div class=\"col-xl-8 order-xl-1\">
+            <div class=\"card\">
+              <div class=\"card-header\">
+                <div class=\"row align-items-center\">
+                  <div class=\"col-8\">
+                    <h3 class=\"mb-0\">Edit profile </h3>
                   </div>
                 </div>
               </div>
-              <div class="card-body">
-                <form action="profile.php" method="post">
-                  <h6 class="heading-small text-muted mb-4">User information</h6>
-                  <div class="pl-lg-4">
-                  <div class="row">
-                      <div class="col-lg-6">
-                        <div class="form-group">
-                          <label class="form-control-label" for="input-first-name">First name</label>
-                          <input type="text" id="input-first-name" class="form-control"> 
+              <div class=\"card-body\">
+                  <h6 class=\"heading-small text-muted mb-4\">User information</h6>
+                  <div class=\"pl-lg-4\">
+                  <div class=\"row\">
+                      <div class=\"col-lg-6\">
+                        <div class=\"form-group\">
+                          <label class=\"form-control-label\" for=\"first_name\">First name</label>
+                          <input type=\"text\" id=\"first_name\" name=\"first_name\" placeholder='".$row['first_name']."' value='".$row['first_name']."' class=\"form-control\"> 
                         </div>
                       </div>
-                      <div class="col-lg-6">
-                        <div class="form-group">
-                          <label class="form-control-label" for="input-last-name">Last name</label>
-                          <input type="text" id="input-last-name" class="form-control"> 
+                      <div class=\"col-lg-6\">
+                        <div class=\"form-group\">
+                          <label class=\"form-control-label\" for=\"last_name\">Last name</label>
+                          <input type=\"text\" id=\"last_name\" name=\"last_name\" placeholder='".$row['last_name']."' value='".$row['last_name']."' class=\"form-control\"> 
                         </div>
                       </div>
                     </div>
 
-                    <div class="row">
-                      <div class="col-lg-6">
-                        <div class="form-group">
-                          <label class="form-control-label" for="input-email">Email address</label>
-                          <input type="email" id="input-email" class="form-control">
+                    <div class=\"row\">
+                      <div class=\"col-lg-6\">
+                        <div class=\"form-group\">
+                          <label class=\"form-control-label\" for=\"email\">Email address</label>
+                          <input type=\"email\" id=\"email\" name=\"email\" placeholder='".$row['email']."' value='".$row['email']."' class=\"form-control\">
                         </div>
                       </div>
                     </div>
 
                   </div>
-                  <hr class="my-4" />
-                  <!-- Description -->
-                  <h6 class="heading-small text-muted mb-4">About me</h6>
-                  <div class="pl-lg-4">
-                    <div class="form-group">
-                      <label class="form-control-label">About Me</label>
-                      <textarea rows="4" class="form-control" placeholder="<?php echo $row['about']; ?>"></textarea>
+                  <hr class=\"my-4\" />";
+                  //Description
+                  echo "<h6 class=\"heading-small text-muted mb-4\">About me</h6>
+                  <div class=\"pl-lg-4\">
+                      <div class=\"form-group\">
+                      <label class=\"form-control-label\" for=\"about\">About me</label>
+                      <input type=\"about\" id=\"about\" name=\"about\" placeholder='".$row['about']."' value='".$row['about']."' class=\"form-control\">
                     </div>
-                  </div>
-                  <!-- Form Button Modal, Trigger ----------------------------------------------------------->
-                  <button type="save" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal">Save</button>
+                  </div>";
+                  //Form Button Modal, Trigger
+                  echo "<button type=\"save\" name=\"save\" class=\"btn btn-primary btn-lg\" data-toggle=\"modal\" data-target=\"#exampleModal\">Save</button>";
 
-                  <!-- Modal ------------------------------------------------------->
-                  <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        </div>
-                        <div class="modal-body">
-                        ...
-                        </div>
-                        <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="save" class="btn btn-primary">Save changes</button>
-                        </div>
-                    </div>
-                    </div>
-                </div> -->
-                </form>
-              </div>
+                  //Modal ------------------------------------------------------->
+                  //<div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
+                //     <div class=\"modal-dialog modal-dialog-centered\" role=\"document\">
+                //     <div class=\"modal-content\">
+                //         <div class=\"modal-header\">
+                //         <h5 class=\"modal-title\" id=\"exampleModalLabel\">Modal title</h5>
+                //         <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">
+                //             <span aria-hidden=\"true\">&times;</span>
+                //         </button>
+                //         </div>
+                //         <div class=\"modal-body\">
+                //         ...
+                //         </div>
+                //         <div class=\"modal-footer\">
+                //         <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>
+                //         <button type=\"save\" class=\"btn btn-primary\">Save changes</button>
+                //         </div>
+                //     </div>
+                //     </div>
+                // </div>
+                echo "</div>
             </div>
-          </div>
+          </div>";
+          ?>
         </div>
+        </form>
         <?php
                 }
             }else{
@@ -423,10 +425,15 @@
 if(isset($_POST['save'])){
   include 'config.php';
 
-  $first_name = $_POST['input-first-name'];
-  $last_name = $_POST['input-last-name'];
-  $email = $_POST['input-email'];
-  $query = "UPDATE `user` SET `first_name`='". $first_name ."',`last_name`='". $last_name ."' WHERE `user_id`=`3001`";
+  $first_name = $_POST['first_name'];
+  $last_name = $_POST['last_name'];
+  $email = $_POST['email'];
+  $about = $_POST['about'];
+  $query = "UPDATE `user` SET `first_name`='". $first_name ."',
+            `last_name`='". $last_name ."',
+            `email`='". $email ."',
+            `about`='". $about ."'
+            WHERE user_id=user_id";
   
   // $result = mysqli_query($connect, $query);
 
