@@ -289,7 +289,7 @@
                       </div>
                     </div>
                   </th>
-                  
+
                   <td class=\"budget\">
                   ".$row['plate_no']."
                   </td>
@@ -350,43 +350,57 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+<?php
+$sql = "SELECT 
+i.image_id,
+p.plate_no,
+c.offense_type,
+i.status
+FROM `confirmation_list` AS c
+INNER JOIN `image_list` AS i ON i.image_id = c.image_id
+INNER JOIN `driver` AS p ON p.plate_no = c.plat_no
+";
+$result = $connect->query($sql);
+if ($result->num_rows > 0){
+  while($row = $result->fetch_assoc()) {
+        echo"<div class=\"modal-body\">
+            <div class=\"form-group\">
+              <label for=\"image_id\" class=\"col-form-label\">Image ID:</label>
+              <input type=\"text\" class=\"form-control\" id=\"image_id\" name=\"image_id\" placeholder='".$row['image_id']."' value='".$row['image_id']."'>
+            </div>";
+            
+            echo"<div class=\"form-group\">
+              <label for=\"plate_no\" class=\"col-form-label\">Plate Number:</label>
+              <input type=\"text\" class=\"form-control\" id=\"plate_no\" name=\"plate_no\" placeholder='".$row['plate_no']."' value='".$row['plate_no']."'>
+            </div>";
 
-        <div class="modal-body">
-          <form>
-            <div class="form-group">
-              <label for="name" class="col-form-label">Name:</label>
-              <input type="text" class="form-control" id="name" placeholder="File name">
-            </div>
+            echo"<div class=\"form-group\">
+              <label for=\"offense_type\" class=\"col-form-label\">Offense:</label>
+              <input type=\"text\" class=\"form-control\" id=\"offense_type\" name=\"offense_type\" placeholder='".$row['offense_type']."' value='".$row['offense_type']."'>
+            </div>";
 
-            <div class="form-group">
-              <label for="date" class="col-form-label">Date:</label>
-              <input type="text" class="form-control" id="date" placeholder="Date">
-            </div>
-
-            <div class="form-group">
-              <label for="user" class="col-form-label">User:</label>
-              <input type="text" class="form-control" id="user" placeholder="user">
-            </div>
-
-            <div class="form-group col-md-4">
-              <label for="inputState">Status</label>
-              <select id="inputState" class="form-control">
-                <option selected>Choose...</option>
+            echo"<div class=\"form-group col-md-4\">
+              <label for=\"inputState\">Status</label>
+              <select id=\"inputState\" name=\"status\" class=\"form-control\">
                 <option>Active</option>
                 <option>Inactive</option>
               </select>
             </div>
-          </form>
-        </div>
+          
+        </div>";
 
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="save" class="btn btn-primary">Save Changes</button>
+        echo"<div class=\"modal-footer\">
+          <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Cancel</button>
+          <button type=\"save\" class=\"btn btn-primary\">Save Changes</button>
         </div>
       </div>
     </div>
-  </div>
+  </div>";
+  }
+}
+  ?>
   </form>
+
 
             <!-- Delete Modal -->
             <div class="modal fade" id="modal-notification" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
@@ -513,18 +527,26 @@
 </html>
 <?php
 if (isset($_POST['save'])){
-  $name= $_POST['name'];
-  $date= $_POST['date'];
-  $status= $_POST['inputState'];
-  $user= $_POST['user'];
+  $image_id= $_POST['image_id'];
+  $offense_type= $_POST['offense_type'];
+  $plate_no= $_POST['plate_no'];
+  $status= $_POST['status'];
   include "config.php";
-        
-  $query = "UPDATE `user` SET 
-  `name`='". $name ."', 
-  `date`='". $date ."', 
-  `status`='". $inputState ."', 
-  `user`='". $user ."', 
-  WHERE `user_id`=user.user_id";
+
+  $sql = "SELECT 
+  i.image_id,
+  p.plate_no,
+  c.offense_type,
+  i.status
+  FROM `confirmation_list` AS c
+  INNER JOIN `image_list` AS i ON i.image_id = c.image_id
+  INNER JOIN `driver` AS p ON p.plate_no = c.plat_no";
+
+  $query = "UPDATE `confirmation_list` SET `image_id`='". $image_id ."', `offense_type`='". $offense_type ."'";
+  $query = "UPDATE `driver` SET `plate_no`='". $plate_no ."'"; 
+  $query = "UPDATE `image_list` SET `status`='". $status ."'";
+  $statement = $connect->prepare($query);
+  $statement->execute();
 
   }
 

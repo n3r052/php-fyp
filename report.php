@@ -317,6 +317,11 @@
       $image= $_POST['image'];
       $offense_type= $_POST['offense_type'];
         include "config.php";
+
+        $query = "UPDATE `driver` SET `owner`='". $owner ."'
+        WHERE plate_no='". $plate_no ."'";
+        $statement = $connect->prepare($query);
+        $statement->execute();
     }
     ?> 
 

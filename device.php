@@ -321,53 +321,60 @@
             </div>
 
             <!-- Edit Modal -->
-            <form action="device.php" method="post">
-  <div class="modal fade" id="edit-dev-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Edit Device information</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+<form action="device.php" method="post">
+  <?php
+  $sql = "SELECT * FROM device";
+  $result = $connect->query($sql);
+  if ($result->num_rows > 0) {
+      // output data of each row
+      while($row = $result->fetch_assoc()) {
+  echo "<div class=\"modal fade\" id=\"edit-dev-form\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">
+    <div class=\"modal-dialog\">
+      <div class=\"modal-content\">
+        <div class=\"modal-header\">
+          <h5 class=\"modal-title\" id=\"exampleModalLabel\">Edit Device information</h5>
+          <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">
+            <span aria-hidden=\"true\">&times;</span>
           </button>
-        </div>
+        </div>";
 
-        <div class="modal-body">
-            <div class="form-group">
-              <!-- <i class="fas fa-user prefix grey-text"></i> -->
-              <label for="device_id" class="col-form-label">Device ID:</label>
-              <input type="text" class="form-control" id="device_id" name="device_id" placeholder="device_id">
-            </div>
+        echo "<div class=\"modal-body\">
+            <div class=\"form-group\">
+              <!-- <i class=\"fas fa-user prefix grey-text\"></i> -->
+              <label for=\"device_id\" class=\"col-form-label\">Device ID:</label>
+              <input type=\"text\" class=\"form-control\" id=\"device_id\" name=\"device_id\" placeholder='".$row['device_id']."' value='".$row['device_id']."'>
+            </div>";
 
-            <div class="form-group">
-              <label for="location" class="col-form-label">Location:</label>
-              <input type="text" class="form-control" id="location" name="location" placeholder="location">
-            </div>
+            echo "<div class=\"form-group\">
+              <label for=\"location\" class=\"col-form-label\">Location:</label>
+              <input type=\"text\" class=\"form-control\" id=\"location\" name=\"location\" placeholder='".$row['location']."' value='".$row['location']."'>
+            </div>";
 
-            <div class="form-group">
-              <label for="latitude" class="col-form-label">Latitude:</label>
-              <input type="text" class="form-control" id="latitude" name="latitude" placeholder="latitude">
-            </div>
+            echo "<div class=\"form-group\">
+              <label for=\"latitude\" class=\"col-form-label\">Latitude:</label>
+              <input type=\"text\" class=\"form-control\" id=\"latitude\" name=\"latitude\" placeholder='".$row['latitude']."' value='".$row['latitude']."'>
+            </div>";
 
-            <div class="form-group">
-              <label for="longtitude" class="col-form-label">Longtitude:</label>
-              <input type="text" class="form-control" id="longtitude" name="longtitude" placeholder="longtitude">
-            </div>
+            echo "<div class=\"form-group\">
+              <label for=\"longtitude\" class=\"col-form-label\">Longtitude:</label>
+              <input type=\"text\" class=\"form-control\" id=\"longtitude\" name=\"longtitude\" placeholder='".$row['longtitude']."' value='".$row['longtitude']."'>
+            </div>";
 
-            <div class="form-group">
-              <label for="Imgtaken" class="col-form-label">Image taken:</label>
-              <input type="text" class="form-control" id="Imgtaken" name="Imgtaken" placeholder="Imgtaken">
-            </div>
+            echo "<div class=\"form-group\">
+              <label for=\"Imgtaken\" class=\"col-form-label\">Image taken:</label>
+              <input type=\"text\" class=\"form-control\" id=\"Imgtaken\" name=\"Imgtaken\" placeholder='".$row['Imgtaken']."' value='".$row['Imgtaken']."'>
+            </div>";
           
-        </div>
+            echo "</div>
 
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="save" class="btn btn-primary">Save Changes</button>
+        <div class=\"modal-footer\">
+          <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Cancel</button>
+          <button type=\"save\" class=\"btn btn-primary\">Save Changes</button>
         </div>
       </div>
     </div>
-  </div>
+  </div>";
+  ?>
   </form>
 
             <!-- Delete Modal -->
@@ -490,7 +497,8 @@
   `Imgtaken`='". $Imgtaken ."'
   
   WHERE `device_id`='". 'user.device_id' ."'";
-
+  $statement = $connect->prepare($query);
+  $statement->execute();
   }
   ?>
 </html>

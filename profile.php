@@ -434,7 +434,8 @@ if(isset($_POST['save'])){
             `email`='". $email ."',
             `about`='". $about ."'
             WHERE user_id=user_id";
-  
+            $statement = $connect->prepare($query);
+            $statement->execute();
   // $result = mysqli_query($connect, $query);
 
   // if($result){
