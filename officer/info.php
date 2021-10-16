@@ -198,20 +198,20 @@
                 </div>
               </div>
                 <div class="card-body">
-                    <form>
+                    <form action="info.php" method="post">
                         <h6 class="heading-small text-muted mb-4">User information</h6>
                         <div class="pl-lg-4">
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                    <label class="form-control-label" for="input-username">Full Name</label>
-                                    <input type="text" id="input-username" class="form-control" placeholder="Username" value="John Doe">
+                                    <label class="form-control-label" for="owner">Full Name</label>
+                                    <input type="text" id="owner" name="owner" class="form-control" placeholder="Ali" value="Ali">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label class="form-control-label" for="input-email">Plate License</label>
-                                        <input type="email" id="#" class="form-control" placeholder="john@example.com">
+                                        <label class="form-control-label" for="plate_no">Plate License</label>
+                                        <input type="plate_no" id="plate_no" name="plate_no" class="form-control" placeholder="BAU4077" value="BAU4077">
                                     </div>
                                 </div>
                             </div>
@@ -237,7 +237,7 @@
                                 </div>
                                 <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
+                                <button type="save" class="btn btn-primary">Save changes</button>
                                 </div>
                             </div>
                             </div>
@@ -292,4 +292,23 @@
   <script src="../assets/js/argon.js?v=1.2.0"></script>
 </body>
 
+<?php
+if(isset($_POST['save'])){
+  $owner = $_POST['owner'];
+  $plate_no = $_POST['plate_no'];
+
+  $query = "UPDATE `driver` SET 
+  `owner`='". $owner ."', 
+  `plate_no`='". $plate_no ."', 
+  `latitude`='". $latitude ."'
+  
+  WHERE `plate_no`='". 'user.plate_no' ."'";
+  $statement = $connect->prepare($query);
+  $statement->execute();
+}
+
+
+
+
+?>
 </html>
