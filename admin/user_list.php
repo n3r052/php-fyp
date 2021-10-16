@@ -369,27 +369,27 @@
               <!-- <i class="fas fa-user prefix grey-text"></i> -->
 
               <label for="first_name" class="col-form-label">Username:</label>
-              <input class="form-control" placeholder="first_name" type="text" id="first_name" name="first_name">
+              <input class="form-control" placeholder="Josh" value="Josh" type="text" id="first_name" name="first_name">
             </div>
 
             <div class="form-group">
               <label for="email" class="col-form-label">Email:</label>
-              <input class="form-control" placeholder="email" type="text" id="email" name="email">
+              <input class="form-control" placeholder="Josh@gmail.com" value="Josh@gmail.com" type="text" id="email" name="email">
             </div>
 
             <div class="form-group">
               <label for="PASSWORD" class="col-form-label">Password:</label>
-              <input class="form-control" placeholder="PASSWORD" type="password" id="PASSWORD" name="PASSWORD">
+              <input class="form-control" placeholder="password" value="password" type="password" id="PASSWORD" name="PASSWORD">
             </div>
 
             <div class="form-group">
               <label for="position" class="col-form-label">Position:</label>
-              <input class="form-control" placeholder="position" type="text" id="position" name="position">
+              <input class="form-control" placeholder="Officer" value="Officer" type="text" id="position" name="position">
             </div>
 
             <div class="form-group">
               <label for="company" class="col-form-label">Company:</label>
-              <input class="form-control" placeholder="company" type="text" id="company" name="company">
+              <input class="form-control" placeholder="Admin" value="Admin" type="text" id="company" name="company">
             </div>
 
             <div class="form-group">
@@ -405,67 +405,75 @@
 
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="submit" class="btn btn-primary">Save User</button>
+          <button type="submit" name="submit" class="btn btn-primary">Save User</button>
         </div>
       </div>
     </div>
   </div>
   <!-- Edit Modal -->
-
-  <div class="modal fade" id="edit-user-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Edit User</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+<?php
+$sql = "SELECT * FROM user";
+$result = $connect->query($sql);
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+  echo "<div class=\"modal fade\" id=\"edit-user-form\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">
+    <div class=\"modal-dialog\">
+      <div class=\"modal-content\">
+        <div class=\"modal-header\">
+          <h5 class=\"modal-title\" id=\"exampleModalLabel\">Edit User</h5>
+          <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">
+            <span aria-hidden=\"true\">&times;</span>
           </button>
-        </div>
+        </div>";
 
-        <div class="modal-body">
-            <div class="form-group">
-              <!-- <i class="fas fa-user prefix grey-text"></i> -->
-              <label for="first_name" class="col-form-label">Username:</label>
-              <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Josh">
-            </div>
+        echo "<div class=\"modal-body\">
+            <div class=\"form-group\">
+              <!-- <i class=\"fas fa-user prefix grey-text\"></i> -->
+              <label for=\"first_name\" class=\"col-form-label\">Username:</label>
+              <input type=\"text\" class=\"form-control\" id=\"first_name\" name=\"first_name\" placeholder='".$row['first_name']."' value='".$row['first_name']."'>
+            </div>";
 
-            <div class="form-group">
-              <label for="email" class="col-form-label">Email:</label>
-              <input type="text" class="form-control" id="email" name="email" placeholder="Josh@gmail.com">
-            </div>
+            echo "<div class=\"form-group\">
+              <label for=\"email\" class=\"col-form-label\">Email:</label>
+              <input type=\"text\" class=\"form-control\" id=\"email\" name=\"email\" placeholder='".$row['email']."' value='".$row['email']."'>
+            </div>";
 
-            <div class="form-group">
-              <label for="PASSWORD" class="col-form-label">Password:</label>
-              <input type="text" class="form-control" id="PASSWORD" name="PASSWORD" placeholder="password">
-            </div>
+            echo "<div class=\"form-group\">
+              <label for=\"PASSWORD\" class=\"col-form-label\">Password:</label>
+              <input type=\"text\" class=\"form-control\" id=\"PASSWORD\" name=\"PASSWORD\" placeholder='".$row['PASSWORD']."' value='".$row['PASSWORD']."'>
+            </div>";
 
-            <div class="form-group">
-              <label for="position" class="col-form-label">Position:</label>
-              <input type="text" class="form-control" id="position" name="position" placeholder="position">
-            </div>
+            echo "<div class=\"form-group\">
+              <label for=\"position\" class=\"col-form-label\">Position:</label>
+              <input type=\"text\" class=\"form-control\" id=\"position\" name=\"position\" placeholder='".$row['position']."' value='".$row['position']."'>
+            </div>";
 
-            <div class="form-group">
-              <label for="company" class="col-form-label">Company:</label>
-              <input type="text" class="form-control" id="company" name="company" placeholder="company">
-            </div>
+            echo "<div class=\"form-group\">
+              <label for=\"company\" class=\"col-form-label\">Company:</label>
+              <input type=\"text\" class=\"form-control\" id=\"company\" name=\"company\" placeholder='".$row['company']."' value='".$row['company']."'>
+            </div>";
 
-            <div class="form-group">
-              <label for="status" class="col-form-label">Status:</label>
-              <select id="status" class="form-control">
+            echo "<div class=\"form-group\">
+              <label for=\"status\" class=\"col-form-label\">Status:</label>
+              <select id=\"status\" name=\"status\" class=\"form-control\">
                 <option>Active</option>
                 <option>Inactive</option>
               </select>
-            </div>
+            </div>";
           
-        </div>
+            echo "</div>
 
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="save" class="btn btn-primary">Save Changes</button>
+        <div class=\"modal-footer\">
+          <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Cancel</button>
+          <button type=\"save\" name=\"save\" class=\"btn btn-primary\">Save Changes</button>
         </div>
       </div>
     </div>
-  </div>
+  </div>";
+    }
+  }
+  ?>
   </form>
 
   <!-- Delete Modal -->
@@ -532,7 +540,6 @@
         }
     }
     if (isset($_POST['save'])){
-      $username= $_POST['username'];
       $email= $_POST['email'];
       $first_name= $_POST['first_name'];
       $last_name= $_POST['last_name'];
@@ -544,7 +551,6 @@
       include "../config.php";
             
       $query = "UPDATE `user` SET 
-      `username`='". $username ."', 
       `email`='". $email ."', 
       `first_name`='". $first_name ."', 
       `last_name`='". $last_name ."', 
