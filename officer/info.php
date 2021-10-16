@@ -188,67 +188,84 @@
                 </div>
             </div>
         <!-- Update Profile Page ----------------------------------------------------------------------------------------->
-          <div class="col-xl-8 order-xl-1">
-            <div class="card">
-              <div class="card-header">
-                <div class="row align-items-center">
-                  <div class="col-8">
-                    <h3 class="mb-0">Edit Content</h3>
+        <form action="info.php" method="post">
+          <?php
+          $sql = "SELECT 
+          i.image_id,
+          p.plate_no,
+          c.offense_type,
+          i.status
+          FROM `confirmation_list` AS c
+          INNER JOIN `image_list` AS i ON i.image_id = c.image_id
+          INNER JOIN `driver` AS p ON p.plate_no = c.plat_no
+          WHERE i.status = 'pending'";
+          $result = $connect->query($sql);
+          if ($result->num_rows > 0){
+            while($row = $result->fetch_assoc()) {
+          echo "<div class=\"col-xl-8 order-xl-1\">
+            <div class=\"card\">
+              <div class=\"card-header\">
+                <div class=\"row align-items-center\">
+                  <div class=\"col-8\">
+                    <h3 class=\"mb-0\">Edit Content</h3>
                   </div>
                 </div>
               </div>
-                <div class="card-body">
-                    <form action="info.php" method="post">
-                        <h6 class="heading-small text-muted mb-4">User information</h6>
-                        <div class="pl-lg-4">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                    <label class="form-control-label" for="owner">Full Name</label>
-                                    <input type="text" id="owner" name="owner" class="form-control" placeholder="Ali" value="Ali">
+                <div class=\"card-body\">
+                        <h6 class=\"heading-small text-muted mb-4\">User information</h6>
+                        <div class=\"pl-lg-4\">
+                            <div class=\"row\">
+                                <div class=\"col-lg-6\">
+                                    <div class=\"form-group\">
+                                    <label class=\"form-control-label\" for=\"owner\">Full Name</label>
+                                    <input type=\"text\" id=\"owner\" name=\"owner\" class=\"form-control\" placeholder=".$row['owner']." value=".$row['owner'].">
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label class="form-control-label" for="plate_no">Plate License</label>
-                                        <input type="plate_no" id="plate_no" name="plate_no" class="form-control" placeholder="BAU4077" value="BAU4077">
+                                <div class=\"col-lg-6\">
+                                    <div class=\"form-group\">
+                                        <label class=\"form-control-label\" for=\"plate_no\">Plate License</label>
+                                        <input type=\"plate_no\" id=\"plate_no\" name=\"plate_no\" class=\"form-control\" placeholder=".$row['plate_no']." value=".$row['plate_no'].">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <hr class="my-4" />
-                        <!-- Description -->
-                        <h6 class="heading-small text-muted mb-4">Something</h6>
-                        <!-- Form Button Modal, Trigger ----------------------------------------------------------->
-                        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal">Save</button>
+                        <hr class=\"my-4\" />";
+                        //Description
+                        echo "<h6 class=\"heading-small text-muted mb-4\">Something</h6>";
+                        //Form Button Modal, Trigger
+                        echo "<button type=\"button\" class=\"btn btn-primary btn-lg\" data-toggle=\"modal\" data-target=\"#exampleModal\">Save</button>";
 
-                        <!-- Save Modal ------------------------------------------------------->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
+                        //Save Modal
+                        echo "<div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
+                            <div class=\"modal-dialog modal-dialog-centered\" role=\"document\">
+                            <div class=\"modal-content\">
+                                <div class=\"modal-header\">
+                                <h5 class=\"modal-title\" id=\"exampleModalLabel\">Modal title</h5>
+                                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">
+                                    <span aria-hidden=\"true\">&times;</span>
                                 </button>
                                 </div>
-                                <div class="modal-body">
+                                <div class=\"modal-body\">
                                 ...
                                 </div>
-                                <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="save" class="btn btn-primary">Save changes</button>
+                                <div class=\"modal-footer\">
+                                <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>
+                                <button type=\"save\" class=\"btn btn-primary\">Save changes</button>
                                 </div>
                             </div>
                             </div>
                         </div>
-                    </form>
                 </div>
             </div>
           </div>
             
         </div>
-    </div>
+    </div>";
+            }
+          }
+    ?>
+</form>
+
       <!-- Footer -->
       <footer class="footer pt-0">
         <div class="row align-items-center justify-content-lg-between">
@@ -299,8 +316,7 @@ if(isset($_POST['save'])){
 
   $query = "UPDATE `driver` SET 
   `owner`='". $owner ."', 
-  `plate_no`='". $plate_no ."', 
-  `latitude`='". $latitude ."'
+  `plate_no`='". $plate_no ."'
   
   WHERE `plate_no`='". 'user.plate_no' ."'";
   $statement = $connect->prepare($query);
