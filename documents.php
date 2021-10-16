@@ -339,18 +339,18 @@
             </div>
 
 <!-- Edit Modal -->
-
-<form action="document.php" method="post">
-  <div class="modal fade" id="edit-document-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Edit Document</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
 <?php
+echo "<form action=\"document.php\" method=\"post\">
+  <div class=\"modal fade\" id=\"edit-document-form\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">
+    <div class=\"modal-dialog\">
+      <div class=\"modal-content\">
+        <div class=\"modal-header\">
+          <h5 class=\"modal-title\" id=\"exampleModalLabel\">Edit Document</h5>
+          <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">
+            <span aria-hidden=\"true\">&times;</span>
+          </button>
+        </div>";
+
 $sql = "SELECT 
 i.image_id,
 p.plate_no,
