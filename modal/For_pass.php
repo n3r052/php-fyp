@@ -168,7 +168,7 @@ if(isset($_POST['submit'])){
   
   $_SESSION['info'] = "";
     $password = mysqli_real_escape_string($connect, $_POST['password']);
-    $cpassword = mysqli_real_escape_string($connect, $_POST['cpassword']);
+    // $cpassword = mysqli_real_escape_string($connect, $_POST['cpassword']);
     if($password !== $cpassword){
         $errors['password'] = "Confirm password not matched!";
     }else{
@@ -178,7 +178,7 @@ if(isset($_POST['submit'])){
         $sql = "SELECT * FROM user WHERE email = '$email'";  
           $result = mysqli_query($connect, $sql);  
           $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
-        $update_pass = "UPDATE `user` SET `password`= "$cpassword" WHERE email = "$email";";
+        $update_pass = "UPDATE `user` SET `password`= '$cpassword' WHERE email = '$email'";
         $run_query = $connect->query($update_pass);
         if($run_query){
             $info = "Your password changed. Now you can login with your new password.";
