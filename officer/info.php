@@ -192,7 +192,7 @@
           <?php
           $sql = "SELECT 
           i.image_id,
-          p.plate_no,
+          p.plate_no, p.owner,
           c.offense_type,
           i.status
           FROM `confirmation_list` AS c
